@@ -8,4 +8,4 @@ This is a cloud-based service platform which will be implemented to make the con
   - generating requesting letters (loans, fertilizer, tea packets etc.) and sending to the factory admins
   - sending notifications about pending and confirmed requesting letters etc.
 
-☑️ Programming languages like HTML, CSS, Javascript, PHP, Bootstrap, MySQL and the IBM cloud platform will be used to implement this Software as a Service (SaaS).
+☑️ Programming languages like HTML, CSS, Javascript, PHP, Bootstrap, MySQL and the IBM cloud platform will be used to implement this Platform as a Service (PaaS).
