@@ -17,13 +17,13 @@
                     </div>
                     <br>
                     <div class="dash-nav">
-                        <a href="">
+                        <a href="growerlist.php">
                             <span>Grower List</span>
                         </a>
                     </div>
                     <br>
                     <div class="dash-nav">
-                        <a href="">
+                        <a href="pendingRequset.php">
                             <span>Pending Request</span>
                         </a>
                     </div>
