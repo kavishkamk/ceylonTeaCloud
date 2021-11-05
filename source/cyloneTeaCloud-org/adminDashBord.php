@@ -15,7 +15,7 @@
                     </form>
                 </div>
             </nav>
-            <main>
+            <main class="dashmain">
                 <div class="com-abo" style="grid-column:1 / 2; grid-row: 1 / 3;">
                     <h1>Cylone Tea Cloud</h1>
                     <p>Factory Name: </p>
@@ -35,70 +35,9 @@
                 </div>
             </main>
 
-            <div id="sidebar">
-                <h1>
-                    <label for="">
-                        <span class="las la-bars"></span>
-                    </label>
-                    <img src=".."></img>
-                </h1>
-                <div>
-                    <div class="dash-nav">
-                        <span>Factory Name</span>
-                    </div>
-                    <br>
-                    <div class="dash-nav">
-                        <a href="">
-                            <span>Dashboard</span>
-                        </a>
-                    </div>
-                    <br>
-                    <div class="dash-nav">
-                        <a href="">
-                            <span>Grower List</span>
-                        </a>
-                    </div>
-                    <br>
-                    <div class="dash-nav">
-                        <a href="">
-                            <span>Pending Request</span>
-                        </a>
-                    </div>
-                    <br>
-                    <div class="dash-nav">
-                        <a href="">
-                            <span>Comfirmed Request</span>
-                        </a>
-                    </div>
-                    <br>
-                    <div class="dash-nav">
-                        <a href="">
-                            <span>Weekly Report</span>
-                        </a>
-                    </div>
-                    <br>
-                    <div class="dash-nav">
-                        <a href="">
-                            <span>Monthely Report</span>
-                        </a>
-                    </div>
-                    <br>
-                    <div class="dash-nav">
-                        <a href="">
-                            <span>Profile Setting</span>
-                        </a>
-                    </div>
-                    <br>
-                    <div class="dash-nav">
-                        <a href="">
-                            <span>About</span>
-                        </a>
-                    </div>
-                    <br>
-                </div>
-                <br>
-                <br>
-            </div>
+            <?php
+                require "adminDashbordSideBar.php";
+            ?>
         </div>
     </body>
 </html>
