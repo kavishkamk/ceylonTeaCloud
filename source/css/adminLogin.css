@@ -1,0 +1,106 @@
+*{
+    margin:0;
+    padding:0;
+  }
+  
+html, body {
+    height: 100%;
+    font-weight: bold;
+}
+    
+html {
+    background:linear-gradient(to right, #03203C 0%, #207398 50%, #03203C 99%);
+}
+
+.header-bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    
+    position: relative;
+    top: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+}
+
+.liitem {
+    top: 0;
+}
+
+.liitem a {
+    display: block; /*allow to specify padding*/
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.liitem a:hover:not(.active) {
+    background-color: #111;
+}
+
+/*active class will change color of the current link*/
+.active {
+    background-color: #207398;
+}
+
+.container {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#logcont {
+    position: relative;
+    background: #FFF;
+    width:auto;
+    border-radius: 10px;
+    top:1%;
+    text-align: center;
+}
+
+#logcont > p {
+    font-size: 1.5em;
+    background:#04072f;
+    color: #57c1eb;
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
+  }
+
+.logbutn {
+    position: relative;
+    color: #FFF;
+    background-color: #04072f;
+    width: 85%;
+    padding: 5px 15px;
+    margin: 20px 0px 10px;
+    transition: background 1.5s ease;
+}
+  
+.logbutn:hover {
+    background-color: #222dc3;
+}
+
+.logok {
+    color:transparent;
+    padding: 15px;
+}
+
+.logform {
+    line-height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+}
+   
+.flog {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
