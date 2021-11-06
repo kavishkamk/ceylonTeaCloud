@@ -1,3 +1,11 @@
+<!-- This is admin login form -->
+<?php
+    if(session_start()){
+        session_unset();
+        session_destroy();
+    }
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
@@ -23,11 +31,23 @@
         </header>
         <main>
             <div class="container">
+            <div>
+                <?php
+                    if(isset($_GET['ownerlogstat'])){
+                        if($_GET['ownerlogstat'] == "logoutok"){
+                            echo '<p class="logsuss">You are logged out.!</p>';
+                        }
+                        else{
+                            echo '<p class="logerr">Unauthorized Access</p>';
+                        }
+                    }
+                ?>
+            </div>
                 <div id="logcont">
                 <p>Log-In</p>
-                    <form action="" class="logform" method="post">
-                        <label for="unameormail">User Name or Email*</label><br>
-                        <input type="text" name="unameormail" placeholder="enter your email / username" size="30" class="flog">
+                    <form action="../include/ownerLogin.inc.php" class="logform" method="post">
+                        <label for="unameormail">Email*</label><br>
+                        <input type="text" name="unameormail" placeholder="enter your email" size="30" class="flog">
                         <br>
                         <label for="pwd">Password*</label><br>
                         <input type="password" name="pwd" placeholder="enter your password" size="30" class="flog"><br>
