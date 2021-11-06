@@ -34,37 +34,28 @@
                     </form>
                 </div>
             </nav>
-            <main>
-                <div class="grower-table" style="grid-column:1 / 2; grid-row: 1 / 3;">
-                    <table>
-                        <thead>
-                            <caption>Grower List</caption>
-                            <tr>
-                                <th>Grower Id</th>
-                                <th>name</th>
-                                <th>Registerd Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                                require_once "../phpClasses/GrowerDetails.class.php";
-                                $groObj = new GrowerDetails();
-                                $result = $groObj->getGrowerList();
-                                unset($groObj);
-
-                                while($row = mysqli_fetch_assoc($result)){
-                                    echo '<tr>
-                                        <td>'.sprintf('%04d', $row['id']).'</td>
-                                        <td> <a href="growerProfile.php?groid='.$row["id"].'">'.$row["name"].'</a></td>
-                                        <td>'.$row["reg_date"].'</td>
-                                    </tr>';
-                                }
-                            ?>
-                        </tbody>
-                    </table>
+            <main class="grower-profile">
+                <?php
+                    require_once "../phpClasses/GrowerDetails.class.php";
+                    $obj = new GrowerDetails();
+                    $grower = $obj->getGrowerDetailsUsingId($_GET['groid']);
+                    unset($obj);
+                ?>
+                <div class="image">
+                    <?php
+                        echo '<img src="../profile-pic/'.$grower["profileLink"].' ?>" alt="Avatar" style="width: 200px" />';
+                    ?>
+                <div>
+                <div>
+                    <?php 
+                    echo '<p> Grower ID: '.sprintf('%04d', $_GET['groid']).'</p>
+                    <p> Name : '.$grower["name"].'</p>
+                    <p> Email : '.$grower["email"].'</p>
+                    <p> Address : '.$grower["address"].'</p>
+                    <p> Tele : '.$grower["tele"].'</p>'
+                    ?>
                 </div>
             </main>
-
             <?php
                 require "adminDashbordSideBar.php";
             ?>

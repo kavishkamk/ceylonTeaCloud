@@ -1,13 +1,13 @@
 :root {
     --main-radius: 1px;
     --main-padding: 5px;
-  }
+}
   
-  .dash-nav {
+.dash-nav {
     list-style: none;
-  }
+}
   
-  .container {
+.container {
     display: grid;
     height: 95vh;
     grid-template-columns: 1.5fr 6fr;
@@ -22,14 +22,15 @@
     font-size: 16px;
     color: #e6f3f3cc;
     /*text-align: center;*/
-  }
+}
 
-  nav {
+nav {
     background-color: rgb(14, 89, 112);
     grid-area: nav;
     border-radius: var(--main-radius);
-  }
-  main {
+}
+
+main {
     background-color: rgb(37, 183, 219);
     grid-area: main;
     border-radius: var(--main-radius);
@@ -37,47 +38,47 @@
     text-align: center;
     color: black;
     padding: 5px;
-  }
+}
 
-  .dashmain {
+.dashmain {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 50% 50%;
-  }
+}
 
-  .report-main{
+.report-main{
     text-align: left;
-  }
+}
 
-  #sidebar {
+#sidebar {
     background-color: rgb(25, 129, 155);
     grid-area: sidebar;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
     text-align: center;
-  }
+}
 
-  .log-out-btn {
+.log-out-btn {
     background-color: white;
     float: right;
     padding: 10px 30px;
     font-weight: bold;
-  }
+}
   
-  .com-abo {
-      margin: 10px;
-      text-align: left;
-      color: black;
-      font-weight: 100;
-  }
+.com-abo {
+    margin: 10px;
+    text-align: left;
+    color: black;
+    font-weight: 100;
+}
 
-  .gro-abo {
+.gro-abo {
     margin: 0;
     position: relative;
     top: 45%;
   }
 
-  table {
+table {
     background-color: white;
     width:100%;
     margin-left: auto;
@@ -87,11 +88,11 @@
 }
 
 table, th, td {
-  border: 1px solid black;
+    border: 1px solid black;
 }
 
 th, td {
-  padding: 2px;
+    padding: 2px;
 }
 
 caption {
@@ -100,4 +101,18 @@ caption {
     padding: 3px;
     border-radius: 5px;
     margin: 7px 0;
+}
+
+.grower-profile {
+  display: grid;
+  grid-template-rows: 40% 60%;
+}
+
+.image img {
+  border-radius: 50%;
+
+  object-fit: cover;
+  object-position: 100% 0;
+  object-position: 0 100%;
+  margin: 5px;
 }

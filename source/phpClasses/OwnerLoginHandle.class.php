@@ -1,7 +1,7 @@
 <?php
     require_once "DbConnection.class.php";
 
-    // this class use for check admin with passwords and create session for admin
+    // this class use for check owner with passwords and create session for admin
     class OwnerLoginHandle extends DbConnection{
 
         private $inputpwd;
@@ -109,5 +109,4 @@
             mysqli_stmt_close($stmt);
             mysqli_close($conn);
         }
-
     }

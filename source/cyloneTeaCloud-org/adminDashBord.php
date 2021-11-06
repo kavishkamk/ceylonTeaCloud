@@ -46,7 +46,13 @@
                 </div>
                 <div class="gro-abo" style="grid-column:2 / 3; grid-row: 1 / 2;">
                     <p>Total Growers</p>
-                    <p>15</p>
+                    <?php
+                        require "../phpClasses/GrowerDetails.class.php";
+                        $groObj = new GrowerDetails();
+                        $numofGrower = $groObj->getNumOfGrowers();
+                        unset($groObj);
+                        echo '<p>'.$numofGrower.'</p>';
+                    ?>
                 </div>
                 <div style="grid-column:2 / 3; grid-row: 2 / 3;">
                     <p>Total Weekly report - 29</p>
