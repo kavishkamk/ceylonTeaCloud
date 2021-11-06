@@ -27,7 +27,7 @@
                 exit();
             }
             else if($logresult == "1"){
-                header("Location:");
+                header("Location:../cyloneTeaCloud-org/adminDashBord.php");
                 unset($logObj);
                 exit();
             }
