@@ -326,5 +326,21 @@ ADD FOREIGN KEY (deduction_id) REFERENCES deduction(ded_id);
 ALTER TABLE deduction_other_map
 ADD FOREIGN KEY (ded_id) REFERENCES deduction(ded_id);
 
-TER TABLE deduction_other_map
+ALTER TABLE deduction_other_map
 ADD FOREIGN KEY (ded_other_id) REFERENCES deduction_others(ded_other_id);
+
+-- -----------------------------------------------------------------------------------------------
+-- tea type table
+CREATE TABLE tea_type(
+	type_id INT AUTO_INCREMENT,
+	tea_type VARCHAR(255) NOT NULL,
+	price_of_1kg INT NOT NULL,
+	PRIMARY KEY(type_id)
+);
+
+ALTER TABLE tea DROP COLUMN type;
+ALTER TABLE tea
+ADD tea_type_id INT NOT NULL;
+
+ALTER TABLE tea
+ADD FOREIGN KEY (tea_type_id) REFERENCES tea_type(type_id);
