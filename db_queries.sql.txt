@@ -233,11 +233,98 @@ CREATE TABLE tea(
 
 );
 
+-- ------------------------------------------------------------------------
 
+-- modified grower status column
+ALTER TABLE grower DROP COLUMN status;
+ALTER TABLE grower
+ADD active_status BOOLEAN NOT NULL DEFAULT 0;
 
+ALTER TABLE owner DROP COLUMN name;
+ALTER TABLE owner
+ADD owner_name BOOLEAN NOT NULL DEFAULT 0;
 
+ALTER TABLE owner
+ADD pwd VARCHAR(512) NOT NULL;
 
+ALTER TABLE owner
+ADD actSTatus BOOLEAN NOT NULL DEFAULT 0;
 
+ALTER TABLE owner
+RENAME TO company_owner;
 
+CREATE TABLE owner_session(
+    owner_id int NOT NULL,
+    session_id varchar(100) NOT NULL,
+    session_expire DATETIME NOT NULL,
+    PRIMARY KEY (owner_id)
+);
 
+-- -----------------------------------------------------------------
+-- foreign keys
 
+ALTER TABLE factory_owner_map
+ADD FOREIGN KEY (owner_id) REFERENCES company_owner(owner_id);
+
+ALTER TABLE factory_owner_map
+ADD FOREIGN KEY (factory_id) REFERENCES factory(factory_id);
+
+ALTER TABLE member
+ADD FOREIGN KEY (grower_id) REFERENCES grower(id);
+
+ALTER TABLE member
+ADD FOREIGN KEY (factory_id) REFERENCES factory(factory_id);
+
+ALTER TABLE member_data_input_map
+ADD FOREIGN KEY (member_id) REFERENCES member(member_id);
+
+ALTER TABLE member_data_input_map
+ADD FOREIGN KEY (data_id) REFERENCES data_input(data_id);
+
+ALTER TABLE member_request_map
+ADD FOREIGN KEY (member_id) REFERENCES member(member_id);
+
+ALTER TABLE member_report_map
+ADD FOREIGN KEY (member_id) REFERENCES member(member_id);
+
+ALTER TABLE member_report_map
+ADD FOREIGN KEY (report_id) REFERENCES monthly_report(report_id);
+
+ALTER TABLE member_request_map
+ADD FOREIGN KEY (req_id) REFERENCES request(req_id);
+
+ALTER TABLE request
+ADD FOREIGN KEY (req_id) REFERENCES req_tea_map(req_id);
+
+ALTER TABLE request
+ADD FOREIGN KEY (req_id) REFERENCES req_fertilizer_map(req_id);
+
+ALTER TABLE request
+ADD FOREIGN KEY (req_id) REFERENCES req_loan_map(req_id);
+
+ALTER TABLE req_loan_map
+ADD FOREIGN KEY (loan_id) REFERENCES loan(loan_id);
+
+ALTER TABLE req_fertilizer_map
+ADD FOREIGN KEY (req_id) REFERENCES fertilizer(fertilizer_id);
+
+ALTER TABLE req_tea_map
+ADD FOREIGN KEY (tea_id) REFERENCES tea(tea_id);
+
+ALTER TABLE net_weight
+ADD FOREIGN KEY (data_id) REFERENCES data_input(data_id);
+
+ALTER TABLE net_weight
+ADD FOREIGN KEY (deduction_id) REFERENCES deduction_others(ded_other_id);
+
+ALTER TABLE data_input_dedication_map
+ADD FOREIGN KEY (data_id) REFERENCES data_input(data_id);
+
+ALTER TABLE data_input_dedication_map
+ADD FOREIGN KEY (deduction_id) REFERENCES deduction(ded_id);
+
+ALTER TABLE deduction_other_map
+ADD FOREIGN KEY (ded_id) REFERENCES deduction(ded_id);
+
+TER TABLE deduction_other_map
+ADD FOREIGN KEY (ded_other_id) REFERENCES deduction_others(ded_other_id);
