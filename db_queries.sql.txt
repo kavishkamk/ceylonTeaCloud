@@ -339,8 +339,40 @@ CREATE TABLE tea_type(
 );
 
 ALTER TABLE tea DROP COLUMN type;
-ALTER TABLE tea
-ADD tea_type_id INT NOT NULL;
 
-ALTER TABLE tea
+CREATE TABLE fertilizer_type(
+	type_id INT AUTO_INCREMENT,
+	fertilizer_type VARCHAR(255) NOT NULL,
+	price_of_1kg INT NOT NULL,
+	PRIMARY KEY(type_id)
+);
+
+ALTER TABLE fertilizer DROP COLUMN type;
+
+CREATE TABLE tea_request(
+	type_id INT AUTO_INCREMENT,
+	request_id INT NOT NULL,
+	tea_type_id INT NOT NULL,
+	item_price INT NOT NULL,
+	PRIMARY KEY(type_id)
+);
+
+CREATE TABLE fertilizer_request(
+	type_id INT AUTO_INCREMENT,
+	request_id INT NOT NULL,
+	fertilizer_type_id INT NOT NULL,
+	item_price INT NOT NULL,
+	PRIMARY KEY(type_id)
+);
+
+ALTER TABLE tea_request
+ADD FOREIGN KEY (request_id) REFERENCES tea(tea_id);
+
+ALTER TABLE fertilizer_request
+ADD FOREIGN KEY (request_id) REFERENCES fertilizer(fertilizer_id);
+
+ALTER TABLE tea_request
 ADD FOREIGN KEY (tea_type_id) REFERENCES tea_type(type_id);
+
+ALTER TABLE fertilizer_request
+ADD FOREIGN KEY (fertilizer_type_id) REFERENCES fertilizer_type(type_id);
