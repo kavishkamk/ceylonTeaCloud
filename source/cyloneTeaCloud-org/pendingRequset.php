@@ -15,17 +15,60 @@
                     </form>
                 </div>
             </nav>
-            <main>
-                <div class="grower-table" style="grid-column:1 / 2; grid-row: 1 / 3;">
+            <main class="pending-main">
+                <?php
+                    require_once "../phpClasses/PendingRequset.class.php";
+                    $obj = new PendingRequest();
+                    $tearesult = $obj->getTeaPendingRequset();
+                    $fretilizeRes = $obj->getFretilizerPendingRequset();
+                    unset($obj);
+                ?>
+                <div class="request-table" style="grid-column:1 / 2;">
                     <table>
                         <thead>
-                            <caption>Grower List</caption>
+                            <caption>Fertilizer request</caption>
                         </thead>
                         <tbody>
+                            <?php
+                                 while($row = mysqli_fetch_assoc($fretilizeRes)){
+                                    echo '<tr>
+                                            <td>'.$row["req_date"].'</td>
+                                            <td> <a href="fertilizerRequset.php?reqid='.$row["req_id"].'&growid='.$row['id'].'">'.sprintf('%04d', $row['id']).'</a></td>
+                                        </tr>';
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="request-table" style="grid-column:2 / 3;">
+                    <table>
+                        <thead>
+                            <caption>Tea Request</caption>
+                        </thead>
+                        <tbody>
+                            <?php
+                                while($row = mysqli_fetch_assoc($tearesult)){
+                                    echo '<tr>
+                                            <td>'.$row["req_date"].'</td>
+                                            <td> <a href="teaRequest.php?reqid='.$row["req_id"].'&growid='.$row['id'].'">'.sprintf('%04d', $row['id']).'</a></td>
+                                        </tr>';
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="request-table" style="grid-column:3 / 4;">
+                    <table>
+                        <thead>
+                            <caption>Lone Requset</caption>
+                        </thead>
+                        <tbody>
+                            <?php
+
+                            ?>
                             <tr>
                                 <td>2021-1-1</td>
                                 <td>ID-11111</td>
-                                <td>.........</td>
                             </tr>
                         </tbody>
                     </table>
