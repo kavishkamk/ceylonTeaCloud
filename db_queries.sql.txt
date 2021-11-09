@@ -293,20 +293,20 @@ ADD FOREIGN KEY (report_id) REFERENCES monthly_report(report_id);
 ALTER TABLE member_request_map
 ADD FOREIGN KEY (req_id) REFERENCES request(req_id);
 
-ALTER TABLE request
-ADD FOREIGN KEY (req_id) REFERENCES req_tea_map(req_id);
+ALTER TABLE req_tea_map
+ADD FOREIGN KEY (req_id) REFERENCES request(req_id);
 
-ALTER TABLE request
-ADD FOREIGN KEY (req_id) REFERENCES req_fertilizer_map(req_id);
+ALTER TABLE req_fertilizer_map
+ADD FOREIGN KEY (req_id) REFERENCES request(req_id);
 
-ALTER TABLE request
-ADD FOREIGN KEY (req_id) REFERENCES req_loan_map(req_id);
+ALTER TABLE req_loan_map
+ADD FOREIGN KEY (req_id) REFERENCES request(req_id);
 
 ALTER TABLE req_loan_map
 ADD FOREIGN KEY (loan_id) REFERENCES loan(loan_id);
 
 ALTER TABLE req_fertilizer_map
-ADD FOREIGN KEY (req_id) REFERENCES fertilizer(fertilizer_id);
+ADD FOREIGN KEY (fertilizer_id) REFERENCES fertilizer(fertilizer_id);
 
 ALTER TABLE req_tea_map
 ADD FOREIGN KEY (tea_id) REFERENCES tea(tea_id);
@@ -376,3 +376,26 @@ ADD FOREIGN KEY (tea_type_id) REFERENCES tea_type(type_id);
 
 ALTER TABLE fertilizer_request
 ADD FOREIGN KEY (fertilizer_type_id) REFERENCES fertilizer_type(type_id);
+
+-- -------------------------------------------------------------------------------------
+-- added colum to add amout of the tea and fertilizer
+
+ALTER TABLE tea DROP COLUMN amount;
+ALTER TABLE tea DROP COLUMN price;
+ALTER TABLE tea_request
+ADD amount INT NOT NULL;
+
+ALTER TABLE fertilizer DROP COLUMN amount;
+ALTER TABLE fertilizer DROP COLUMN price;
+ALTER TABLE fertilizer_request
+ADD amount INT NOT NULL;
+
+-- monthly deduction have to go fertilizer_request, tea_request -- because of the insertion problem
+
+ALTER TABLE tea DROP COLUMN monthly_ded;
+ALTER TABLE tea_request
+ADD monthly_ded DECIMAL(10, 2) NOT NULL;
+
+ALTER TABLE fertilizer DROP COLUMN monthly_deduction;
+ALTER TABLE fertilizer_request
+ADD monthly_deduction DECIMAL(10, 2) NOT NULL;
