@@ -6,7 +6,7 @@ use ceylonteacloud;
 -- -----------------------------------------
 -- Owner
 CREATE TABLE Owner(
-	owner_id int NOT NULL,
+	owner_id int NOT NULL AUTO_INCREMENT,
 	name VARCHAR(255) NOT NULL,
 	email VARCHAR(320) NOT NULL,
 	tele int NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE Owner(
 -- Factory
 
 	CREATE TABLE  Factory(
-	factory_id int NOT NULL,
+	factory_id int NOT NULL AUTO_INCREMENT,
 	name VARCHAR(255) NOT NULL,
 	date DATETIME NOT NULL,
 	actSTatus BOOLEAN NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE Owner(
 
 -- monthly_report
 	CREATE TABLE monthly_report(
-	report_id int NOT NULL,
+	report_id int NOT NULL AUTO_INCREMENT,
 	date DATETIME NOT NULL,
 	total_weight  float NOT NULL,
 	total_deducation_per_month float NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE Owner(
 
 -- data_input
 	CREATE TABLE data_input(
-	data_id int NOT NULL,
+	data_id int NOT NULL AUTO_INCREMENT,
 	number_of_sacks int NOT NULL,
 	total_weight float NOT NULL,
 	member_id int NOT NULL,
@@ -75,7 +75,7 @@ CREATE TABLE Owner(
 );
 -- member
 	CREATE TABLE member(
-	member_id int NOT NULL,
+	member_id int NOT NULL AUTO_INCREMENT,
 	factory_id int NOT NULL,
 	grower_id int NOT NULL,
 	
@@ -126,7 +126,7 @@ CREATE TABLE  grower(
 
 -- request
 CREATE TABLE  request(
-	req_id int NOT NULL,
+	req_id int NOT NULL AUTO_INCREMENT,
 	req_date DATETIME NOT NULL,
 	accept_date DATETIME NOT NULL,
 	status BOOLEAN NOT NULL,
@@ -139,7 +139,7 @@ CREATE TABLE  request(
 -- deduction
 
 CREATE TABLE deduction(
-	ded_id int NOT NULL,
+	ded_id int NOT NULL AUTO_INCREMENT,
 	sack_waight float NOT NULL,
 	non_standard_leaves float NOT NULL,
 	ded_total float NOT NULL,
@@ -182,7 +182,7 @@ CREATE TABLE deduction_other_map(
 -- deduction_others
 
 	CREATE TABLE deduction_others(
-	ded_other_id int NOT NULL,
+	ded_other_id int NOT NULL AUTO_INCREMENT,
 	reason  VARCHAR(850) NOT NULL,
 	price DECIMAL(10,2),
 	PRIMARY KEY(ded_other_id)
@@ -194,7 +194,7 @@ CREATE TABLE deduction_other_map(
 
 
 	CREATE TABLE loan(
-	loan_id int NOT NULL,
+	loan_id int NOT NULL AUTO_INCREMENT,
 	amount float NOT NULL,
 	number_of_months_to_pay int NOT NULL,
 	monthly_ded float NOT NULL,
@@ -206,7 +206,7 @@ CREATE TABLE deduction_other_map(
 -- fertilizer
 
 CREATE TABLE fertilizer(
-	fertilizer_id int NOT NULL,
+	fertilizer_id int NOT NULL AUTO_INCREMENT,
 	type VARCHAR(350) NOT NULL,
 	amount float NOT NULL,
 	date_wanted DATETIME NOT NULL,
@@ -221,7 +221,7 @@ CREATE TABLE fertilizer(
 -- Tea
 
 CREATE TABLE tea(
-	tea_id int NOT NULL,
+	tea_id int NOT NULL AUTO_INCREMENT,
 	type VARCHAR(350) NOT NULL,
 	amount float NOT NULL,
 	price DECIMAL(10,2),
