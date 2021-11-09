@@ -242,7 +242,7 @@ ADD active_status BOOLEAN NOT NULL DEFAULT 0;
 
 ALTER TABLE owner DROP COLUMN name;
 ALTER TABLE owner
-ADD owner_name BOOLEAN NOT NULL DEFAULT 0;
+ADD owner_name VARCHAR(255) NOT NULL;
 
 ALTER TABLE owner
 ADD pwd VARCHAR(512) NOT NULL;
@@ -353,7 +353,7 @@ CREATE TABLE tea_request(
 	type_id INT AUTO_INCREMENT,
 	request_id INT NOT NULL,
 	tea_type_id INT NOT NULL,
-	item_price INT NOT NULL,
+	item_price DECIMAL(10, 2) NOT NULL,
 	PRIMARY KEY(type_id)
 );
 
@@ -361,7 +361,7 @@ CREATE TABLE fertilizer_request(
 	type_id INT AUTO_INCREMENT,
 	request_id INT NOT NULL,
 	fertilizer_type_id INT NOT NULL,
-	item_price INT NOT NULL,
+	item_price DECIMAL(10, 2) NOT NULL,
 	PRIMARY KEY(type_id)
 );
 
