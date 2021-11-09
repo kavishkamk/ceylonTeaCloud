@@ -15,7 +15,8 @@
                 exit();
             }
             else{
-                mysqli_stmt_bind_param($stmt, "i", $status);
+                $val1 = 1;
+                mysqli_stmt_bind_param($stmt, "i", $val1);
                 mysqli_stmt_execute($stmt);
                 $result = mysqli_stmt_get_result($stmt);
                 if($row = mysqli_fetch_assoc($result)){
