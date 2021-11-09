@@ -1,0 +1,24 @@
+.item-main {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    position: relative;
+}
+
+.item-div {
+    display: grid;
+    grid-template-rows: 60% 20% 20%;
+    position: relative;
+    padding: 5px;
+}
+
+.item-form {
+    text-align: left;
+}
+
+.f-item {
+    margin: 5px;
+}
+
+.btn {
+    margin:10px 20px;
+}

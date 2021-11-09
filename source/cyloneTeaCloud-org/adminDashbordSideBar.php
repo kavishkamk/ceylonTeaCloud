@@ -23,6 +23,12 @@
                     </div>
                     <br>
                     <div class="dash-nav">
+                        <a href="items.php">
+                            <span>Items</span>
+                        </a>
+                    </div>
+                    <br>
+                    <div class="dash-nav">
                         <a href="pendingRequset.php">
                             <span>Pending Request</span>
                         </a>
