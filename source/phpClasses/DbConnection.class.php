@@ -5,7 +5,7 @@
         private $dbservername = "localhost:3307";
         private $dBuserName = "root";
         private $dBpassword = "";
-        private $dBname = "cylone_tea_cloud";
+        private $dBname = "ceylonteacloud";
 
         protected function connect(){
             $conn = mysqli_connect($this->dbservername, $this->dBuserName, $this->dBpassword, $this->dBname);
