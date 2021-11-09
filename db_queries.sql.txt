@@ -334,7 +334,7 @@ ADD FOREIGN KEY (ded_other_id) REFERENCES deduction_others(ded_other_id);
 CREATE TABLE tea_type(
 	type_id INT AUTO_INCREMENT,
 	tea_type VARCHAR(255) NOT NULL,
-	price_of_1kg INT NOT NULL,
+	price_of_1kg DECIMAL(10, 2) NOT NULL,
 	PRIMARY KEY(type_id)
 );
 
@@ -343,7 +343,7 @@ ALTER TABLE tea DROP COLUMN type;
 CREATE TABLE fertilizer_type(
 	type_id INT AUTO_INCREMENT,
 	fertilizer_type VARCHAR(255) NOT NULL,
-	price_of_1kg INT NOT NULL,
+	price_of_1kg DECIMAL(10, 2) NOT NULL,
 	PRIMARY KEY(type_id)
 );
 
