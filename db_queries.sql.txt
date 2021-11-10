@@ -399,3 +399,9 @@ ADD monthly_ded DECIMAL(10, 2) NOT NULL;
 ALTER TABLE fertilizer DROP COLUMN monthly_deduction;
 ALTER TABLE fertilizer_request
 ADD monthly_deduction DECIMAL(10, 2) NOT NULL;
+
+-- -----------------------------------------------------------
+-- added email colums for company details
+
+ALTER TABLE factory
+ADD email VARCHAR(320) NOT NULL;
