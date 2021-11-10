@@ -405,3 +405,11 @@ ADD monthly_deduction DECIMAL(10, 2) NOT NULL;
 
 ALTER TABLE factory
 ADD email VARCHAR(320) NOT NULL;
+
+-- add column to lone table
+
+ALTER TABLE loan
+ADD loanHeader VARCHAR(100) NOT NULL;
+
+ALTER TABLE loan
+ADD discription TEXT NOT NULL;

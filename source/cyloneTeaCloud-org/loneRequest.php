@@ -16,7 +16,7 @@
             exit();
         }
     }
-    
+
     if(!isset($_GET['reqid']) || !isset($_GET['growid'])){
         header("Location:pendingRequset.php"); // no session
         exit();
@@ -37,10 +37,9 @@
 
     require_once "../phpClasses/PendingRequset.class.php";
     $reqObj = new PendingRequest();
-    $reqRes = $reqObj->getFertilizerDetails($requsetId);
+    $reqRes = $reqObj->getLoneDetails($requsetId);
     unset($reqObj);
 
-    $row1 = $reqRes[0];
     $total_price = 0;
     $total_deduction = 0;
 ?>
@@ -69,7 +68,7 @@
                     echo '<span style="font-size:15px">Email : '.$comRes["email"].'</span><br>';
                     echo '<span style="font-size:15px">Phone : 0'.$comRes["contactNo"].'</span><br><br>';
                     echo '<span style="font-size:15px">Fertilizer Request</span><br>';
-                    echo '<span style="font-size:15px">Requset Date: '.$row1['req_date'].'</span><br>';
+                    echo '<span style="font-size:15px">Requset Date: '.$reqRes['req_date'].'</span><br>';
                     echo '<span style="font-size:15px">Request ID: '.$requsetId.'</span><br>';
                 ?>
             </div>
@@ -92,33 +91,10 @@
                 </div>
             </div>
             <div style="grid-column:2 / 3;" class="rec-table">
-                <table>
-                    <thead>
-                        <caption>Requested Items</caption>
-                            <tr>
-                                <th></th>
-                                <th>Item Name</th>
-                                <td>Price</td>
-                                <td>Amount</td>
-                            </tr>
-                    </thead>
-                        <tbody>
-                            <?php
-                            $count = 1;
-                                foreach($reqRes as $row){
-                                    $total_price += $row['item_price'];
-                                    $total_deduction += $row['monthly_deduction'];
-                                    echo '<tr>
-                                            <td>'.$count.'</td>
-                                            <td>'.$row["fertilizer_type"].'</td>
-                                            <td>'.number_format($row["item_price"],2).'</td>
-                                            <td>'.$row["amount"].'</td>
-                                        </tr>';
-                                    $count++;
-                                }
-                            ?>
-                        </tbody>
-                    </table>
+                <?php
+                    echo '<p class="loan-head">'.$reqRes['loanHeader'].'</p>';
+                    echo '<p class="lone-dis">'.$reqRes['discription'].'</p>';
+                ?>
             </div>
             <div style="grid-column:2 / 3;" class="rec-table">
                 <table>
@@ -129,23 +105,18 @@
                         <?php
                             echo '<tr>
                                 <td> 1 </td>
-                                <td>Date Wanted</td>
-                                <td>'.$row['date_wanted'].'</td>
+                                <td>Amount</td>
+                                <td>'.number_format($reqRes['amount'],2).'</td>
                             </tr>
                             <tr>
                                 <td> 2 </td>
                                 <td>Number of Month to Pay</td>
-                                <td>'.$row['number_of_months'].'</td>
+                                <td>'.$reqRes['number_of_months_to_pay'].'</td>
                             </tr>
                             <tr>
                                 <td> 3 </td>
-                                <td>Total Price</td>
-                                <td>'.number_format($total_price,2).'</td>
-                            </tr>
-                            <tr>
-                                <td> 4 </td>
                                 <td>Monthly Deduction</td>
-                                <td>'.number_format($total_deduction,2).'</td>
+                                <td>'.number_format($reqRes['monthly_ded'],2).'</td>
                             </tr>';
                         ?>
                     </tbody>

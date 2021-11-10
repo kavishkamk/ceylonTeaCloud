@@ -66,8 +66,20 @@ caption {
     grid-template-columns: 33.3% 33.3% 33.3%;
     position: relative;
     margin-top: 20px;
+    text-align: center;
 }
 
 .btn {
     visibility:visible;
+}
+
+.loan-head {
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.lone-dis {
+    text-align: justify;
+    text-justify: inter-word;
 }

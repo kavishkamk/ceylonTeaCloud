@@ -4,7 +4,13 @@
     </div>
     <div>
         <div class="dash-nav">
-            <span>Factory Name</span>
+            <?php
+                require_once "../phpClasses/CompanyDeatils.class.php";
+                $comObj = new CompanyDetails();
+                $comRes = $comObj->getCompanyDetails();
+                unset($comObj);
+                echo '<span>'.$comRes['name'].'</span>';
+            ?>
         </div>
         <br>
         <div class="dash-nav">

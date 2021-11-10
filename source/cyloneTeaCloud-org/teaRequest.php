@@ -164,7 +164,7 @@ session_start();
                     <button class="btn">Comfirm</button>
                 </div>
                 <div>
-                    <button onclick="window.print();" class="btn">Print</button>
+                    <button onclick="window.print();" class="btn">Save or Print</button>
                 </div>
             </div>
         </main>

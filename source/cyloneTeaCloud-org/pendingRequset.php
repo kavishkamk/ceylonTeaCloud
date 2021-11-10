@@ -40,6 +40,7 @@
                     $obj = new PendingRequest();
                     $tearesult = $obj->getTeaPendingRequset();
                     $fretilizeRes = $obj->getFretilizerPendingRequset();
+                    $loanRes = $obj->getLonePendingRequestList();
                     unset($obj);
                 ?>
                 <div class="request-table" style="grid-column:1 / 2;">
@@ -83,12 +84,13 @@
                         </thead>
                         <tbody>
                             <?php
-
+                                 while($row = mysqli_fetch_assoc($loanRes)){
+                                    echo '<tr>
+                                            <td>'.$row["req_date"].'</td>
+                                            <td> <a href="loneRequest.php?reqid='.$row["req_id"].'&growid='.$row['id'].'">'.sprintf('%04d', $row['id']).'</a></td>
+                                        </tr>';
+                                }
                             ?>
-                            <tr>
-                                <td>2021-1-1</td>
-                                <td>ID-11111</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
