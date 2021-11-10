@@ -8,3 +8,8 @@
     display: none;
     visibility: hidden;
 }
+
+#comfirm-success {
+    display: none;
+    visibility: hidden;
+}

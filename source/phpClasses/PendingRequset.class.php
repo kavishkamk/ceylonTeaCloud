@@ -4,8 +4,8 @@
     // this class use for check owner with passwords and create session for admin
     class PendingRequest extends DbConnection{
 
-        // get pending tea request
-        public function getTeaPendingRequset(){
+        // get pending tea request or confirm tea request
+        public function getTeaPendingRequset($val){
             $sqlQ = "SELECT request.req_id, DATE(request.req_date) AS req_date, grower.id FROM
             ((((request INNER JOIN req_tea_map ON request.req_id = req_tea_map.req_id AND request.status = ?)
             INNER JOIN member_request_map ON request.req_id = member_request_map.req_id)
@@ -20,8 +20,7 @@
                 exit();
             }
             else{
-                $val0 = 0;
-                mysqli_stmt_bind_param($stmt, "i", $val0);
+                mysqli_stmt_bind_param($stmt, "i", $val);
                 mysqli_stmt_execute($stmt);
                 $result = mysqli_stmt_get_result($stmt);
                 $this->connclose($stmt, $conn);
@@ -30,7 +29,7 @@
             }
         }
 
-        public function getFretilizerPendingRequset(){
+        public function getFretilizerPendingRequset($val){
             $sqlQ = "SELECT request.req_id, DATE(request.req_date) AS req_date, grower.id FROM
             ((((request INNER JOIN req_fertilizer_map ON request.req_id = req_fertilizer_map.req_id AND request.status = ?)
             INNER JOIN member_request_map ON request.req_id = member_request_map.req_id)
@@ -45,8 +44,7 @@
                 exit();
             }
             else{
-                $val0 = 0;
-                mysqli_stmt_bind_param($stmt, "i", $val0);
+                mysqli_stmt_bind_param($stmt, "i", $val);
                 mysqli_stmt_execute($stmt);
                 $result = mysqli_stmt_get_result($stmt);
                 $this->connclose($stmt, $conn);
@@ -55,7 +53,7 @@
             }
         }
 
-        public function getLonePendingRequestList(){
+        public function getLonePendingRequestList($val){
             $sqlQ = "SELECT request.req_id, DATE(request.req_date) AS req_date, grower.id FROM
             ((((request INNER JOIN req_loan_map ON request.req_id = req_loan_map.req_id AND request.status = ?)
             INNER JOIN member_request_map ON request.req_id = member_request_map.req_id)
@@ -70,8 +68,7 @@
                 exit();
             }
             else{
-                $val0 = 0;
-                mysqli_stmt_bind_param($stmt, "i", $val0);
+                mysqli_stmt_bind_param($stmt, "i", $val);
                 mysqli_stmt_execute($stmt);
                 $result = mysqli_stmt_get_result($stmt);
                 $this->connclose($stmt, $conn);
@@ -163,6 +160,27 @@
                 $this->connclose($stmt, $conn);
                 $row1 = mysqli_fetch_assoc($result);
                 return $row1;
+                exit();
+            }
+        }
+
+        // requset confirm
+        public function setRequestAsConfirm($reqid){
+            $sqlQ = "UPDATE request SET status = ? WHERE req_id = ?;";
+            $conn = $this->connect();
+            $stmt = mysqli_stmt_init($conn);
+
+            if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+                $this->connclose($stmt, $conn);
+                return "0"; // sql error
+                exit();
+            }
+            else{
+                $val1 = 1;
+                mysqli_stmt_bind_param($stmt, "ii", $val1, $reqid);
+                mysqli_stmt_execute($stmt);
+                $this->connclose($stmt, $conn);
+                return "1"; // success
                 exit();
             }
         }

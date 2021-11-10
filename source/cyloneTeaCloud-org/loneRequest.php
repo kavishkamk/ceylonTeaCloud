@@ -67,7 +67,7 @@
                     }
                     echo '<span style="font-size:15px">Email : '.$comRes["email"].'</span><br>';
                     echo '<span style="font-size:15px">Phone : 0'.$comRes["contactNo"].'</span><br><br>';
-                    echo '<span style="font-size:15px">Fertilizer Request</span><br>';
+                    echo '<span style="font-size:15px">Lone Request</span><br>';
                     echo '<span style="font-size:15px">Requset Date: '.$reqRes['req_date'].'</span><br>';
                     echo '<span style="font-size:15px">Request ID: '.$requsetId.'</span><br>';
                 ?>
@@ -122,18 +122,37 @@
                     </tbody>
                 </table>
             </div>
-            <div style="grid-column:2 / 3;" class="rec-table">
+            <div style="grid-column:2 / 3;" class="rec-det">
                 <br><br>
-                <?php echo '<span>Genarated Date : '.date("Y-n-d H:i:s").'</span>' ?>
+                <?php echo '<div style="grid-column:1 / 2;"><span class="re-time">Genarated Date : '.date("Y-n-d H:i:s").'</span></div>';
+                    if(isset($_GET['result'])){
+                        echo '<div><span id="comfirm-success">Comfirm Success</span></div>';
+                    }
+                ?>
             </div>
             <div style="grid-column:2 / 3;" class="button-field">
                 <div>
                     <form>
-                        <button class="btn" formaction="pendingRequset.php">Back</button>
+                        <?php
+                            if(!isset($_GET['conftyp'])){
+                                echo '<button class="btn" formaction="pendingRequset.php">Back</button>';
+                            }
+                            else{
+                                echo '<button class="btn" formaction="confirmRequset.php">Back</button>';
+                            }
+                        ?>
                     </form>
                 </div>
                 <div>
-                    <button class="btn">Comfirm</button>
+                    <form action="../include/requestComfirm.inc.php" method="post">
+                        <?php echo '<input type="hidden" name="req-id" value="'.$requsetId.'">'; 
+                                echo '<input type="hidden" name="gro-id" value="'.$growerId.'">';
+                                echo '<input type="hidden" name="report-type" value="lone">';
+                                if(!isset($_GET['conftyp'])){
+                                    echo '<button type = "submit" name="request-comfirm" class="btn">Comfirm</button>';
+                                }
+                        ?>
+                    </form>
                 </div>
                 <div>
                     <button onclick="window.print();" class="btn">Save or Print</button>
