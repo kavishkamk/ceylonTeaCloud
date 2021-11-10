@@ -56,7 +56,7 @@
         </div>
         <br>
         <div class="dash-nav">
-            <a href="">
+            <a href="adminProfileSetting.php">
                 <span>Profile Setting</span>
             </a>
         </div>
