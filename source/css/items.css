@@ -2,13 +2,19 @@
     display: grid;
     grid-template-columns: 50% 50%;
     position: relative;
+    overflow-y: hidden;
 }
 
 .item-div {
     display: grid;
-    grid-template-rows: 60% 20% 20%;
+    grid-template-rows: 60% 4% 18% 18%;
     position: relative;
     padding: 5px;
+    overflow-y: hidden;
+}
+
+.table-div {
+    overflow-y: scroll;
 }
 
 .item-form {

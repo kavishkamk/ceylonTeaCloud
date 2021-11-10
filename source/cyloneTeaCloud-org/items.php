@@ -1,3 +1,22 @@
+<?php
+    session_start();
+
+    if(!isset($_SESSION['ownerid'])){
+        header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
+        exit();
+   }
+   else{
+       require_once "../phpClasses/OwnerSessionHandle.class.php";
+       $sessObj = new OwnerSessionHandle();
+       $sessRes = $sessObj->checkSession($_SESSION['sessionId'], $_SESSION['ownerid']); // invalid session
+       unset($sessObj);
+       if($sessRes != "1"){
+           header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
+           exit();
+       }
+   }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -25,7 +44,7 @@
                     unset($obj);
                 ?>
                 <div class="item-div" style="grid-column:1 / 2;">
-                    <div>
+                    <div class="table-div" style="grid-row:1/2;">
                         <table>
                             <thead>
                                 <caption>Tea List</caption>
@@ -48,7 +67,7 @@
                             </tbody>
                         </table>    
                     </div>
-                    <div class="item-form">
+                    <div class="item-form" style="grid-row:3/4;">
                         <form action="../include/addTeaType.inc.php" method="post">
                             <div class="f-item">
                                 <label for="tea-name">Item &nbsp: </label>
@@ -61,7 +80,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="item-form">
+                    <div class="item-form" style="grid-row:4/5;">
                         <form action="../include/addTeaType.inc.php" method="post">
                             <div class="f-item" id="tea-list-s">
                                 
@@ -85,7 +104,7 @@
                     </div>
                 </div>
                 <div class="item-div" style="grid-column:2 / 3;">
-                    <div>
+                    <div class="table-div" style="grid-row:1/2;">
                         <table>
                             <thead>
                                 <caption>Fertilizer List</caption>
@@ -108,7 +127,7 @@
                             </tbody>
                         </table>   
                     </div>
-                    <div class="item-form">
+                    <div class="item-form" style="grid-row:3/4;">
                         <form action="../include/addFertilizerType.inc.php" method="post">
                             <div class="f-item">
                                 <label for="fertilizer-name">Item &nbsp: </label>
@@ -121,7 +140,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="item-form">
+                    <div class="item-form" style="grid-row:4/5;">
                         <form action="../include/addFertilizerType.inc.php" method="post">
                             <div class="f-item" id="fertilizer-list-s">
                                 
