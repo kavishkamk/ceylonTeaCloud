@@ -1,0 +1,118 @@
+.form-body {
+    position: relative;
+    padding:10px 40px;
+    color: darkgray;
+    width:auto;
+    display: grid;
+}
+
+.form-body .label-title {
+    color:#03203C;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.form-one {
+    display:grid;
+    grid-template-columns: 30% 50% 20%;
+}
+
+.user-detail {
+    padding: 10px 0;
+}
+
+.ad-email {
+    margin : 15px 0;
+}
+
+.form-body .form-input{
+    font-size: 17px;
+    box-sizing: border-box;
+    width: 90%;
+    height: 33px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #333333;
+    text-align: left;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    background: white;
+    outline: none;
+    margin: 5px 0px;
+}
+
+.user-details {
+    display: grid;
+    grid-template-columns: 45% 10% 45%;
+}
+
+.user-status-bar {
+    background-color: #EFF0F1;
+    border-radius: 10px;
+    padding:10px 40px;
+    text-align: center;
+    border-top: 1px solid #cccccc;
+    display:grid;
+    grid-template-columns : 20% 60% 20%;
+    margin: 20px 0;   
+}
+
+.btn {
+    padding:10px 20px;
+    width: 100px;
+    background-color: #207398;
+    font-size:17px;
+    border:none;
+    border-radius:5px;
+    color:#caeef5;
+    cursor:pointer;
+    justify-self: right;
+}
+
+.btn:hover {
+    background-color: #12B0E8;
+    color:white;
+}
+
+.error-bar {
+    position : relative;
+    text-align: center;
+    place-items: center;
+    color: red;
+    font-weight: bold;
+    
+}
+
+.success-bar{
+    position : relative;
+    text-align: center;
+    place-items: center;
+    color: green;
+    font-weight: bold;
+}
+
+.back-btn {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+}
+
+::-webkit-input-placeholder {
+    color:#d9d9d9;
+}
+
+.footer-div {
+    background-color: #EFF0F1;
+    border-radius: 10px;
+    padding:10px 40px;
+    text-align: center;
+    border-top: 1px solid #cccccc;
+    display:grid;
+    grid-template-columns : 20% 60% 20%;
+    margin: 20px 0;   
+}
+
+.inter {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin : 15px 0;
+}

@@ -83,3 +83,18 @@ caption {
     text-align: justify;
     text-justify: inter-word;
 }
+
+.rec-det {
+    margin-top: 5px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+}
+
+#comfirm-success {
+    color: green;
+}
+
+.re-time{
+    float: left;
+}
