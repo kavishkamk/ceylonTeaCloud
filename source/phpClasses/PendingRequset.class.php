@@ -85,6 +85,38 @@
             }
         }
 
+        // this method used to get requset details for fertilizer using given requset id
+        public function getFertilizerDetails($reqid){
+            $sqlQ = "SELECT DATE(request.req_date) AS req_date, DATE(fertilizer.date_wanted) AS date_wanted,
+            fertilizer.number_of_months, fertilizer_request.item_price, fertilizer_request.amount,
+            fertilizer_request.monthly_deduction, fertilizer_type.fertilizer_type FROM
+            ((((request INNER JOIN req_fertilizer_map ON request.req_id = req_fertilizer_map.req_id)
+            INNER JOIN fertilizer ON req_fertilizer_map.fertilizer_id = fertilizer.fertilizer_id)
+            INNER JOIN fertilizer_request ON fertilizer.fertilizer_id = fertilizer_request.request_id)
+            INNER JOIN fertilizer_type ON fertilizer_request.fertilizer_type_id = fertilizer_type.type_id)
+            WHERE request.req_id = ?;";
+            $conn = $this->connect();
+            $stmt = mysqli_stmt_init($conn);
+
+            if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+                $this->connclose($stmt, $conn);
+                return "sqlerror";
+                exit();
+            }
+            else{
+                $resArr = array();
+                mysqli_stmt_bind_param($stmt, "i", $reqid);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+                $this->connclose($stmt, $conn);
+                while($row1 = mysqli_fetch_assoc($result)){
+                    $resArr[] = $row1;
+                }
+                return $resArr;
+                exit();
+            }
+        }
+
         private function connclose($stmt, $conn){
             mysqli_stmt_close($stmt);
             mysqli_close($conn);

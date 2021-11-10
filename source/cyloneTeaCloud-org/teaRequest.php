@@ -68,7 +68,7 @@ session_start();
                     echo '<span style="font-size:15px">Email : '.$comRes["email"].'</span><br>';
                     echo '<span style="font-size:15px">Phone : 0'.$comRes["contactNo"].'</span><br><br>';
                     echo '<span style="font-size:15px">Tea Request</span><br>';
-                    echo '<span style="font-size:15px">Requset Date: '.$row1['req_date'].'</span><br>';
+                    echo '<span style="font-size:15px">Requset Date: '.$row1["req_date"].'</span><br>';
                     echo '<span style="font-size:15px">Request ID: '.$requsetId.'</span><br>';
                 ?>
             </div>
@@ -110,8 +110,8 @@ session_start();
                                     echo '<tr>
                                             <td>'.$count.'</td>
                                             <td>'.$row["tea_type"].'</td>
-                                            <td>'. $row['item_price'].'</td>
-                                            <td>'. $row['amount'].'</td>
+                                            <td>'.number_format($row["item_price"],2).'</td>
+                                            <td>'.$row["amount"].'</td>
                                         </tr>';
                                     $count++;
                                 }
@@ -139,12 +139,12 @@ session_start();
                             <tr>
                                 <td> 3 </td>
                                 <td>Total Price</td>
-                                <td>'.$total_price.'</td>
+                                <td>'.number_format($total_price,2).'</td>
                             </tr>
                             <tr>
                                 <td> 4 </td>
                                 <td>Monthly Deduction</td>
-                                <td>'.$total_deduction.'</td>
+                                <td>'.number_format($total_deduction,2).'</td>
                             </tr>';
                         ?>
                     </tbody>
