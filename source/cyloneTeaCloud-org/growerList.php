@@ -34,7 +34,7 @@
                     </form>
                 </div>
             </nav>
-            <main>
+            <main class="grower-main">
                 <div class="grower-table" style="grid-column:1 / 2; grid-row: 1 / 3;">
                     <table>
                         <thead>

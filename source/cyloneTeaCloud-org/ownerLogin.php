@@ -24,7 +24,7 @@
     <body>
         <header>
             <div class="header-bar">
-                <div class="liitem" id="proName" style="float:left"><img src="" height="10"></img></div>
+                <div class="liitem" id="proName" style="float:left"><img src="../images/ceylon tea cloud-small.png" height="40px"></img></div>
                 <div class="liitem"><a href="">Cylone Tea Cloud</a></div>
                 <div class="liitem"><a href="" class="active">About</a></div>
             </div>
@@ -39,6 +39,11 @@
                         }
                         else{
                             echo '<p class="logerr">Unauthorized Access</p>';
+                        }
+                    }
+                    if(isset($_GET['otpstatus'])){
+                        if($_GET['otpstatus'] == "deleteacc"){
+                            echo '<p class="logerr">Account Deleted</p>';
                         }
                     }
                 ?>

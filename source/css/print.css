@@ -1,0 +1,15 @@
+@page
+{
+    size: A4;
+    margin: 0;
+}
+
+.btn {
+    display: none;
+    visibility: hidden;
+}
+
+#comfirm-success {
+    display: none;
+    visibility: hidden;
+}

@@ -103,6 +103,17 @@ caption {
     margin: 7px 0;
 }
 
+.grower-main {
+    display: grid;
+    position: relative;
+    overflow-y: hidden;
+}
+
+.grower-table {
+    position: relative;
+    overflow-y: scroll;
+}
+
 .grower-profile {
   display: grid;
   grid-template-rows: 40% 60%;
@@ -110,9 +121,19 @@ caption {
 
 .image img {
   border-radius: 50%;
-
   object-fit: cover;
   object-position: 100% 0;
   object-position: 0 100%;
   margin: 5px;
+}
+
+.pending-main {
+    display: grid;
+    grid-template-columns: 33.3%, 33.3%, 33.3%;
+    overflow-y: hidden;
+}
+
+.request-table {
+    padding: 6px;
+    overflow-y: scroll;
 }

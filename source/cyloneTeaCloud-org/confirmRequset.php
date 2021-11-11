@@ -38,9 +38,9 @@
                 <?php
                     require_once "../phpClasses/PendingRequset.class.php";
                     $obj = new PendingRequest();
-                    $tearesult = $obj->getTeaPendingRequset(0);
-                    $fretilizeRes = $obj->getFretilizerPendingRequset(0);
-                    $loanRes = $obj->getLonePendingRequestList(0);
+                    $tearesult = $obj->getTeaPendingRequset(1);
+                    $fretilizeRes = $obj->getFretilizerPendingRequset(1);
+                    $loanRes = $obj->getLonePendingRequestList(1);
                     unset($obj);
                 ?>
                 <div class="request-table" style="grid-column:1 / 2;">
@@ -53,7 +53,7 @@
                                  while($row = mysqli_fetch_assoc($fretilizeRes)){
                                     echo '<tr>
                                             <td>'.$row["req_date"].'</td>
-                                            <td> <a href="fertilizerRequset.php?reqid='.$row["req_id"].'&growid='.$row['id'].'">'.sprintf('%04d', $row['id']).'</a></td>
+                                            <td> <a href="fertilizerRequset.php?reqid='.$row["req_id"].'&growid='.$row['id'].'&conftyp=yes">'.sprintf('%04d', $row['id']).'</a></td>
                                         </tr>';
                                 }
                             ?>
@@ -70,7 +70,7 @@
                                 while($row = mysqli_fetch_assoc($tearesult)){
                                     echo '<tr>
                                             <td>'.$row["req_date"].'</td>
-                                            <td> <a href="teaRequest.php?reqid='.$row["req_id"].'&growid='.$row['id'].'">'.sprintf('%04d', $row['id']).'</a></td>
+                                            <td> <a href="teaRequest.php?reqid='.$row["req_id"].'&growid='.$row['id'].'&conftyp=yes">'.sprintf('%04d', $row['id']).'</a></td>
                                         </tr>';
                                 }
                             ?>
@@ -87,7 +87,7 @@
                                  while($row = mysqli_fetch_assoc($loanRes)){
                                     echo '<tr>
                                             <td>'.$row["req_date"].'</td>
-                                            <td> <a href="loneRequest.php?reqid='.$row["req_id"].'&growid='.$row['id'].'">'.sprintf('%04d', $row['id']).'</a></td>
+                                            <td> <a href="loneRequest.php?reqid='.$row["req_id"].'&growid='.$row['id'].'&conftyp=yes">'.sprintf('%04d', $row['id']).'</a></td>
                                         </tr>';
                                 }
                             ?>

@@ -1,0 +1,100 @@
+:root {
+    --main-radius: 1px;
+    --main-padding: 5px;
+}
+
+.doc-header{
+    display: grid;
+    grid-template-columns: 5% 10% 70% 15%;
+}
+
+.doc-main {
+    display: grid;
+    grid-template-columns: 5%  90% 5%;
+    position: relative;
+    margin-top: 10px;
+}
+
+.logo {
+    height: 100px;
+}
+
+.company-details{
+    text-align: center;
+    font-weight: bold;
+}
+
+.client-details {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    position: relative;
+}
+
+table {
+    background-color: white;
+    width:100%;
+    margin-left: auto;
+    margin-right: auto;
+    color:black;
+    text-align: left;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 2px;
+}
+
+caption {
+    color: black;
+    background-color: white;
+    padding: 3px;
+    border-radius: 5px;
+    margin: 7px 0;
+    font-weight: bold;
+}
+
+.rec-table {
+    margin-top: 5px;
+}
+
+.button-field {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    position: relative;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn {
+    visibility:visible;
+}
+
+.loan-head {
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.lone-dis {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.rec-det {
+    margin-top: 5px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+}
+
+#comfirm-success {
+    color: green;
+}
+
+.re-time{
+    float: left;
+}
