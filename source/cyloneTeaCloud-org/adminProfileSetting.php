@@ -1,20 +1,5 @@
 <?php 
-    session_start();
-
-    if(!isset($_SESSION['ownerid'])){
-         header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
-         exit();
-    }
-    else{
-        require_once "../phpClasses/OwnerSessionHandle.class.php";
-        $sessObj = new OwnerSessionHandle();
-        $sessRes = $sessObj->checkSession($_SESSION['sessionId'], $_SESSION['ownerid']); // invalid session
-        unset($sessObj);
-        if($sessRes != "1"){
-            header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
-            exit();
-        }
-    }
+    require "sesseionCheck.php";
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +14,7 @@
     <body>
         <div class="container">
             <nav>
+                <!-- log out -->
                 <div class="top-bar">
                     <form>
                         <button class="log-out-btn" formaction="../include/ownerLogout.inc.php">Log Out</button>
@@ -38,6 +24,7 @@
             <main>
                 <div class="form-body">
                     <div style="grid-row: 1 / 2;" class="user-detail">
+                    <!-- change name or phone number -->
                         <form action="../include/adminDetailsChange.inc.php" method="post">
                             <div class="user-details">
                                 <div style="grid-row: 1 / 2; grid-column:1 / 4;" class="inter">
@@ -50,6 +37,7 @@
                                 </div>
                                 <div style="grid-column:1 / 4; grid-row: 3 / 4;" class="user-status-bar">
                                     <?php
+                                        // error display
                                         $errmsg = "";
 
                                         if(isset($_GET['proedit'])){
@@ -61,6 +49,7 @@
                                             echo '<span style="grid-column:1 / 3;" class="success-bar">'.$msg.'</span>';
                                         }   
                                     ?>
+                                    <!-- change button -->
                                     <div style="grid-column:3 / 4;">
                                         <button type="submit" name="profile-submit" class="btn">Change</button>
                                     </div>
@@ -68,6 +57,7 @@
                             </div>
                         </form>
                     </div>
+                    <!-- change email -->
                     <div class="ad-email" style="grid-row: 2 / 3;">
                         <form action="../include/ChangeAdminMail.inc.php" method="post">
                             <div class="form-one">
@@ -77,6 +67,7 @@
                             </div>
                         </form>
                     </div>
+                    <!-- change password -->
                     <div class="ad-email" style="grid-row: 3 / 4;">
                         <form action="../include/AdminPwdChange.inc.php" method="post">
                             <div class="form-one">
@@ -86,6 +77,7 @@
                             </div>
                         </form>
                     </div>
+                    <!-- this for result display -->
                     <div style="grid-row: 4 / 5;" class="footer-div back-btn">
                         <div>
                         </div>
@@ -113,11 +105,12 @@
                             }
                         ?>
                         </div>
+                        <!-- this for delete account -->
                         <div style="grid-column:3 / 4;">
-                        <form action="../include/adminDeleteAdd.inc.php" method="post">
-                            <input type="hidden" name="delstat" value="okDelete" required>
-                            <button type="submit" name="del-submit" class="btn" onclick = "clicked();" style="background-color: red; float: right; width: 200px;">DELETE ACCOUNT</button>
-                        </form>
+                            <form action="../include/adminDeleteAdd.inc.php" method="post">
+                                <input type="hidden" name="delstat" value="okDelete" required>
+                                <button type="submit" name="del-submit" class="btn" onclick = "clicked();" style="background-color: red; float: right; width: 200px;">DELETE ACCOUNT</button>
+                            </form>
                         </div>
                     </div>
                 </div>

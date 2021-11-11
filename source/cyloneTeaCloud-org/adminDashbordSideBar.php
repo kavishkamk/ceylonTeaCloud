@@ -1,7 +1,10 @@
+<!-- this is dash bord side bar -->
 <div id="sidebar">
+    <!-- set factory logo -->
     <div>
         <img src="../images/ceylon tea cloud-small.png"></img>
     </div>
+    <!-- set company name -->
     <div>
         <div class="dash-nav">
             <?php
@@ -13,6 +16,7 @@
             ?>
         </div>
         <br>
+        <!-- navigation list -->
         <div class="dash-nav">
             <a href="adminDashBord.php">
                 <span>Dashboard</span>
@@ -44,13 +48,13 @@
         </div>
         <br>
         <div class="dash-nav">
-            <a href="">
+            <a href="weeklyReport.php">
                 <span>Weekly Report</span>
             </a>
         </div>
         <br>
         <div class="dash-nav">
-            <a href="">
+            <a href="monthlyReport.php">
                 <span>Monthely Report</span>
             </a>
         </div>
