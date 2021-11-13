@@ -1,5 +1,5 @@
 <?php
-    // session check
+    // session check for owners
     session_start();
 
     if(!isset($_SESSION['ownerid'])){

@@ -33,7 +33,7 @@
                                 </div>
                                 <div style="grid-column:1 / 4; grid-row: 2 / 3;" class="inter">
                                     <div><label for="tele" class="label-title">Phone No</label></div>
-                                    <div><input type="text" name="tele" placeholder="enter phone No" class="form-input"></div>
+                                    <div><input type="tel" name="tele" placeholder="enter phone No" class="form-input"></div>
                                 </div>
                                 <div style="grid-column:1 / 4; grid-row: 3 / 4;" class="user-status-bar">
                                     <?php
