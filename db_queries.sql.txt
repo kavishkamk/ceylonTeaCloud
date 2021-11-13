@@ -314,9 +314,6 @@ ADD FOREIGN KEY (tea_id) REFERENCES tea(tea_id);
 ALTER TABLE net_weight
 ADD FOREIGN KEY (data_id) REFERENCES data_input(data_id);
 
-ALTER TABLE net_weight
-ADD FOREIGN KEY (deduction_id) REFERENCES deduction_others(ded_other_id);
-
 ALTER TABLE data_input_dedication_map
 ADD FOREIGN KEY (data_id) REFERENCES data_input(data_id);
 
@@ -413,3 +410,27 @@ ADD loanHeader VARCHAR(100) NOT NULL;
 
 ALTER TABLE loan
 ADD discription TEXT NOT NULL;
+
+-- -----------------------------------------------------------
+
+ALTER TABLE data_input DROP COLUMN member_id;
+
+CREATE TABLE IF NOT EXISTS net_waight_other_ded_map(
+	net_id INT NOT NULL,
+	deduction_id INT NOT NULL
+);
+
+ALTER TABLE net_weight DROP COLUMN deduction_id;
+
+ALTER TABLE net_waight_other_ded_map
+ADD FOREIGN KEY (net_id) REFERENCES net_weight(id);
+
+ALTER TABLE net_waight_other_ded_map
+ADD FOREIGN KEY (deduction_id) REFERENCES deduction_others(ded_other_id);
+
+ALTER TABLE deduction_others DROP COLUMN price;
+ALTER TABLE deduction_others
+ADD weightOfDeduction FLOAT(6) NOT NULL;
+
+ALTER TABLE deduction
+ADD water_weigth FLOAT(6) NOT NULL;

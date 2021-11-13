@@ -1,20 +1,5 @@
 <?php 
-    session_start();
-
-    if(!isset($_SESSION['ownerid'])){
-         header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
-         exit();
-    }
-    else{
-        require_once "../phpClasses/OwnerSessionHandle.class.php";
-        $sessObj = new OwnerSessionHandle();
-        $sessRes = $sessObj->checkSession($_SESSION['sessionId'], $_SESSION['ownerid']); // invalid session
-        unset($sessObj);
-        if($sessRes != "1"){
-            header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
-            exit();
-        }
-    }
+    require "sesseionCheck.php";
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +12,7 @@
     </head>
     <body>
         <div class="container">
+            <!-- log out -->
             <nav>
                 <div class="top-bar">
                     <form>
@@ -36,6 +22,7 @@
             </nav>
             <main class="pending-main">
                 <?php
+                    // get details of pending requset
                     require_once "../phpClasses/PendingRequset.class.php";
                     $obj = new PendingRequest();
                     $tearesult = $obj->getTeaPendingRequset(1);
@@ -43,6 +30,7 @@
                     $loanRes = $obj->getLonePendingRequestList(1);
                     unset($obj);
                 ?>
+                <!-- set fertilizer requset table -->
                 <div class="request-table" style="grid-column:1 / 2;">
                     <table>
                         <thead>
@@ -60,6 +48,7 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- set tea requset table -->
                 <div class="request-table" style="grid-column:2 / 3;">
                     <table>
                         <thead>
@@ -77,6 +66,7 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- set lone requset table -->
                 <div class="request-table" style="grid-column:3 / 4;">
                     <table>
                         <thead>
@@ -95,7 +85,7 @@
                     </table>
                 </div>
             </main>
-
+            <!-- set dash bord side bar -->
             <?php
                 require "adminDashbordSideBar.php";
             ?>

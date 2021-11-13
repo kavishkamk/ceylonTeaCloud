@@ -1,20 +1,6 @@
+<!-- this for item display, add and update -->
 <?php
-    session_start();
-
-    if(!isset($_SESSION['ownerid'])){
-        header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
-        exit();
-   }
-   else{
-       require_once "../phpClasses/OwnerSessionHandle.class.php";
-       $sessObj = new OwnerSessionHandle();
-       $sessRes = $sessObj->checkSession($_SESSION['sessionId'], $_SESSION['ownerid']); // invalid session
-       unset($sessObj);
-       if($sessRes != "1"){
-           header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
-           exit();
-       }
-   }
+    require "sesseionCheck.php";
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +22,7 @@
                 </div>
             </nav>
             <main class="item-main">
+                <!-- get tea and fertilizer details -->
                 <?php
                     require_once "../phpClasses/Items.class.php";
                     $obj = new Items();
@@ -43,6 +30,7 @@
                     $fertilizerList = $obj->getFertilizerList();
                     unset($obj);
                 ?>
+                <!-- tea tabel -->
                 <div class="item-div" style="grid-column:1 / 2;">
                     <div class="table-div" style="grid-row:1/2;">
                         <table>
@@ -67,6 +55,7 @@
                             </tbody>
                         </table>    
                     </div>
+                    <!-- add new tea type -->
                     <div class="item-form" style="grid-row:3/4;">
                         <form action="../include/addTeaType.inc.php" method="post">
                             <div class="f-item">
@@ -103,6 +92,7 @@
                         </form>
                     </div>
                 </div>
+                <!-- set fertilizer table -->
                 <div class="item-div" style="grid-column:2 / 3;">
                     <div class="table-div" style="grid-row:1/2;">
                         <table>

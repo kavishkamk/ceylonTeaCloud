@@ -1,40 +1,30 @@
 <?php
+    // this is lone requset report
+    require "sesseionCheck.php";
 
-    session_start();
-
-    if(!isset($_SESSION['ownerid'])){
-        header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
-        exit();
-    }
-    else{
-        require_once "../phpClasses/OwnerSessionHandle.class.php";
-        $sessObj = new OwnerSessionHandle();
-        $sessRes = $sessObj->checkSession($_SESSION['sessionId'], $_SESSION['ownerid']); // invalid session
-        unset($sessObj);
-        if($sessRes != "1"){
-            header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
-            exit();
-        }
-    }
-
+    // check relevent url condition
     if(!isset($_GET['reqid']) || !isset($_GET['growid'])){
         header("Location:pendingRequset.php"); // no session
         exit();
     }
 
+    // get url data
     $growerId = $_GET['growid'];
     $requsetId = $_GET['reqid'];
 
+    // get company details
     require_once "../phpClasses/CompanyDeatils.class.php";
     $comObj = new CompanyDetails();
     $comRes = $comObj->getCompanyDetails();
     unset($comObj);
 
+    // get grower details
     require_once "../phpClasses/GrowerDetails.class.php";
     $groObj = new GrowerDetails();
     $groRes = $groObj->getGrowerDetailsUsingId($growerId);
     unset($groObj);
 
+    // get pending lone requset details
     require_once "../phpClasses/PendingRequset.class.php";
     $reqObj = new PendingRequest();
     $reqRes = $reqObj->getLoneDetails($requsetId);
@@ -55,9 +45,11 @@
     </head>
     <body>
         <header class="doc-header">
+            <!-- set logo -->
             <div style="grid-column:2 / 3;">
                 <img src="../images/ceylon tea cloud-small.png" class="logo"></img>
             </div>
+            <!-- set company details -->
             <div class="company-details" style="grid-column:3 / 4;">
                 <?php
                     echo '<span style="font-size:20px;">'.$comRes["name"].'</span><br>';
@@ -75,6 +67,7 @@
         </header>
         <hr style="width:90%;">
         <main class="doc-main">
+            <!-- set grower details -->
             <div class="client-details" style="grid-column:2 / 3;">
                 <div style="grid-column:1 / 2;">
                     <?php
@@ -96,6 +89,7 @@
                     echo '<p class="lone-dis">'.$reqRes['discription'].'</p>';
                 ?>
             </div>
+            <!-- set requset date table -->
             <div style="grid-column:2 / 3;" class="rec-table">
                 <table>
                     <thead>
@@ -122,6 +116,7 @@
                     </tbody>
                 </table>
             </div>
+            <!-- set genarated time and confirm message -->
             <div style="grid-column:2 / 3;" class="rec-det">
                 <br><br>
                 <?php echo '<div style="grid-column:1 / 2;"><span class="re-time">Genarated Date : '.date("Y-n-d H:i:s").'</span></div>';
@@ -130,7 +125,9 @@
                     }
                 ?>
             </div>
+            <!-- buttons -->
             <div style="grid-column:2 / 3;" class="button-field">
+                <!-- back -->
                 <div>
                     <form>
                         <?php
@@ -143,6 +140,7 @@
                         ?>
                     </form>
                 </div>
+                <!-- confirm -->
                 <div>
                     <form action="../include/requestComfirm.inc.php" method="post">
                         <?php echo '<input type="hidden" name="req-id" value="'.$requsetId.'">'; 
@@ -154,6 +152,7 @@
                         ?>
                     </form>
                 </div>
+                <!-- print or download -->
                 <div>
                     <button onclick="window.print();" class="btn">Save or Print</button>
                 </div>

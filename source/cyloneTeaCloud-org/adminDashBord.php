@@ -1,22 +1,7 @@
-<?php 
-    session_start();
-
-    if(!isset($_SESSION['ownerid'])){
-         header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
-         exit();
-    }
-    else{
-        require_once "../phpClasses/OwnerSessionHandle.class.php";
-        $sessObj = new OwnerSessionHandle();
-        $sessRes = $sessObj->checkSession($_SESSION['sessionId'], $_SESSION['ownerid']); // invalid session
-        unset($sessObj);
-        if($sessRes != "1"){
-            header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
-            exit();
-        }
-    }
+<!-- this is main admin dashbord -->
+<?php
+    require "sesseionCheck.php";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -27,6 +12,7 @@
     </head>
     <body>
         <div class="container">
+            <!-- log out -->
             <nav>
                 <div class="top-bar">
                     <form>
@@ -35,6 +21,7 @@
                 </div>
             </nav>
             <main class="dashmain">
+                <!-- details of the company -->
                 <div class="com-abo" style="grid-column:1 / 2; grid-row: 1 / 3;">
                     <h1>Cylone Tea Cloud</h1>
                     <p>Factory Name: </p>
@@ -44,12 +31,13 @@
                     <p>Name:</p>
                     <p>Tele</p>
                 </div>
+                <!-- number of grower accounts -->
                 <div class="gro-abo" style="grid-column:2 / 3; grid-row: 1 / 2;">
                     <p>Total Growers</p>
                     <?php
                         require "../phpClasses/GrowerDetails.class.php";
                         $groObj = new GrowerDetails();
-                        $numofGrower = $groObj->getNumOfGrowers();
+                        $numofGrower = $groObj->getNumOfGrowers(); // get number of growers
                         unset($groObj);
                         echo '<p>'.$numofGrower.'</p>';
                     ?>
