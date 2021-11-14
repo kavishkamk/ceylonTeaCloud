@@ -182,8 +182,122 @@
         }
 
         public function addMonthReportData($finalWait, $loanPrice, $teaPrice, $fertilizePrice, $priceof1kg, $teaid, $fertilizeId, $loneId, $report_id, $gro_id, $year, $month){
-            $sqlQ = "INSERT INTO `monthly_report`(`date`, `total_weight`, `total_deducation_per_month`, `price_of_1kg`,
-            `total_price`, `payment`, `grower_id`, `repott_year`, `repott_month`) VALUES (?,?,?,?,?,?,?,?,?);";
+            $numRes = $this->checkMonthDate($year, $month, $gro_id);
+            if($numRes == 0){
+                $sqlQ = "INSERT INTO `monthly_report`(`date`, `total_weight`, `total_deducation_per_month`, `price_of_1kg`,
+                `total_price`, `payment`, `grower_id`, `repott_year`, `repott_month`) VALUES (?,?,?,?,?,?,?,?,?);";
+                $conn = $this->connect();
+                $stmt = mysqli_stmt_init($conn);
+
+                if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+                    $this->connclose($stmt, $conn);
+                    return "sqlerror";
+                    exit();
+                }
+                else{
+                    $onlieTime = date("Y-n-d H:i:s"); // acout log date and time
+                    $ttdeduction = $teaPrice + $loanPrice + $fertilizePrice;
+                    $ttprice = $finalWait * $priceof1kg;
+                    $tpayment = $ttprice - $ttdeduction;
+                    mysqli_stmt_bind_param($stmt, "sdddddiii", $onlieTime, $finalWait, $ttdeduction, $priceof1kg, $ttprice, $tpayment, $gro_id, $year, $month);
+                    mysqli_stmt_execute($stmt);
+                    $detailsInsertId = mysqli_stmt_insert_id($stmt);
+                    $this->connclose($stmt, $conn);
+                    $memId = $this->getMemberID($gro_id);
+                    if($memId != "sqlerror"){
+                        $this->set_member_report_map($detailsInsertId, $memId);
+                        $this->set_loneId($loneId, $detailsInsertId);
+                        $this->set_teaId($teaid, $detailsInsertId);
+                        $this->set_fertilizerId($fertilizeId, $detailsInsertId);
+                        $this->set_weekReportId($report_id, $detailsInsertId);
+                        $this->updateLoneMonthCount($loneId);
+                        $this->updateTeaMonthCount($teaid);
+                        $this->updateFertilizeMonthCount($fertilizeId);
+                    }
+                    return 1;
+                    exit();
+                }
+            }
+            else{
+                return "availabale";
+                exit();
+            }
+        }
+
+        private function updateLoneMonthCount($lids){
+            $arr = explode("-", $lids);
+            $sqlQ = "UPDATE loan SET paid_monnth = ? WHERE loan_id = ?;";
+            $conn = $this->connect();
+            foreach($arr as $idlist){
+                if($idlist != NULL && $idlist != ""){
+                    $row = $this->getPaidLoneMonth($idlist);
+                    $stmt = mysqli_stmt_init($conn);
+                    if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+                        $this->connclose($stmt, $conn);
+                    }
+                    else{
+                        $val = $row['paid_monnth'] + 1;
+                        mysqli_stmt_bind_param($stmt, "di", $val, $row['loan_id']);
+                        mysqli_stmt_execute($stmt);
+                    }
+                }
+            }
+
+            $this->connclose($stmt, $conn);
+            return 1;
+
+        }
+
+        private function updateTeaMonthCount($lids){
+            $arr = explode("-", $lids);
+            $sqlQ = "UPDATE tea SET paid_monnth = ? WHERE tea_id = ?;";
+            $conn = $this->connect();
+            foreach($arr as $idlist){
+                if($idlist != NULL && $idlist != ""){
+                    $row = $this->getPaidTeaMonth($idlist);
+                    $stmt = mysqli_stmt_init($conn);
+                    if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+                        $this->connclose($stmt, $conn);
+                    }
+                    else{
+                        $val = $row['paid_monnth'] + 1;
+                        mysqli_stmt_bind_param($stmt, "di", $val, $row['tea_id']);
+                        mysqli_stmt_execute($stmt);
+                    }
+                }
+            }
+
+            $this->connclose($stmt, $conn);
+            return 1;
+        }
+
+        private function updateFertilizeMonthCount($lids){
+            $arr = explode("-", $lids);
+            $sqlQ = "UPDATE fertilizer SET paid_monnth = ? WHERE fertilizer_id = ?;";
+            $conn = $this->connect();
+            foreach($arr as $idlist){
+                if($idlist != NULL && $idlist != ""){
+                    $row = $this->getPaidFertilize($idlist);
+                    $stmt = mysqli_stmt_init($conn);
+                    if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+                        $this->connclose($stmt, $conn);
+                    }
+                    else{
+                        $val = $row['paid_monnth'] + 1;
+                        mysqli_stmt_bind_param($stmt, "di", $val, $row['fertilizer_id']);
+                        mysqli_stmt_execute($stmt);
+                    }
+                }
+            }
+
+            $this->connclose($stmt, $conn);
+            return 1;
+        }
+
+        private function getPaidFertilize($id){
+            $sqlQ = "SELECT fertilizer.paid_monnth, fertilizer.fertilizer_id FROM ((request INNER JOIN
+            req_fertilizer_map ON request.req_id = req_fertilizer_map.req_id)
+            INNER JOIN fertilizer ON req_fertilizer_map.fertilizer_id = fertilizer.fertilizer_id) WHERE request.req_id = ?;";
             $conn = $this->connect();
             $stmt = mysqli_stmt_init($conn);
 
@@ -193,33 +307,90 @@
                 exit();
             }
             else{
-                $onlieTime = date("Y-n-d H:i:s"); // acout log date and time
-                $ttdeduction = $teaPrice + $loanPrice + $fertilizePrice;
-                $ttprice = $finalWait * $priceof1kg;
-                $tpayment = $ttprice - $ttdeduction;
-                mysqli_stmt_bind_param($stmt, "sdddddiii", $onlieTime, $finalWait, $ttdeduction, $priceof1kg, $ttprice, $tpayment, $gro_id, $year, $month);
+                mysqli_stmt_bind_param($stmt, "i", $id);
                 mysqli_stmt_execute($stmt);
-                $detailsInsertId = mysqli_stmt_insert_id($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+                $row = mysqli_fetch_assoc($result);
                 $this->connclose($stmt, $conn);
-                $memId = $this->getMemberID($gro_id);
-                if($memId != "sqlerror"){
-                    $this->set_member_report_map($detailsInsertId, $memId);
-                    $this->set_loneId($loneId, $detailsInsertId);
-                    $this->set_teaId($teaid, $detailsInsertId);
-                    $this->set_fertilizerId($fertilizeId, $detailsInsertId);
-                    $this->set_weekReportId($report_id, $detailsInsertId);
-                }
-                return 1;
+                return $row;
+                exit();
+
+            }
+        }
+
+        private function getPaidTeaMonth($id){
+            $sqlQ = "SELECT tea.paid_monnth, tea.tea_id FROM ((request INNER JOIN
+            req_tea_map ON request.req_id = req_tea_map.req_id)
+            INNER JOIN tea ON req_tea_map.tea_id = tea.tea_id) WHERE request.req_id = ?;";
+            $conn = $this->connect();
+            $stmt = mysqli_stmt_init($conn);
+
+            if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+                $this->connclose($stmt, $conn);
+                return "sqlerror";
+                exit();
+            }
+            else{
+                mysqli_stmt_bind_param($stmt, "i", $id);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+                $row = mysqli_fetch_assoc($result);
+                $this->connclose($stmt, $conn);
+                return $row;
+                exit();
+
+            }
+        }
+
+        private function getPaidLoneMonth($id){
+            $sqlQ = "SELECT loan.paid_monnth, loan.loan_id FROM ((request INNER JOIN
+            req_loan_map ON request.req_id = req_loan_map.req_id)
+            INNER JOIN loan ON req_loan_map.loan_id = loan.loan_id) WHERE request.req_id = ?;";
+            $conn = $this->connect();
+            $stmt = mysqli_stmt_init($conn);
+
+            if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+                $this->connclose($stmt, $conn);
+                return "sqlerror";
+                exit();
+            }
+            else{
+                mysqli_stmt_bind_param($stmt, "i", $id);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+                $row = mysqli_fetch_assoc($result);
+                $this->connclose($stmt, $conn);
+                return $row;
+                exit();
+
+            }
+        }
+
+        private function checkMonthDate($year, $month, $groid){
+            $sqlQ = "SELECT COUNT(report_id) AS num FROM monthly_report WHERE repott_year=? AND repott_month=? AND grower_id=?;";
+            $conn = $this->connect();
+            $stmt = mysqli_stmt_init($conn);
+
+            if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+                $this->connclose($stmt, $conn);
+                return "sqlerror";
+                exit();
+            }
+            else{
+                mysqli_stmt_bind_param($stmt, "iii", $year, $month, $groid);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+                $row = mysqli_fetch_assoc($result);
+                $this->connclose($stmt, $conn);
+                return $row['num'];
                 exit();
             }
         }
 
         private function set_weekReportId($lids, $detailsInsertId){
             $arr = explode("-", $lids);
-            print_r($arr);
             foreach($arr as $idlist){
-                echo $idlist;
-                if($idlist != NULL && $lids != ""){
+                if($idlist != NULL && $idlist != ""){
                  $this->set_weekReportId_table($detailsInsertId, $idlist);
                 }
             }
@@ -238,11 +409,6 @@
                 exit();
             }
             else{
-                echo " ";
-                echo $detailsInsertId;
-                echo "-";
-                echo $idlist;
-                echo " ";
                 mysqli_stmt_bind_param($stmt, "ii", $detailsInsertId, $idlist);
                 mysqli_stmt_execute($stmt);
                 $this->connclose($stmt, $conn);
@@ -255,13 +421,15 @@
             $sqlQ = "INSERT INTO fertilizerId(month_report_id, request_id) VALUES(?,?);";
             $conn = $this->connect();
             foreach($arr as $idlist){
-                $stmt = mysqli_stmt_init($conn);
-                if(!mysqli_stmt_prepare($stmt, $sqlQ)){
-                    $this->connclose($stmt, $conn);
-                }
-                else{
-                    mysqli_stmt_bind_param($stmt, "ii", $detailsInsertId, $idlist);
-                    mysqli_stmt_execute($stmt);
+                if($idlist != NULL && $idlist != ""){
+                    $stmt = mysqli_stmt_init($conn);
+                    if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+                        $this->connclose($stmt, $conn);
+                    }
+                    else{
+                        mysqli_stmt_bind_param($stmt, "ii", $detailsInsertId, $idlist);
+                        mysqli_stmt_execute($stmt);
+                    }
                 }
             }
 
@@ -275,13 +443,15 @@
             $sqlQ = "INSERT INTO teaId(month_report_id, request_id) VALUES(?,?);";
             $conn = $this->connect();
             foreach($arr as $idlist){
-                $stmt = mysqli_stmt_init($conn);
-                if(!mysqli_stmt_prepare($stmt, $sqlQ)){
-                    $this->connclose($stmt, $conn);
-                }
-                else{
-                    mysqli_stmt_bind_param($stmt, "ii", $detailsInsertId, $idlist);
-                    mysqli_stmt_execute($stmt);
+                if($idlist != NULL && $idlist != ""){
+                    $stmt = mysqli_stmt_init($conn);
+                    if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+                        $this->connclose($stmt, $conn);
+                    }
+                    else{
+                        mysqli_stmt_bind_param($stmt, "ii", $detailsInsertId, $idlist);
+                        mysqli_stmt_execute($stmt);
+                    }
                 }
             }
 

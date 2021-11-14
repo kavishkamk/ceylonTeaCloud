@@ -8,12 +8,12 @@
         $fertilizePrice = $_POST['fertilizer-price'];
         $priceof1kg = $_POST['price-tea'];
         $teaid = $_POST['tea-id'];
-        $fertilizeId = $_POST['lone-id'];
-        $loneId = $_POST['fertilize-id'];
+        $fertilizeId = $_POST['fertilize-id'];
+        $loneId = $_POST['lone-id'];
         $report_id = $_POST['report-id'];
         $gro_id = $_POST['grow-id'];
-        $year = $_POST['r-month'];
-        $month = $_POST['r-year'];
+        $year = $_POST['r-year'];
+        $month = $_POST['r-month'];
 
         if(empty($finalWait) || empty($priceof1kg) || empty($gro_id)){
             header("Location:../cyloneTeaCloud-org/MonthdataEnter.php?result=empty"); // no session
@@ -26,6 +26,10 @@
             unset($obj);
             if($res == 1){
                 header("Location:../cyloneTeaCloud-org/MonthdataEnter.php?result=ss"); // no session
+                exit();
+            }
+            else if($res == "availabale"){
+                header("Location:../cyloneTeaCloud-org/MonthdataEnter.php?result=ava"); // no session
                 exit();
             }
             else{
