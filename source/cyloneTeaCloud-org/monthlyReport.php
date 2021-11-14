@@ -21,6 +21,20 @@
                 </div>
             </nav>
             <main class="weekReport">
+                <div class="week-div">
+                    <div style="text-align:left;">
+                        <form method="get" action="monthlyReport.php">
+                            <label for="data-month">Select Month</label>
+                            <input type="month" name="data-month">
+                            <button type="submit" name="month-report">GET</button>
+                        </form>
+                    </div>
+                    <div>
+                        <form>
+                            <button class="log-out-btn" formaction="MonthdataEnter.php">Data Enter</button>
+                        </form>
+                    </div>
+                </div>
                 <div>
                     <table>
                         <thead>
