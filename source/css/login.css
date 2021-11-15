@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
 /*** Global Styles ***/
 * {
-    padding:0;
-    margin:0;
-    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
 }
 
-body{
+body {
     background-image: url("../images/grower-login-background.jpg");
 }
 
-.main-container{
+.main-container {
     display: flex;
     justify-content: center;
     margin: 0;
@@ -39,13 +39,13 @@ body{
 }
 
 /* Login Header Styles */
-.login-title{
+.login-title {
     text-align: center;
     color: white;
 }
 
 /* Form Container Styles */
-.form-container{
+.form-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,38 +53,44 @@ body{
 }
 
 /* Label + Text Field Container Styles */
-.text-field-container{
+.text-field-container {
     width: 300px;
     padding: 5px 0;
 }
 
-.text-field-label{
+.text-field-label {
     color: white;
 }
 
 /* Login Button Styles */
-.login-button-container{
+.login-button-container {
     text-align: center;
     padding: 10px 0;
     width: auto;
 }
 
-.login-button{
+.login-button {
     width: 300px;
 }
 
 a:hover {
     background: #00000040;
 }
+/* for profile image */
+.image img {
+    border-radius: 50%;
+
+    object-fit: cover;
+    object-position: 100% 0; //move image position in x direction.
+object-position: 0 100%; //move image position in y direction.
+}
 
 /********** Large devices only **********/
 @media (min-width: 1200px) {
-
 }
 
 /********** Medium devices only **********/
 @media (min-width: 992px) and (max-width: 1199px) {
-
 }
 
 /********** Extra small devices only **********/
@@ -106,7 +112,7 @@ a:hover {
     }
 
     /* Form Container Styles */
-    .form-container{
+    .form-container {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -114,18 +120,16 @@ a:hover {
     }
 
     /* Label + Text Field Container Styles */
-    .text-field-container{
+    .text-field-container {
         width: auto;
         padding: 5px 10px;
     }
 
-    .text-field-label{
+    .text-field-label {
         color: white;
     }
-
 }
 
 /********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
 @media (max-width: 479px) {
-
 }

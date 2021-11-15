@@ -1,36 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>NEW PASSWORD CREATED... USER DATA CONFIRMATION</title>
-    <link rel="stylesheet" href="../css/password.css" />
-  </head>
+    <!-- <link rel="stylesheet" href="../css/password.css" /> -->
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/newuser.css"/>
+</head>
 
-  <body>
+
+<!-- testing -->
+<body>
+<div class="main-container">
     <div class="container">
-      <h3>New password created...!</h3>
-      <h1>USER DATA CONFIRMATION</h1>
+        <h4>New password created...!</h4>
+        <h2 class="login-title">USER DATA CONFIRMATION</h2>
+        <div class="form-container">
+            <form action="test-newpass-userdata.htm" method="post">
+                <div class="form-group text-field-container">
+                    <label for="emailAddress" class="text-field-label">Name</label>
+                    <input
+                            type="email"
+                            class="form-control"
+                            id="emailAddress"
+                            placeholder="Rinky De Silva"
+                    />
+                </div>
+                <div class="form-group text-field-container">
+                    <label for="password" class="text-field-label">Phone</label>
+                    <input
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            placeholder="0174512458"
+                    />
+                </div>
+                <div class="form-group text-field-container">
+                    <label for="password" class="text-field-label">Address</label>
+                    <input
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            placeholder="address"
+                    />
+                </div>
+                <div class="login-button-container">
+                    <a
+                            href="propic.html"
+                            class="btn btn-primary btn-lg btn-block login-button"
+                    >
+                        Confirm
+                    </a>
+                </div>
+            </form>
+        </div>
 
-      <form action="newpass-userdata.html" method="post">
-        <div class="tbox">
-          <input type="text" placeholder="Name" value="" />
-        </div>
-        <div class="tbox">
-          <input type="text" placeholder="Phone" value="" />
-        </div>
-        <div class="tbox">
-          <input type="text" placeholder="Address" value="" />
-        </div>
-        <a href="propic.html">
-          <input class="btn" type="submit" name="" value="CONFIRM"
-        /></a>
-      </form>
-      <!-- <a class="b1" href="#"> PASSWORD RESET</a> -->
-      <!-- <a class="btn" href=".html"> CONFIRM </a>
-      <br /> -->
-      <a class="b2" href="userdata.html"> EDIT </a>
+        sword-settings" href="propic.html"> Edit2 </a>
+        <br/> -->
+        <br/>
+        <a class="password-settings" href="userdata.html"> Edit </a>
     </div>
-  </body>
+</div>
+</body>
 </html>
