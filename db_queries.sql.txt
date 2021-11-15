@@ -269,3 +269,14 @@ ADD weightOfDeduction FLOAT(6) NOT NULL;
 
 ALTER TABLE deduction
 ADD water_weigth FLOAT(6) NOT NULL;
+
+-------------------------------------------------------------------
+
+-- Session table for Grower
+CREATE TABLE IF NOT EXISTS grower_session
+(
+    grower_id       int          NOT NULL,
+    session_id     varchar(100) NOT NULL,
+    session_expire DATETIME     NOT NULL,
+    PRIMARY KEY (grower_id)
+);
