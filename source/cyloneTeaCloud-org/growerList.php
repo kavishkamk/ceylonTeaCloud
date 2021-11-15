@@ -1,20 +1,6 @@
-<?php 
-    session_start();
-
-    if(!isset($_SESSION['ownerid'])){
-         header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
-         exit();
-    }
-    else{
-        require_once "../phpClasses/OwnerSessionHandle.class.php";
-        $sessObj = new OwnerSessionHandle();
-        $sessRes = $sessObj->checkSession($_SESSION['sessionId'], $_SESSION['ownerid']); // invalid session
-        unset($sessObj);
-        if($sessRes != "1"){
-            header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
-            exit();
-        }
-    }
+<!-- grower list display -->
+<?php
+    require "sesseionCheck.php";
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +13,7 @@
     </head>
     <body>
         <div class="container">
+            <!-- for log out -->
             <nav>
                 <div class="top-bar">
                     <form>
@@ -35,6 +22,7 @@
                 </div>
             </nav>
             <main class="grower-main">
+                <!-- set grower list -->
                 <div class="grower-table" style="grid-column:1 / 2; grid-row: 1 / 3;">
                     <table>
                         <thead>

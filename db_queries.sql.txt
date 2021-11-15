@@ -1,0 +1,271 @@
+
+-- req_tea_map
+CREATE TABLE req_tea_map(
+	req_id int NOT NULL,
+	tea_id int NOT NULL,
+	CONSTRAINT Pk_recteamap PRIMARY KEY(req_id, tea_id )
+);
+
+
+-- deduction_other_map
+CREATE TABLE deduction_other_map(
+	ded_id int NOT NULL,
+	ded_other_id int NOT NULL,
+	CONSTRAINT Pk_deductionothermap PRIMARY KEY(ded_id,ded_other_id)
+);
+
+-- deduction_others
+
+	CREATE TABLE deduction_others(
+	ded_other_id int NOT NULL AUTO_INCREMENT,
+	reason  VARCHAR(850) NOT NULL,
+	price DECIMAL(10,2),
+	PRIMARY KEY(ded_other_id)
+
+
+);
+
+-- loan
+
+
+	CREATE TABLE loan(
+	loan_id int NOT NULL AUTO_INCREMENT,
+	amount float NOT NULL,
+	number_of_months_to_pay int NOT NULL,
+	monthly_ded float NOT NULL,
+	PRIMARY KEY(loan_id)
+
+
+);
+
+-- fertilizer
+
+CREATE TABLE fertilizer(
+	fertilizer_id int NOT NULL AUTO_INCREMENT,
+	type VARCHAR(350) NOT NULL,
+	amount float NOT NULL,
+	date_wanted DATETIME NOT NULL,
+	price DECIMAL(10,2),
+	number_of_months int NOT NULL,
+	monthly_deduction float NOT NULL,
+	PRIMARY KEY(fertilizer_id)
+
+
+);
+
+-- Tea
+
+CREATE TABLE tea(
+	tea_id int NOT NULL AUTO_INCREMENT,
+	type VARCHAR(350) NOT NULL,
+	amount float NOT NULL,
+	price DECIMAL(10,2),
+	date_wanted DATETIME NOT NULL,
+	number_of_months_to_pay int NOT NULL,
+	monthly_ded float NOT NULL,
+	PRIMARY KEY(tea_id)
+
+
+);
+
+-- ------------------------------------------------------------------------
+
+-- modified grower status column
+ALTER TABLE grower DROP COLUMN status;
+ALTER TABLE grower
+ADD active_status BOOLEAN NOT NULL DEFAULT 0;
+
+ALTER TABLE owner DROP COLUMN name;
+ALTER TABLE owner
+ADD owner_name VARCHAR(255) NOT NULL;
+
+ALTER TABLE owner
+ADD pwd VARCHAR(512) NOT NULL;
+
+ALTER TABLE owner
+ADD actSTatus BOOLEAN NOT NULL DEFAULT 0;
+
+ALTER TABLE owner
+RENAME TO company_owner;
+
+CREATE TABLE owner_session(
+    owner_id int NOT NULL,
+    session_id varchar(100) NOT NULL,
+    session_expire DATETIME NOT NULL,
+    PRIMARY KEY (owner_id)
+);
+
+-- -----------------------------------------------------------------
+-- foreign keys
+
+ALTER TABLE factory_owner_map
+ADD FOREIGN KEY (owner_id) REFERENCES company_owner(owner_id);
+
+ALTER TABLE factory_owner_map
+ADD FOREIGN KEY (factory_id) REFERENCES factory(factory_id);
+
+ALTER TABLE member
+ADD FOREIGN KEY (grower_id) REFERENCES grower(id);
+
+ALTER TABLE member
+ADD FOREIGN KEY (factory_id) REFERENCES factory(factory_id);
+
+ALTER TABLE member_data_input_map
+ADD FOREIGN KEY (member_id) REFERENCES member(member_id);
+
+ALTER TABLE member_data_input_map
+ADD FOREIGN KEY (data_id) REFERENCES data_input(data_id);
+
+ALTER TABLE member_request_map
+ADD FOREIGN KEY (member_id) REFERENCES member(member_id);
+
+ALTER TABLE member_report_map
+ADD FOREIGN KEY (member_id) REFERENCES member(member_id);
+
+ALTER TABLE member_report_map
+ADD FOREIGN KEY (report_id) REFERENCES monthly_report(report_id);
+
+ALTER TABLE member_request_map
+ADD FOREIGN KEY (req_id) REFERENCES request(req_id);
+
+ALTER TABLE req_tea_map
+ADD FOREIGN KEY (req_id) REFERENCES request(req_id);
+
+ALTER TABLE req_fertilizer_map
+ADD FOREIGN KEY (req_id) REFERENCES request(req_id);
+
+ALTER TABLE req_loan_map
+ADD FOREIGN KEY (req_id) REFERENCES request(req_id);
+
+ALTER TABLE req_loan_map
+ADD FOREIGN KEY (loan_id) REFERENCES loan(loan_id);
+
+ALTER TABLE req_fertilizer_map
+ADD FOREIGN KEY (fertilizer_id) REFERENCES fertilizer(fertilizer_id);
+
+ALTER TABLE req_tea_map
+ADD FOREIGN KEY (tea_id) REFERENCES tea(tea_id);
+
+ALTER TABLE net_weight
+ADD FOREIGN KEY (data_id) REFERENCES data_input(data_id);
+
+ALTER TABLE data_input_dedication_map
+ADD FOREIGN KEY (data_id) REFERENCES data_input(data_id);
+
+ALTER TABLE data_input_dedication_map
+ADD FOREIGN KEY (deduction_id) REFERENCES deduction(ded_id);
+
+ALTER TABLE deduction_other_map
+ADD FOREIGN KEY (ded_id) REFERENCES deduction(ded_id);
+
+ALTER TABLE deduction_other_map
+ADD FOREIGN KEY (ded_other_id) REFERENCES deduction_others(ded_other_id);
+
+-- -----------------------------------------------------------------------------------------------
+-- tea type table
+CREATE TABLE tea_type(
+	type_id INT AUTO_INCREMENT,
+	tea_type VARCHAR(255) NOT NULL,
+	price_of_1kg DECIMAL(10, 2) NOT NULL,
+	PRIMARY KEY(type_id)
+);
+
+ALTER TABLE tea DROP COLUMN type;
+
+CREATE TABLE fertilizer_type(
+	type_id INT AUTO_INCREMENT,
+	fertilizer_type VARCHAR(255) NOT NULL,
+	price_of_1kg DECIMAL(10, 2) NOT NULL,
+	PRIMARY KEY(type_id)
+);
+
+ALTER TABLE fertilizer DROP COLUMN type;
+
+CREATE TABLE tea_request(
+	type_id INT AUTO_INCREMENT,
+	request_id INT NOT NULL,
+	tea_type_id INT NOT NULL,
+	item_price DECIMAL(10, 2) NOT NULL,
+	PRIMARY KEY(type_id)
+);
+
+CREATE TABLE fertilizer_request(
+	type_id INT AUTO_INCREMENT,
+	request_id INT NOT NULL,
+	fertilizer_type_id INT NOT NULL,
+	item_price DECIMAL(10, 2) NOT NULL,
+	PRIMARY KEY(type_id)
+);
+
+ALTER TABLE tea_request
+ADD FOREIGN KEY (request_id) REFERENCES tea(tea_id);
+
+ALTER TABLE fertilizer_request
+ADD FOREIGN KEY (request_id) REFERENCES fertilizer(fertilizer_id);
+
+ALTER TABLE tea_request
+ADD FOREIGN KEY (tea_type_id) REFERENCES tea_type(type_id);
+
+ALTER TABLE fertilizer_request
+ADD FOREIGN KEY (fertilizer_type_id) REFERENCES fertilizer_type(type_id);
+
+-- -------------------------------------------------------------------------------------
+-- added colum to add amout of the tea and fertilizer
+
+ALTER TABLE tea DROP COLUMN amount;
+ALTER TABLE tea DROP COLUMN price;
+ALTER TABLE tea_request
+ADD amount INT NOT NULL;
+
+ALTER TABLE fertilizer DROP COLUMN amount;
+ALTER TABLE fertilizer DROP COLUMN price;
+ALTER TABLE fertilizer_request
+ADD amount INT NOT NULL;
+
+-- monthly deduction have to go fertilizer_request, tea_request -- because of the insertion problem
+
+ALTER TABLE tea DROP COLUMN monthly_ded;
+ALTER TABLE tea_request
+ADD monthly_ded DECIMAL(10, 2) NOT NULL;
+
+ALTER TABLE fertilizer DROP COLUMN monthly_deduction;
+ALTER TABLE fertilizer_request
+ADD monthly_deduction DECIMAL(10, 2) NOT NULL;
+
+-- -----------------------------------------------------------
+-- added email colums for company details
+
+ALTER TABLE factory
+ADD email VARCHAR(320) NOT NULL;
+
+-- add column to lone table
+
+ALTER TABLE loan
+ADD loanHeader VARCHAR(100) NOT NULL;
+
+ALTER TABLE loan
+ADD discription TEXT NOT NULL;
+
+-- -----------------------------------------------------------
+
+ALTER TABLE data_input DROP COLUMN member_id;
+
+CREATE TABLE IF NOT EXISTS net_waight_other_ded_map(
+	net_id INT NOT NULL,
+	deduction_id INT NOT NULL
+);
+
+ALTER TABLE net_weight DROP COLUMN deduction_id;
+
+ALTER TABLE net_waight_other_ded_map
+ADD FOREIGN KEY (net_id) REFERENCES net_weight(id);
+
+ALTER TABLE net_waight_other_ded_map
+ADD FOREIGN KEY (deduction_id) REFERENCES deduction_others(ded_other_id);
+
+ALTER TABLE deduction_others DROP COLUMN price;
+ALTER TABLE deduction_others
+ADD weightOfDeduction FLOAT(6) NOT NULL;
+
+ALTER TABLE deduction
+ADD water_weigth FLOAT(6) NOT NULL;

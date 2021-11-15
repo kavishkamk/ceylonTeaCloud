@@ -1,20 +1,6 @@
+<!-- this is grower profile - admin side view -->
 <?php 
-    session_start();
-
-    if(!isset($_SESSION['ownerid'])){
-         header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
-         exit();
-    }
-    else{
-        require_once "../phpClasses/OwnerSessionHandle.class.php";
-        $sessObj = new OwnerSessionHandle();
-        $sessRes = $sessObj->checkSession($_SESSION['sessionId'], $_SESSION['ownerid']); // invalid session
-        unset($sessObj);
-        if($sessRes != "1"){
-            header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
-            exit();
-        }
-    }
+    require "sesseionCheck.php";
 ?>
 
 <!DOCTYPE html>
@@ -28,12 +14,14 @@
     <body>
         <div class="container">
             <nav>
+                <!-- log out button -->
                 <div class="top-bar">
                     <form>
                         <button class="log-out-btn" formaction="../include/ownerLogout.inc.php">Log Out</button>
                     </form>
                 </div>
             </nav>
+            <!-- set grower profile -->
             <main class="grower-profile">
                 <?php
                     require_once "../phpClasses/GrowerDetails.class.php";

@@ -22,6 +22,7 @@
         </style>
     </head>
     <body>
+        <!-- set header -->
         <header>
             <div class="header-bar">
                 <div class="liitem" id="proName" style="float:left"><img src="../images/ceylon tea cloud-small.png" height="40px"></img></div>
@@ -31,6 +32,7 @@
         </header>
         <main>
             <div class="container">
+            <!-- set error messages -->
             <div>
                 <?php
                     if(isset($_GET['ownerlogstat'])){
@@ -48,8 +50,9 @@
                     }
                 ?>
             </div>
+                <!-- login form -->
                 <div id="logcont">
-                <p>Log-In</p>
+                    <p>Log-In</p>
                     <form action="../include/ownerLogin.inc.php" class="logform" method="post">
                         <label for="unameormail">Email*</label><br>
                         <input type="text" name="unameormail" placeholder="enter your email" size="30" class="flog">
