@@ -4,6 +4,31 @@
     // this class use for get owner details
     class MonthReport extends DbConnection{
 
+        public function getMonthlyReportsList($year, $month){
+            $sqlQ = "SELECT report_id, grower_id, repott_year, repott_month FROM monthly_report
+            WHERE repott_year = ? AND repott_month=? ORDER BY date DESC;";
+            $conn = $this->connect();
+            $stmt = mysqli_stmt_init($conn);
+
+            if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+                $this->connclose($stmt, $conn);
+                return "sqlerror";
+                exit();
+            }
+            else{
+                $idArr = array();
+                mysqli_stmt_bind_param($stmt, "ii", $year, $month);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+                while($row = mysqli_fetch_assoc($result)){
+                    $idArr[] = $row;
+                }
+                $this->connclose($stmt, $conn);
+                return $idArr;
+                exit();
+            }
+        }
+
         public function getReportIdList($grower_id, $startDay, $endDate){
             $sqlQ = 'SELECT data_input.data_id FROM
             (((data_input INNER JOIN member_data_input_map ON data_input.data_id = member_data_input_map.data_id)
