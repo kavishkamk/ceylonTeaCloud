@@ -22,11 +22,11 @@
     <div class="container">
         <h2 class="login-title">Profile Picture Settings</h2>
         <div class="form-container">
-            <form action="propic.html" method="post">
+            <form action="propic.php" method="post">
 
                 <!-- profile picture -->
                 <div class="form-group text-field-container">
-                    <form action="propic.html" method="post">
+                    <form action="propic.php" method="post">
                         <div class="image">
                             <img src="../images/vishvi.jpeg" alt="Avatar" style="width: 200px"/>
                             <input type="image" placeholder="image" value=""/>

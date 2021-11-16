@@ -33,7 +33,7 @@
                 </div>
                 <div class="login-button-container">
                     <a
-                            href="newpass-userdata.html"
+                            href="newpass-userdata.php"
                             class="btn btn-primary btn-lg btn-block login-button"
                     >Verify</a
                     >

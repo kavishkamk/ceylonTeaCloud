@@ -18,11 +18,11 @@
                 </a>
 
                 <div class="navbar-brand">
-                    <a href="index.html"><h1>Ceylone Tea Cloud</h1></a>
+                    <a href="index.html"><h1>Ceylon Tea Cloud</h1></a>
                     <p>
-
-
                 </div><!-- .container -->
+            </div>
+        </div>
     </nav><!-- #header-nav -->
 </header>
 
@@ -31,19 +31,16 @@
     <!-- <div class="jumbotron"> -->
     <div>
         <p>
-        <h3>We are Sri Lanka Technological Campus 2021 second-year Software Engineering undergraduates. As part of our
+            We are Sri Lanka Technological Campus 2021 second-year Software Engineering undergraduates. As part of our
             second-year second-semester Group Project, we created the Ceylon Tea Cloud service. CCS212-Cloud Computing
             Fundamentals is the name of our module.
             Alto is the name of our group. We have five people on our team.
             R.T.K.M.Karunachandra, AA2104W.P.R.Prabodya, AA1432 - K.P.V.V.H.De Silva, AA1924 - A.P. Kannangara and AA -
             Daneesh Perera are their names.
-            </h2></p>
+        </p>
     </div>
-    <!-- <img src="images/jumbotron_768.jpg" alt="Picture of restaurant" class="img-responsive visible-xs"> -->
-    <!-- </div> -->
     <br>
     <br>
-
 
     <section class="row">
         <div class="col-md-3 col-sm-4 col-xs-6 col-xxs-12">
@@ -139,8 +136,6 @@
             <section id="hours" class="col-sm-4">
                 <span>Email:</span><br>
                 ceylonteacloud@gmail.com<br>
-
-
                 <hr class="visible-xs">
             </section>
 

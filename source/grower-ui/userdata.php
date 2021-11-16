@@ -4,26 +4,24 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>NEW PASSWORD CREATED... USER DATA CONFIRMATION</title>
-    <!-- <link rel="stylesheet" href="../css/password.css" /> -->
+    <title>USER DATA CONFIRMATION</title>
+
     <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../css/newuser.css"/>
+    <link rel="stylesheet" href="../css/userdata.css"/>
 </head>
-
 
 <!-- testing -->
 <body>
 <div class="main-container">
     <div class="container">
-        <h4>New password created...!</h4>
         <h2 class="login-title">USER DATA CONFIRMATION</h2>
         <div class="form-container">
-            <form action="test-newpass-userdata.htm" method="post">
+            <form action="test-userdata.htm" method="post">
                 <div class="form-group text-field-container">
                     <label for="emailAddress" class="text-field-label">Name</label>
                     <input
@@ -52,20 +50,19 @@
                     />
                 </div>
                 <div class="login-button-container">
-                    <a
-                            href="propic.html"
-                            class="btn btn-primary btn-lg btn-block login-button"
+                    <!-- <a href="propic.php"><button
+                      type="submit"
+                      class="btn btn-primary btn-lg btn-block login-button"
                     >
-                        Confirm
-                    </a>
+                      Confirm
+                    </button>
+                  </a> -->
+                    <a href="propic.php" class="btn btn-primary btn-lg btn-block login-button">Confirm</a>
                 </div>
             </form>
         </div>
-
-        sword-settings" href="propic.html"> Edit2 </a>
-        <br/> -->
-        <br/>
-        <a class="password-settings" href="userdata.html"> Edit </a>
+        <!--         <a class="b1" href="#"> PASSWORD RESET</a>-->
+        <!-- <a class="password-settings" href="userdata.php"> Edit </a> -->
     </div>
 </div>
 </body>
