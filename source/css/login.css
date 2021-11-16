@@ -76,13 +76,18 @@ body {
 a:hover {
     background: #00000040;
 }
+
 /* for profile image */
 .image img {
     border-radius: 50%;
 
     object-fit: cover;
-    object-position: 100% 0; //move image position in x direction.
-object-position: 0 100%; //move image position in y direction.
+    object-position: 100% 0;
+    object-position: 0 100%;
+}
+
+.login-response{
+    text-align: center;
 }
 
 /********** Large devices only **********/
