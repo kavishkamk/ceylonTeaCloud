@@ -434,3 +434,74 @@ ADD weightOfDeduction FLOAT(6) NOT NULL;
 
 ALTER TABLE deduction
 ADD water_weigth FLOAT(6) NOT NULL;
+
+-- -------------------------------------------------
+
+ALTER TABLE loan
+ADD paid_monnth INT NOT NULL DEFAULT 0;
+
+ALTER TABLE fertilizer
+ADD paid_monnth INT NOT NULL DEFAULT 0;
+
+ALTER TABLE tea
+ADD paid_monnth INT NOT NULL DEFAULT 0;
+
+CREATE TABLE IF NOT EXISTS loneId(
+	month_report_id INT NOT NULL,
+	request_id INT NOT NULL,
+	CONSTRAINT Pk_recloanmap PRIMARY KEY(month_report_id, request_id)
+);
+
+CREATE TABLE IF NOT EXISTS teaId(
+	month_report_id INT NOT NULL,
+	request_id INT NOT NULL,
+	CONSTRAINT Pk_recloanmap PRIMARY KEY(month_report, request_id)
+);
+
+CREATE TABLE IF NOT EXISTS fertilizerId(
+	month_report_id INT NOT NULL,
+	request_id INT NOT NULL,
+	CONSTRAINT Pk_recloanmap PRIMARY KEY(month_report_id, request_id)
+);
+
+ALTER TABLE loneId
+ADD FOREIGN KEY (month_report_id) REFERENCES monthly_report(report_id);
+
+ALTER TABLE teaId
+ADD FOREIGN KEY (month_report_id) REFERENCES monthly_report(report_id);
+
+ALTER TABLE fertilizerId
+ADD FOREIGN KEY (month_report_id) REFERENCES monthly_report(report_id);
+
+ALTER TABLE loneId
+ADD FOREIGN KEY (request_id) REFERENCES request(req_id);
+
+ALTER TABLE teaId
+ADD FOREIGN KEY (request_id) REFERENCES request(req_id);
+
+ALTER TABLE fertilizerId
+ADD FOREIGN KEY (request_id) REFERENCES request(req_id);
+
+CREATE TABLE IF NOT EXISTS weekReportId(
+	month_report_id INT NOT NULL,
+	week_report_id INT NOT NULL,
+	CONSTRAINT Pk_recloanmap PRIMARY KEY(month_report_id, week_report_id)
+);
+
+ALTER TABLE weekReportId
+ADD FOREIGN KEY (month_report_id) REFERENCES monthly_report(report_id);
+
+ALTER TABLE weekReportId
+ADD FOREIGN KEY (week_report_id) REFERENCES request(req_id);
+
+ALTER TABLE monthly_report
+ADD grower_id INT NOT NULL;
+
+ALTER TABLE monthly_report
+ADD FOREIGN KEY (grower_id) REFERENCES grower(id);
+
+ALTER TABLE monthly_report
+ADD repott_year INT NOT NULL;
+
+ALTER TABLE monthly_report
+ADD repott_month INT NOT NULL;
