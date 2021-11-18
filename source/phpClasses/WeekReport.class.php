@@ -9,7 +9,7 @@
             (((data_input INNER JOIN member_data_input_map ON data_input.data_id = member_data_input_map.data_id)
             INNER JOIN member ON member_data_input_map.member_id = member.member_id)
             INNER JOIN grower ON member.grower_id = grower.id)
-            WHERE DATE(data_input.date) >= ? AND DATE(data_input.date) <= ?;";
+            WHERE DATE(data_input.date) >= ? AND DATE(data_input.date) <= ? ORDER BY data_input.date DESC;";
             $conn = $this->connect();
             $stmt = mysqli_stmt_init($conn);
 
@@ -90,6 +90,33 @@
                 else{
                     $this->connclose($stmt, $conn);
                     return "nouser";
+                    exit();
+                }
+            }
+        }
+
+        public function numberOfWeekReports(){
+            $sqlQ = 'SELECT COUNT(data_input.data_id) AS numOfReport FROM data_input
+            WHERE DATE(data_input.date) >= ? AND DATE(data_input.date) <= ?;';
+            $conn = $this->connect();
+            $stmt = mysqli_stmt_init($conn);
+ 
+            if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+                $this->connclose($stmt, $conn);
+                return "sqlerror";
+                exit();
+            }
+            else{
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+                if($row = mysqli_fetch_assoc($result)){
+                    $this->connclose($stmt, $conn);
+                    return $row['numOfReport'];
+                    exit();
+                }
+                else{
+                    $this->connclose($stmt, $conn);
+                    return 0;
                     exit();
                 }
             }
