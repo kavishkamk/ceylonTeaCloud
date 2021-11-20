@@ -83,6 +83,7 @@
                                 <span id="sw">Deduction for sacks : </span><br>
                                 <span id="dw">Deduction for Water : </span><br>
                                 <span id="dl">Deduction for non standard leaves : </span><br>
+                                <span id="od">Other Deduction: </span><br>
                                 <span id="td">Total Deduction : </span><br>
                                 <span id="fw">Final Weight : </span><br>
                             </div>
@@ -119,6 +120,7 @@
         var nonStdLeaves = 0;
         var otherDeductionWeight = 0;
         var finalWeight = 0;
+        var totalDeduction = 0;
 
         var tempttw = document.getElementById('ttw').value;
         var tempSW = document.getElementById('tsw').value;
@@ -140,18 +142,20 @@
                 otherDeductionWeight = tempOD;
             }
 
-            finalWeight = parseFloat(fullWeight) - (parseFloat(totalWeightSack) + parseFloat(waterWeithg) + parseFloat(nonStdLeaves) + parseFloat(otherDeductionWeight));
-            setCalculatedResults(fullWeight, totalWeightSack, waterWeithg, nonStdLeaves, otherDeductionWeight, finalWeight);
+            totalDeduction = parseFloat(totalWeightSack) + parseFloat(waterWeithg) + parseFloat(nonStdLeaves) + parseFloat(otherDeductionWeight);
+            finalWeight = parseFloat(fullWeight) - parseFloat(totalDeduction);
+            setCalculatedResults(fullWeight, totalWeightSack, waterWeithg, nonStdLeaves, otherDeductionWeight, finalWeight, totalDeduction);
         }
     });
     
     // set to display
-    function setCalculatedResults(totalW, totalSack, totalWater, nonStdLeaves, otherDed, finalW){
+    function setCalculatedResults(totalW, totalSack, totalWater, nonStdLeaves, otherDed, finalW, totalDeduction){
         document.getElementById('tw').innerHTML = "Total Weight : " + totalW;
         document.getElementById('sw').innerHTML = "Deduction for sacks : " + totalSack;
         document.getElementById('dw').innerHTML = "Deduction for Water : " + totalWater;
         document.getElementById('dl').innerHTML = "Deduction for non standard leaves : " + nonStdLeaves;
-        document.getElementById('td').innerHTML = "Total Deduction : " + otherDed;
+        document.getElementById('od').innerHTML = "Other Deduction: " + otherDed;
+        document.getElementById('td').innerHTML = "Total Deduction : " + totalDeduction;
         document.getElementById('fw').innerHTML = "Final Weight : " + finalW;
     }
 </script>

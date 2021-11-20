@@ -23,13 +23,17 @@
             <main class="dashmain">
                 <!-- details of the company -->
                 <div class="com-abo" style="grid-column:1 / 2; grid-row: 1 / 3;">
-                    <h1>Cylone Tea Cloud</h1>
-                    <p>Factory Name: </p>
-                    <p>Address:</p>
-                    <p>Tele:</p>
-                    <h1>Factory Owner Details</h1>
-                    <p>Name:</p>
-                    <p>Tele</p>
+                <?php
+                    // get company details
+                    require_once "../phpClasses/CompanyDeatils.class.php";
+                    $comObj = new CompanyDetails();
+                    $comRes = $comObj->getCompanyDetails();
+                    unset($comObj);
+                    echo '<p>Factory Name: Cylone Tea Cloud</p>';
+                    echo '<p>Address: '.$comRes['address'].'</p>';
+                    echo '<p>Tele: 0'.$comRes["contactNo"].'</p>';
+                    echo '<p>Email : '.$comRes["email"].'</p>';
+                ?>   
                 </div>
                 <!-- number of grower accounts -->
                 <div class="gro-abo" style="grid-column:2 / 3; grid-row: 1 / 2;">
@@ -43,8 +47,14 @@
                     ?>
                 </div>
                 <div style="grid-column:2 / 3; grid-row: 2 / 3;">
-                    <p>Total Weekly report - 29</p>
-                    <p>Total monthly report - 15</p>
+                    <?php
+                        // require_once "../phpClasses/WeekReport.class.php";
+                        // $weekObj = new WeekReport();
+                        // $res = $weekObj->numberOfWeekReports();
+                        // unset($weekObj);
+                        // echo '<p>Total Weekly report - '.$res.'</p>
+                        //         <p>Total monthly report - 15</p>'
+                    ?>
                 </div>
             </main>
 
