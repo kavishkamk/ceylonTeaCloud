@@ -15,3 +15,6 @@ const LOGIN_SUCCESSFUL = "User Login Successful";
 //Session Creation Responses
 const SESSION_CREATION_SUCCESS = "Session Created Successfully";
 const SESSION_DELETION_SUCCESS = "Session Deleted Successfully";
+
+//Getting Details from Email
+const MULTIPLE_RECORDS = "There are multiple records for the given email";

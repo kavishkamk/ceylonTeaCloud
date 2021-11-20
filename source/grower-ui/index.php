@@ -1,10 +1,3 @@
-<?php
-if (session_start()) {
-    session_unset();
-    session_destroy();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,17 +19,17 @@ if (session_start()) {
         <h1 class="login-title">Log In</h1>
         <div class="form-container">
             <form action="../include/GrowerLogin.inc.php" method="post">
-<!--                <div>-->
-<!--                    --><?php //if (isset($_GET['growerLoginStatus'])) { ?>
-<!--                        --><?php //if ($_GET['growerLoginStatus'] == "invalid-inputs") { ?>
-<!--                            <p class="login-response" style="display: none">Please provide valid inputs</p>-->
-<!--                        --><?php //} else if ($_GET['growerLoginStatus'] == "unauthorized") { ?>
-<!--                            <p class="login-response">Unauthorized Access</p>-->
-<!--                        --><?php //} ?>
-<!--                    --><?php //} else { ?>
-<!--                        <p class="login-response"></p>-->
-<!--                    --><?php //} ?>
-<!--                </div>-->
+                <div>
+                    <?php if (isset($_GET['growerLoginStatus'])) { ?>
+                        <?php if ($_GET['growerLoginStatus'] == "invalid-inputs") { ?>
+                            <p class="login-response">Please provide valid inputs</p>
+                        <?php } else if ($_GET['growerLoginStatus'] == "unauthorized") { ?>
+                            <p class="login-response">Unauthorized Access</p>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <p class="login-response"></p>
+                    <?php } ?>
+                </div>
                 <div class="form-group text-field-container">
                     <label for="emailAddress" class="text-field-label">Email Address</label>
                     <input
@@ -53,18 +46,18 @@ if (session_start()) {
                             type="password"
                             class="form-control"
                             id="password"
+                            name="password"
                             placeholder="Password"
                     />
                 </div>
 
                 <div class="login-button-container">
-                    <button
+                    <input
                             type="submit"
                             name="grower-login-submit"
                             class="btn btn-primary btn-lg btn-block login-button"
-                    >
-                        Login
-                    </button>
+                            value="Login"
+                    />
                 </div>
             </form>
         </div>

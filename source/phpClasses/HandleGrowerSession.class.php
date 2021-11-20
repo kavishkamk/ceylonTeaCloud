@@ -26,7 +26,7 @@ class HandleGrowerSession extends DbConnection {
             }
         }
         else{
-            return "sqlerror";
+            return CONNECTION_ERROR;
         }
     }
 
