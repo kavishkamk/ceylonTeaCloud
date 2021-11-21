@@ -1,5 +1,6 @@
 <?php
 require_once "DbConnection.class.php";
+require_once "../constants.php";
 
 class HandleGrowerSession extends DbConnection {
 
@@ -49,40 +50,40 @@ class HandleGrowerSession extends DbConnection {
     }
 
     // this function for check sessions
-    public function checkSession($sessionval, $uid){
+    public function checkSession($sessionVal, $growerId){
         $query = "SELECT session_id, session_expire FROM grower_session WHERE grower_id = ?;";
         $conn = $this->connect();
         $stmt = mysqli_stmt_init($conn);
 
         if(!mysqli_stmt_prepare($stmt, $query)){
             $this->closeConnection($stmt, $conn);
-            return "sqlerror";
+            return CONNECTION_ERROR;
             exit();
         }
         else{
-            mysqli_stmt_bind_param($stmt, "i", $uid);
+            mysqli_stmt_bind_param($stmt, "i", $growerId);
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
             if($row = mysqli_fetch_assoc($result)){
-                if($sessionval == $row['session_id']){
+                if($sessionVal == $row['session_id']){
                     if($row['session_expire'] < date("Y-n-d H:i:s")){
-                        $deleteSessionResponse = $this->deleteSession($uid);
+                        $deleteSessionResponse = $this->deleteSession($growerId);
                         $this->closeConnection($stmt, $conn);
-                        return "sessionexp"; // session expired
+                        return SESSION_EXPIRED;
                     }
                     else{
                         $this->closeConnection($stmt, $conn);
-                        return "1"; // session ok
+                        return SESSION_AVAILABLE;
                     }
                 }
                 else{
                     $this->closeConnection($stmt, $conn);
-                    return "noaccess"; // no session
+                    return SESSION_ID_MISMATCH;
                 }
             }
             else{
                 $this->closeConnection($stmt, $conn);
-                return "usernotfund";
+                return NO_SESSION_FOUND;
             }
         }
     }

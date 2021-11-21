@@ -25,7 +25,7 @@ body {
 /* Container Styles */
 .container {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   align-self: center;
   flex-direction: column;
@@ -85,6 +85,10 @@ a:hover {
   object-position: 0 100%; //move image position in y direction.
 }
 
+.password-change-response{
+  text-align: center;
+}
+
 /********** Large devices only **********/
 @media (min-width: 1200px) {
 }
@@ -98,7 +102,7 @@ a:hover {
   /* Container Styles */
   .container {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     align-self: center;
     flex-direction: column;
