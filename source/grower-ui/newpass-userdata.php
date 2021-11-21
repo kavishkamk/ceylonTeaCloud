@@ -1,11 +1,16 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>NEW PASSWORD CREATED... USER DATA CONFIRMATION</title>
-    <!-- <link rel="stylesheet" href="../css/password.css" /> -->
+    <title>View User Details</title>
     <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -15,56 +20,61 @@
     <link rel="stylesheet" href="../css/newuser.css"/>
 </head>
 
-
-<!-- testing -->
 <body>
 <div class="main-container">
     <div class="container">
-        <h4>New password created...!</h4>
-        <h2 class="login-title">USER DATA CONFIRMATION</h2>
+        <!--        <h4>Password Updated Successfully</h4>-->
+
+        <h2 class="login-title">View User Data</h2>
         <div class="form-container">
-            <form action="test-newpass-userdata.htm" method="post">
+            <form action="../include/PasswordChange.inc.php" method="post">
                 <div class="form-group text-field-container">
                     <label for="emailAddress" class="text-field-label">Name</label>
                     <input
                             type="email"
                             class="form-control"
                             id="emailAddress"
-                            placeholder="Rinky De Silva"
+                            value="<?php echo $_SESSION['name'] ?>"
+                            disabled
                     />
                 </div>
                 <div class="form-group text-field-container">
                     <label for="password" class="text-field-label">Phone</label>
                     <input
-                            type="password"
+                            type="tel"
                             class="form-control"
                             id="password"
-                            placeholder="0174512458"
+                            value="<?php echo $_SESSION['telephoneNo'] ?>"
+                            disabled
                     />
                 </div>
                 <div class="form-group text-field-container">
                     <label for="password" class="text-field-label">Address</label>
                     <input
-                            type="password"
+                            type="text"
                             class="form-control"
                             id="password"
-                            placeholder="address"
+                            value="<?php echo $_SESSION['address'] ?>"
+                            disabled
                     />
                 </div>
                 <div class="login-button-container">
-                    <a
-                            href="propic.php"
-                            class="btn btn-primary btn-lg btn-block login-button"
+                    <button
+                            class="btn btn-success btn-lg btn-block login-button"
+                            type="submit"
+                            name="view-user-data-submit"
                     >
                         Confirm
-                    </a>
+                    </button>
+                    <button
+                            href="userdata.php"
+                            class="btn btn-primary btn-lg btn-block edit-data-button"
+                    >
+                        Edit Data
+                    </button>
                 </div>
             </form>
         </div>
-
-        <br/>
-        <br/>
-        <a class="password-settings" href="userdata.php"> Edit </a>
     </div>
 </div>
 </body>

@@ -72,7 +72,7 @@
                     </button>
                 </div>
                 <div class="login-button-container">
-                    <a href="userdata.php">Skip</a>
+                    <a href="newpass-userdata.php">Skip</a>
                 </div>
             </form>
         </div>

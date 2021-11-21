@@ -12,6 +12,8 @@ class GrowerLogin extends DbConnection
     private $email;
     private $password;
     private $activeStatus;
+    private $telephoneNo;
+    private $address;
 
     //Validating the password
     public function validateLoginDetails($loginEmail, $loginPassword)
@@ -48,6 +50,8 @@ class GrowerLogin extends DbConnection
                         $_SESSION['sessionId'] = $sessionId; // set with record id to set offline time
                         $_SESSION['name'] = $this->name;
                         $_SESSION['email'] = $this->email;
+                        $_SESSION['telephoneNo'] = $this->telephoneNo;
+                        $_SESSION['address'] = $this->address;
                         return LOGIN_SUCCESSFUL;
                     } else {
                         return CONNECTION_FAILED;
@@ -61,7 +65,7 @@ class GrowerLogin extends DbConnection
     private function getUserDetailsForEmail($email)
     {
         // Prepare a select statement
-        $sql = "SELECT id, name, pwd, active_status FROM grower WHERE email= ?;";
+        $sql = "SELECT id, name, tele, address, pwd, active_status FROM grower WHERE email= ?;";
         $conn = $this->connect();
 
         //Checking connection
@@ -85,6 +89,8 @@ class GrowerLogin extends DbConnection
                     $this->name = $row["name"];
                     $this->password = $row["pwd"];
                     $this->activeStatus = $row["active_status"];
+                    $this->telephoneNo = $row["tele"];
+                    $this->address = $row["address"];
 
                     return SUCCESS;
                 } else if(mysqli_num_rows($result) > 1){
