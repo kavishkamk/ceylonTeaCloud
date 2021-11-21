@@ -49,7 +49,7 @@ class GrowerLogin extends DbConnection
                         $_SESSION['growerId'] = $this->growerId; // set grower id of the grower table
                         $_SESSION['sessionId'] = $sessionId; // set with record id to set offline time
                         $_SESSION['name'] = $this->name;
-                        $_SESSION['email'] = $this->email;
+                        $_SESSION['email'] = $loginEmail;
                         $_SESSION['telephoneNo'] = $this->telephoneNo;
                         $_SESSION['address'] = $this->address;
                         return LOGIN_SUCCESSFUL;

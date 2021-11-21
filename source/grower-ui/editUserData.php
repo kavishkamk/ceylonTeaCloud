@@ -1,10 +1,16 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>USER DATA CONFIRMATION</title>
+    <title>Edit User Data</title>
 
     <link
             rel="stylesheet"
@@ -12,52 +18,63 @@
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../css/userdata.css"/>
+    <link rel="stylesheet" href="../css/editUserData.css"/>
 </head>
 
-<!-- testing -->
 <body>
 <div class="main-container">
     <div class="container">
-        <h2 class="login-title">USER DATA CONFIRMATION</h2>
+        <h2 class="login-title">Edit User Data</h2>
         <div class="form-container">
-            <form action="test-userdata.htm" method="post">
+            <form action="../include/EditUserData.inc.php" method="post">
+                <div>
+                    <?php if (isset($_GET['userDataUpdateStatus'])) { ?>
+                        <?php if ($_GET['userDataUpdateStatus'] == "invalid-inputs") { ?>
+                            <p class="user-data-change-response">Please provide valid inputs</p>
+                        <?php } else if ($_GET['userDataUpdateStatus'] == "failed") { ?>
+                            <p class="user-data-change-response">Failed to Update User Data</p>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <p class="user-data-change-response"></p>
+                    <?php } ?>
+                </div>
                 <div class="form-group text-field-container">
-                    <label for="emailAddress" class="text-field-label">Name</label>
+                    <label for="name" class="text-field-label">Name</label>
                     <input
-                            type="email"
+                            type="text"
                             class="form-control"
-                            id="emailAddress"
-                            placeholder="Rinky De Silva"
+                            id="name"
+                            name="name"
+                            value="<?php echo $_SESSION['name'] ?>"
                     />
                 </div>
                 <div class="form-group text-field-container">
-                    <label for="password" class="text-field-label">Phone</label>
+                    <label for="phoneNo" class="text-field-label">Phone</label>
                     <input
-                            type="password"
+                            type="tel"
                             class="form-control"
-                            id="password"
-                            placeholder="0174512458"
+                            id="phoneNo"
+                            name="phoneNo"
+                            value="<?php echo $_SESSION['telephoneNo'] ?>"
                     />
                 </div>
                 <div class="form-group text-field-container">
-                    <label for="password" class="text-field-label">Address</label>
+                    <label for="address" class="text-field-label">Address</label>
                     <input
-                            type="password"
+                            type="text"
                             class="form-control"
-                            id="password"
-                            placeholder="address"
+                            id="address"
+                            name="address"
+                            value="<?php echo $_SESSION['address'] ?>"
                     />
                 </div>
                 <div class="login-button-container">
-                    <!-- <a href="profilePic.php"><button
-                      type="submit"
-                      class="btn btn-primary btn-lg btn-block login-button"
+                    <button
+                            class="btn btn-primary btn-lg btn-block login-button"
+                            name="edit-user-data"
                     >
-                      Confirm
+                        Submit
                     </button>
-                  </a> -->
-                    <a href="profilePic.php" class="btn btn-primary btn-lg btn-block login-button">Confirm</a>
                 </div>
             </form>
         </div>

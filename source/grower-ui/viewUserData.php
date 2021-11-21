@@ -2,6 +2,15 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+function redirectToEditUserDataUi()
+{
+    header("Location:../grower-ui/editUserData.php");
+}
+
+if (isset($_GET['edit-user-data'])) {
+    redirectToEditUserDataUi();
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +26,7 @@ if (session_status() === PHP_SESSION_NONE) {
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../css/newuser.css"/>
+    <link rel="stylesheet" href="../css/viewUserData.css"/>
 </head>
 
 <body>
@@ -27,53 +36,56 @@ if (session_status() === PHP_SESSION_NONE) {
 
         <h2 class="login-title">View User Data</h2>
         <div class="form-container">
-            <form action="../include/PasswordChange.inc.php" method="post">
                 <div class="form-group text-field-container">
-                    <label for="emailAddress" class="text-field-label">Name</label>
+                    <label for="name" class="text-field-label">Name</label>
                     <input
-                            type="email"
+                            type="text"
                             class="form-control"
-                            id="emailAddress"
+                            id="name"
+                            name="name"
                             value="<?php echo $_SESSION['name'] ?>"
                             disabled
                     />
                 </div>
                 <div class="form-group text-field-container">
-                    <label for="password" class="text-field-label">Phone</label>
+                    <label for="phoneNo" class="text-field-label">Phone</label>
                     <input
                             type="tel"
                             class="form-control"
-                            id="password"
+                            id="phoneNo"
+                            name="phoneNo"
                             value="<?php echo $_SESSION['telephoneNo'] ?>"
                             disabled
                     />
                 </div>
                 <div class="form-group text-field-container">
-                    <label for="password" class="text-field-label">Address</label>
+                    <label for="address" class="text-field-label">Address</label>
                     <input
                             type="text"
                             class="form-control"
-                            id="password"
+                            id="address"
+                            name="address"
                             value="<?php echo $_SESSION['address'] ?>"
                             disabled
                     />
                 </div>
                 <div class="login-button-container">
-                    <button
-                            class="btn btn-success btn-lg btn-block login-button"
-                            type="submit"
-                            name="view-user-data-submit"
-                    >
-                        Confirm
-                    </button>
-                    <button
-                            href="editUserData.php"
-                            class="btn btn-primary btn-lg btn-block edit-data-button"
-                    >
-                        Edit Data
-                    </button>
+                    <!--                    <button-->
+                    <!--                            class="btn btn-success btn-lg btn-block login-button"-->
+                    <!--                            type="submit"-->
+                    <!--                            name="view-user-data-submit"-->
+                    <!--                    >-->
+                    <!--                        Confirm-->
+                    <!--                    </button>-->
+                    <a style="text-decoration: none" href='../grower-ui/viewUserData.php?edit-user-data=true'>
+                        <button
+                                class="btn btn-primary btn-lg btn-block edit-data-button"
+                                name="view-user-data"
+                        >
+                            Edit Data
+                        </button>
+                    </a>
                 </div>
-            </form>
         </div>
     </div>
 </div>

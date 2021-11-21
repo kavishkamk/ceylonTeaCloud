@@ -29,3 +29,7 @@ const PASSWORD_UPDATE_FAILURE = "Could not update the password";
 const PASSWORD_FETCHING_FAILURE = "Could not fetch the current password from the database";
 const VALID_CURRENT_PASSWORD = "Current Password matches with the Password in Database";
 const INVALID_CURRENT_PASSWORD = "Current Password does not match with the Password in Database";
+
+//Updating User Data Responses
+const USERDATA_UPDATE_SUCCESS = "The user details were updated successfully";
+const USERDATA_UPDATE_FAILURE = "Could not update user details";
