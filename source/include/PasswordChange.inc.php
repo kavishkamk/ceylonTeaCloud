@@ -15,14 +15,14 @@ if (isset($_POST['password-change-submit'])) {
     $newPassword = $_POST['newPassword'];
 
     if(empty($email) || empty($currentPassword) || empty($newPassword)){
-        header("Location:../grower-ui/password.php?passwordChangeStatus=invalid-inputs");
+        header("Location:../grower-ui/changePassword.php?passwordChangeStatus=invalid-inputs");
     } else {
         $passwordChange = new HandleGrowerPasswordChange();
 
         //Checking if the current password is valid
         $currentPasswordValidation = $passwordChange->validateCurrentPassword($email, $currentPassword);
         if($currentPasswordValidation != VALID_CURRENT_PASSWORD){
-            header("Location:../grower-ui/password.php?passwordChangeStatus=unauthorized");
+            header("Location:../grower-ui/changePassword.php?passwordChangeStatus=unauthorized");
             return;
         }
 
@@ -30,9 +30,9 @@ if (isset($_POST['password-change-submit'])) {
         $passwordUpdateResponse  = $passwordChange->updatePassword($email, $currentPassword, $newPassword);
         debug_to_console($passwordUpdateResponse);
         if($passwordUpdateResponse == PASSWORD_UPDATE_SUCCESS){
-            header("Location:../grower-ui/newpass-userdata.php");
+            header("Location:../grower-ui/viewUserData.php");
         } else {
-            header("Location:../grower-ui/password.php?passwordChangeStatus=unauthorized");
+            header("Location:../grower-ui/changePassword.php?passwordChangeStatus=unauthorized");
         }
     }
 

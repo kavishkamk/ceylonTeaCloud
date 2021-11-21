@@ -50,19 +50,19 @@
                     />
                 </div>
                 <div class="login-button-container">
-                    <!-- <a href="propic.php"><button
+                    <!-- <a href="profilePic.php"><button
                       type="submit"
                       class="btn btn-primary btn-lg btn-block login-button"
                     >
                       Confirm
                     </button>
                   </a> -->
-                    <a href="propic.php" class="btn btn-primary btn-lg btn-block login-button">Confirm</a>
+                    <a href="profilePic.php" class="btn btn-primary btn-lg btn-block login-button">Confirm</a>
                 </div>
             </form>
         </div>
         <!--         <a class="b1" href="#"> PASSWORD RESET</a>-->
-        <!-- <a class="password-settings" href="userdata.php"> Edit </a> -->
+        <!-- <a class="password-settings" href="editUserData.php"> Edit </a> -->
     </div>
 </div>
 </body>

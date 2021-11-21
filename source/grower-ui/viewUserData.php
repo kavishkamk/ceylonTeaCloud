@@ -67,7 +67,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         Confirm
                     </button>
                     <button
-                            href="userdata.php"
+                            href="editUserData.php"
                             class="btn btn-primary btn-lg btn-block edit-data-button"
                     >
                         Edit Data
