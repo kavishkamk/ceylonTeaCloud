@@ -16,7 +16,6 @@
 
 </head>
 
-<!-- testing -->
 <body>
 <div class="main-container">
     <div class="container">
@@ -39,9 +38,11 @@
 
             </form>
         </div>
-        <!--         <a class="b1" href="#"> PASSWORD RESET</a>-->
-        <!-- <a class="password-settings" href="main.html"> skip </a> -->
-        <a class="password-settings" href="main.html"> Skip </a>
+        <div class="login-button-container">
+            <a href="home.php">
+                Back to Home
+            </a>
+        </div>
     </div>
 </div>
 </body>

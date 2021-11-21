@@ -47,8 +47,9 @@ body {
 /* Form Container Styles */
 .form-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  flex-direction: column;
   height: 300px;
 }
 
@@ -83,6 +84,10 @@ a:hover {
   object-fit: cover;
   object-position: 100% 0; //move image position in x direction.
   object-position: 0 100%; //move image position in y direction.
+}
+
+.image{
+  text-align: center;
 }
 
 /********** Large devices only **********/
