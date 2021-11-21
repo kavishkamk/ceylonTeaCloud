@@ -16,7 +16,7 @@ if (isset($_POST['grower-login-submit'])) {
         $loginResponse = $growerLoginObject->validateLoginDetails($email, $password);
 
         if ($loginResponse == LOGIN_SUCCESSFUL) {
-            header("Location:../grower-ui/changePassword.php");
+            header("Location:../grower-ui/home.php");
         } else {
             header("Location:../grower-ui/index.php?growerLoginStatus=unauthorized");
         }

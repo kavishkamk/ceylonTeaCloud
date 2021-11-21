@@ -11,7 +11,7 @@
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../css/passwd.css"/>
+    <link rel="stylesheet" href="../css/changePassword.css"/>
 </head>
 
 <body>
@@ -64,15 +64,17 @@
                 </div>
                 <div class="login-button-container">
                     <button
-                            class="btn btn-primary btn-lg btn-block login-button"
+                            class="btn btn-success btn-lg btn-block login-button"
                             name="password-change-submit"
                             type="submit"
                     >
-                        Add New Password
+                        Change Password
                     </button>
                 </div>
                 <div class="login-button-container">
-                    <a href="viewUserData.php">Skip</a>
+                    <a href="home.php">
+                        Back to Home
+                    </a>
                 </div>
             </form>
         </div>

@@ -36,56 +36,54 @@ if (isset($_GET['edit-user-data'])) {
 
         <h2 class="login-title">View User Data</h2>
         <div class="form-container">
-                <div class="form-group text-field-container">
-                    <label for="name" class="text-field-label">Name</label>
-                    <input
-                            type="text"
-                            class="form-control"
-                            id="name"
-                            name="name"
-                            value="<?php echo $_SESSION['name'] ?>"
-                            disabled
-                    />
-                </div>
-                <div class="form-group text-field-container">
-                    <label for="phoneNo" class="text-field-label">Phone</label>
-                    <input
-                            type="tel"
-                            class="form-control"
-                            id="phoneNo"
-                            name="phoneNo"
-                            value="<?php echo $_SESSION['telephoneNo'] ?>"
-                            disabled
-                    />
-                </div>
-                <div class="form-group text-field-container">
-                    <label for="address" class="text-field-label">Address</label>
-                    <input
-                            type="text"
-                            class="form-control"
-                            id="address"
-                            name="address"
-                            value="<?php echo $_SESSION['address'] ?>"
-                            disabled
-                    />
-                </div>
-                <div class="login-button-container">
-                    <!--                    <button-->
-                    <!--                            class="btn btn-success btn-lg btn-block login-button"-->
-                    <!--                            type="submit"-->
-                    <!--                            name="view-user-data-submit"-->
-                    <!--                    >-->
-                    <!--                        Confirm-->
-                    <!--                    </button>-->
-                    <a style="text-decoration: none" href='../grower-ui/viewUserData.php?edit-user-data=true'>
-                        <button
-                                class="btn btn-primary btn-lg btn-block edit-data-button"
-                                name="view-user-data"
-                        >
-                            Edit Data
-                        </button>
-                    </a>
-                </div>
+            <div class="form-group text-field-container">
+                <label for="name" class="text-field-label">Name</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        name="name"
+                        value="<?php echo $_SESSION['name'] ?>"
+                        disabled
+                />
+            </div>
+            <div class="form-group text-field-container">
+                <label for="phoneNo" class="text-field-label">Phone</label>
+                <input
+                        type="tel"
+                        class="form-control"
+                        id="phoneNo"
+                        name="phoneNo"
+                        value="<?php echo $_SESSION['telephoneNo'] ?>"
+                        disabled
+                />
+            </div>
+            <div class="form-group text-field-container">
+                <label for="address" class="text-field-label">Address</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="address"
+                        name="address"
+                        value="<?php echo $_SESSION['address'] ?>"
+                        disabled
+                />
+            </div>
+            <div class="login-button-container">
+                <a style="text-decoration: none" href='../grower-ui/viewUserData.php?edit-user-data=true'>
+                    <button
+                            class="btn btn-primary btn-lg btn-block edit-data-button"
+                            name="view-user-data"
+                    >
+                        Edit Data
+                    </button>
+                </a>
+            </div>
+            <div class="login-button-container">
+                <a href="home.php">
+                    Back to Home
+                </a>
+            </div>
         </div>
     </div>
 </div>

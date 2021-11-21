@@ -86,6 +86,10 @@ a:hover {
   object-position: 0 100%; //move image position in y direction.
 }
 
+.edit-data-button{
+  width: 300px;
+}
+
 /********** Large devices only **********/
 @media (min-width: 1200px) {
 }
