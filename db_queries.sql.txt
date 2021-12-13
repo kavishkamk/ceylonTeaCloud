@@ -111,17 +111,17 @@ CREATE TABLE net_weight (
 );
 
 -- grower
-CREATE TABLE  grower(
-	id int AUTO_INCREMENT,
-	name VARCHAR(255) NOT NULL,
-	reg_date DATETIME NOT NULL,
-	status BOOLEAN NOT NULL,
-	email VARCHAR(320) NOT NULL,
-	tele int NOT NULL,
-	address VARCHAR(700) NOT NULL,
-	profileLink VARCHAR(700) NOT NULL,
-
-	PRIMARY KEY(id)
+CREATE TABLE grower (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  name varchar(255) NOT NULL,
+  reg_date datetime NOT NULL,
+  email varchar(320) NOT NULL,
+  tele varchar(10) NOT NULL,
+  address varchar(700) NOT NULL,
+  profileLink varchar(700) NOT NULL,
+  active_status tinyint(1) NOT NULL DEFAULT 0,
+  pwd varchar(100) NOT NULL,
+  PRIMARY KEY (id)
 );
 
 -- request
@@ -233,11 +233,6 @@ CREATE TABLE tea(
 );
 
 -- ------------------------------------------------------------------------
-
--- modified grower status column
-ALTER TABLE grower DROP COLUMN status;
-ALTER TABLE grower
-ADD active_status BOOLEAN NOT NULL DEFAULT 0;
 
 ALTER TABLE owner DROP COLUMN name;
 ALTER TABLE owner
