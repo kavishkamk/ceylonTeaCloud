@@ -1,3 +1,167 @@
+-- Ceylon Tea cloud
+
+CREATE DATABASE ceylonteacloud;
+use ceylonteacloud;
+
+-- -----------------------------------------
+-- Owner
+CREATE TABLE Owner(
+	owner_id int NOT NULL AUTO_INCREMENT,
+	name VARCHAR(255) NOT NULL,
+	email VARCHAR(320) NOT NULL,
+	tele int NOT NULL,
+ 	PRIMARY KEY(owner_id)
+
+);
+
+-- factory-owner-map
+	CREATE TABLE factory_owner_map(
+	factory_id int NOT NULL,
+	owner_id int NOT NULL,
+	CONSTRAINT Pk_factoryownermap PRIMARY KEY(factory_id, owner_id)
+
+);
+
+-- Factory
+
+	CREATE TABLE  Factory(
+	factory_id int NOT NULL AUTO_INCREMENT,
+	name VARCHAR(255) NOT NULL,
+	date DATETIME NOT NULL,
+	actSTatus BOOLEAN NOT NULL,
+	address VARCHAR(700) NOT NULL,
+	contactNo int NOT NULL,
+	PRIMARY KEY(factory_id)
+);
+
+-- member-report-map
+	CREATE TABLE member_report_map(
+	member_id int NOT NULL,
+	report_id int NOT NULL,
+	CONSTRAINT Pk_memberreportmap PRIMARY KEY(member_id, report_id)
+
+);
+
+-- monthly_report
+	CREATE TABLE monthly_report(
+	report_id int NOT NULL AUTO_INCREMENT,
+	date DATETIME NOT NULL,
+	total_weight  float NOT NULL,
+	total_deducation_per_month float NOT NULL,
+	price_of_1kg DECIMAL(10,2),
+	total_price float NOT NULL,
+	payment DECIMAL(10,2),
+	PRIMARY KEY(report_id)
+);
+
+-- data_input
+	CREATE TABLE data_input(
+	data_id int NOT NULL AUTO_INCREMENT,
+	number_of_sacks int NOT NULL,
+	total_weight float NOT NULL,
+	member_id int NOT NULL,
+	date DATETIME NOT NULL,
+	PRIMARY KEY(data_id)
+
+);
+
+-- member_data_input_map
+
+	CREATE TABLE member_data_input_map(
+	member_id int NOT NULL,
+	data_id int NOT NULL,
+	CONSTRAINT Pk_memberdatainputmap PRIMARY KEY(member_id, data_id)
+
+);
+-- member
+	CREATE TABLE member(
+	member_id int NOT NULL AUTO_INCREMENT,
+	factory_id int NOT NULL,
+	grower_id int NOT NULL,
+
+	PRIMARY KEY(member_id)
+
+);
+
+-- member_request_map
+
+
+	CREATE TABLE member_request_map(
+	member_id int NOT NULL,
+	req_id int NOT NULL,
+	CONSTRAINT Pk_memberrequestmap PRIMARY KEY(member_id, req_id)
+
+);
+
+-- data_input_dedication_map
+	CREATE TABLE data_input_dedication_map(
+	data_id int NOT NULL,
+	deduction_id int NOT NULL,
+	CONSTRAINT Pk_memberinputdedicationmap PRIMARY KEY(data_id, deduction_id)
+
+);
+
+-- net_weight
+CREATE TABLE net_weight (
+	id int AUTO_INCREMENT,
+	data_id int NOT NULL,
+	deduction_id int NOT NULL,
+	weight  float NOT NULL,
+	PRIMARY KEY(id)
+);
+
+-- grower
+CREATE TABLE  grower(
+	id int AUTO_INCREMENT,
+	name VARCHAR(255) NOT NULL,
+	reg_date DATETIME NOT NULL,
+	status BOOLEAN NOT NULL,
+	email VARCHAR(320) NOT NULL,
+	tele int NOT NULL,
+	address VARCHAR(700) NOT NULL,
+	profileLink VARCHAR(700) NOT NULL,
+
+	PRIMARY KEY(id)
+);
+
+-- request
+CREATE TABLE  request(
+	req_id int NOT NULL AUTO_INCREMENT,
+	req_date DATETIME NOT NULL,
+	accept_date DATETIME NOT NULL,
+	status BOOLEAN NOT NULL,
+	issued_date DATETIME NOT NULL,
+
+
+	PRIMARY KEY(req_id)
+);
+
+-- deduction
+
+CREATE TABLE deduction(
+	ded_id int NOT NULL AUTO_INCREMENT,
+	sack_waight float NOT NULL,
+	non_standard_leaves float NOT NULL,
+	ded_total float NOT NULL,
+	PRIMARY KEY(ded_id)
+
+
+);
+
+-- req_loan_map
+CREATE TABLE req_loan_map(
+	req_id int NOT NULL,
+	loan_id int NOT NULL,
+	CONSTRAINT Pk_recloanmap PRIMARY KEY(req_id, loan_id)
+);
+
+-- req_fertilizer_map
+
+CREATE TABLE req_fertilizer_map(
+	req_id int NOT NULL,
+	fertilizer_id int NOT NULL,
+	CONSTRAINT Pk_recfertilizermap PRIMARY KEY(req_id, fertilizer_id )
+);
 
 -- req_tea_map
 CREATE TABLE req_tea_map(
