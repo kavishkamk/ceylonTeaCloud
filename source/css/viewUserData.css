@@ -47,7 +47,7 @@ body {
 
 /* Form Container Styles */
 .form-container {
-  padding-top: 30px;
+  padding-top: 50px;
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -75,6 +75,16 @@ body {
 
 .login-button {
   width: 300px;
+}
+
+.confirm{
+  width: 100px;
+  padding: 10px 0;
+  background-color: rgb(101, 175, 101);
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  border-radius: 5px;
 }
 
 a:hover {
@@ -126,7 +136,7 @@ a:hover {
     justify-content: center;
     align-items: center;
     height: 300px;
-    padding-top: 30px;
+    padding-top: 50px;
   }
 
   /* Label + Text Field Container Styles */

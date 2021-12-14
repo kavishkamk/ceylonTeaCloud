@@ -14,6 +14,7 @@ class GrowerLogin extends DbConnection
     private $activeStatus;
     private $telephoneNo;
     private $address;
+    private $new_member_status;
 
     //Validating the password
     public function validateLoginDetails($loginEmail, $loginPassword)
@@ -31,12 +32,13 @@ class GrowerLogin extends DbConnection
             // check blocked accounts
             if ($this->activeStatus == 0) {
                 return ACCOUNT_BLOCKED_OR_DELETED;
-            } else {
+            } 
+            else {
                 $passwordMatched = password_verify($loginPassword, $this->password); // check password
                 if (!$passwordMatched) {
                     return WRONG_PASSWORD;
-                } else {
-
+                } 
+                else {
                     session_unset();
                     session_destroy();
                     session_start();
@@ -52,7 +54,12 @@ class GrowerLogin extends DbConnection
                         $_SESSION['email'] = $loginEmail;
                         $_SESSION['telephoneNo'] = $this->telephoneNo;
                         $_SESSION['address'] = $this->address;
-                        return LOGIN_SUCCESSFUL;
+
+                        if($this-> new_member_status == 1) {
+                            return NEW_MEMBER;
+                        }else{
+                            return LOGIN_SUCCESSFUL;
+                        }
                     } else {
                         return CONNECTION_FAILED;
                     }
@@ -65,7 +72,7 @@ class GrowerLogin extends DbConnection
     private function getUserDetailsForEmail($email)
     {
         // Prepare a select statement
-        $sql = "SELECT id, name, tele, address, pwd, active_status FROM grower WHERE email= ?;";
+        $sql = "SELECT id, name, tele, address, pwd, active_status, new_member_status FROM grower WHERE email= ?;";
         $conn = $this->connect();
 
         //Checking connection
@@ -91,6 +98,7 @@ class GrowerLogin extends DbConnection
                     $this->activeStatus = $row["active_status"];
                     $this->telephoneNo = $row["tele"];
                     $this->address = $row["address"];
+                    $this->new_member_status = $row["new_member_status"];
 
                     return SUCCESS;
                 } else if(mysqli_num_rows($result) > 1){

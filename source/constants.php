@@ -11,6 +11,7 @@ const CONNECTION_ERROR = "There was an error while fetching data";
 const ACCOUNT_BLOCKED_OR_DELETED = "The account has been blocked or deleted. Please contact the Administrator";
 const WRONG_PASSWORD = "Your password is incorrect";
 const LOGIN_SUCCESSFUL = "User Login Successful";
+const NEW_MEMBER = "This user is a new member";
 
 //Session Responses
 const SESSION_CREATION_SUCCESS = "Session Created Successfully";
