@@ -71,7 +71,19 @@ body {
     align-items: center;
 }
 
-
+.month-item{
+    display: flex;
+    width: 150px;
+    height: auto;
+    background-color: #91eea8dc;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 15px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+}
 
 /********** Large devices only **********/
 @media (min-width: 1200px) {
