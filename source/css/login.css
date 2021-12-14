@@ -88,6 +88,9 @@ a:hover {
 
 .login-response{
     text-align: center;
+    color: white;
+    background-color: rgb(207, 104, 104);
+    padding: 3px 0;
 }
 
 /********** Large devices only **********/
