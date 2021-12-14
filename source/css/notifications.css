@@ -25,12 +25,12 @@ body {
 /* Container Styles */
 .container {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     align-self: center;
     flex-direction: column;
 
-    background-color: #101935;
+    background-color: #27ae60;
     width: 400px;
     height: 600px;
     border-radius: 20px;
@@ -39,59 +39,48 @@ body {
 }
 
 /* Login Header Styles */
-.login-title {
+.home-title {
     text-align: center;
     color: white;
+    font-weight: bold;
+    margin-bottom: auto;
+    height: 40px;
 }
 
 /* Form Container Styles */
-.form-container {
-    display: flex;
-    justify-content: center;
+.grower-home-options-container {
+    justify-content: space-around;
     align-items: center;
-    height: 300px;
+    height: 600px;
 }
 
-/* Label + Text Field Container Styles */
-.text-field-container {
-    width: 300px;
-    padding: 5px 0;
+
+.notif-item{
+    width: 250px;
+    height: auto;
+    background-color: #91eea8dc;
+    margin: 0 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 5px 10px;
 }
 
-.text-field-label {
+.date{
+    font-size: 11px;
+    color: #156b46;
+}
+
+.msg{
+    font-weight: bold;
+    font-size: 13px;
+    color: #082b1c;
+    padding: 3px 0px 3px 10px;
+}
+/*
+.grower-home-option:focus{
+    background-color:#2a73e2;
     color: white;
-}
-
-/* Login Button Styles */
-.login-button-container {
-    text-align: center;
-    padding: 10px 0;
-    width: auto;
-}
-
-.login-button {
-    width: 300px;
-}
-
-a:hover {
-    background: #00000040;
-}
-
-/* for profile image */
-.image img {
-    border-radius: 50%;
-
-    object-fit: cover;
-    object-position: 100% 0;
-    object-position: 0 100%;
-}
-
-.login-response{
-    text-align: center;
-    color: white;
-    background-color: rgb(207, 104, 104);
-    padding: 3px 0;
-}
+}*/
 
 /********** Large devices only **********/
 @media (min-width: 1200px) {
@@ -111,9 +100,9 @@ a:hover {
         align-self: center;
         flex-direction: column;
 
-        background-color: #101935;
+        background-color: #27ae60 ;
         width: 300px;
-        height: 500px;
+        height: 550px;
         border-radius: 20px;
 
         z-index: -1;

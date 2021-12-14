@@ -2,7 +2,7 @@
     // this class for get databse connection
     class DbConnection {
 
-        private $dbservername = "localhost:3307";
+        private $dbservername = "localhost";
         private $dBuserName = "root";
         private $dBpassword = "";
         private $dBname = "ceylonteacloud";

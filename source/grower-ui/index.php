@@ -20,15 +20,15 @@
         <div class="form-container">
             <form action="../include/GrowerLogin.inc.php" method="post">
                 <div>
-                    <?php if (isset($_GET['growerLoginStatus'])) { ?>
-                        <?php if ($_GET['growerLoginStatus'] == "invalid-inputs") { ?>
-                            <p class="login-response">Please provide valid inputs</p>
-                        <?php } else if ($_GET['growerLoginStatus'] == "unauthorized") { ?>
-                            <p class="login-response">Unauthorized Access</p>
-                        <?php } ?>
-                    <?php } else { ?>
-                        <p class="login-response"></p>
-                    <?php } ?>
+                    <?php 
+                        if (isset($_GET['growerLoginStatus'])){
+                            if ($_GET['growerLoginStatus'] == "invalid-inputs"){
+                                echo '<p class="login-response">Please provide valid inputs</p>';
+                            }else if ($_GET['growerLoginStatus'] == "unauthorized") {
+                                echo '<p class="login-response">Unauthorized Access</p>';
+                            }
+                        }
+                    ?>
                 </div>
                 <div class="form-group text-field-container">
                     <label for="emailAddress" class="text-field-label">Email Address</label>

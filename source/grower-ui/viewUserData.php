@@ -34,7 +34,7 @@ if (isset($_GET['edit-user-data'])) {
     <div class="container">
         <!--        <h4>Password Updated Successfully</h4>-->
 
-        <h2 class="login-title">View User Data</h2>
+        <h2 class="login-title">User Data Confirmation</h2>
         <div class="form-container">
             <div class="form-group text-field-container">
                 <label for="name" class="text-field-label">Name</label>
@@ -48,7 +48,7 @@ if (isset($_GET['edit-user-data'])) {
                 />
             </div>
             <div class="form-group text-field-container">
-                <label for="phoneNo" class="text-field-label">Phone</label>
+                <label for="phoneNo" class="text-field-label">Phone No.</label>
                 <input
                         type="tel"
                         class="form-control"

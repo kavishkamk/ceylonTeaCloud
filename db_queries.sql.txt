@@ -449,7 +449,7 @@ CREATE TABLE IF NOT EXISTS loneId(
 CREATE TABLE IF NOT EXISTS teaId(
 	month_report_id INT NOT NULL,
 	request_id INT NOT NULL,
-	CONSTRAINT Pk_recloanmap PRIMARY KEY(month_report, request_id)
+	CONSTRAINT Pk_recloanmap PRIMARY KEY(month_report_id, request_id)
 );
 
 CREATE TABLE IF NOT EXISTS fertilizerId(
