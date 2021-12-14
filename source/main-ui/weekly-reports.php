@@ -10,11 +10,23 @@
         />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="../css/main-menu.css"/>
+        <link rel="stylesheet" href="../css/weekly-reports-list.css"/>
         <title>Weekly Reports</title>
     </head>
 
     <body>
+        <div class="main-container">
+            <div class="container">
+                <h1 class="home-title">Weekly Reports</h1>
 
+                <div class="grower-home-options-container">
+                    <!--
+                    <div class="report-item">
+                        <div class="date">2021 January 15</div>
+                    </div>-->
+                    
+                </div>
+            </div>
+        </div>
     </body>
 </html>
