@@ -42,10 +42,13 @@ body {
 .login-title {
   text-align: center;
   color: white;
+  margin-bottom: auto;
 }
 
 /* Form Container Styles */
 .form-container {
+  padding-top: 10px;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,10 +70,14 @@ body {
   text-align: center;
   padding: 10px 0;
   width: auto;
+
+  display: flex;
+  justify-content: center;
 }
 
 .login-button {
-  width: 300px;
+  font-weight: bold;
+  width: 100px;
 }
 
 a:hover {
@@ -81,8 +88,8 @@ a:hover {
   border-radius: 50%;
 
   object-fit: cover;
-  object-position: 100% 0; //move image position in x direction.
-  object-position: 0 100%; //move image position in y direction.
+  object-position: 100% 0; /*move image position in x direction.*/
+  object-position: 0 100%; /*move image position in y direction.*/
 }
 
 .user-data-change-response{
@@ -121,6 +128,7 @@ a:hover {
     justify-content: center;
     align-items: center;
     height: 300px;
+    padding-top: 10px;
   }
 
   /* Label + Text Field Container Styles */
