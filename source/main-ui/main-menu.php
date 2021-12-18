@@ -1,3 +1,24 @@
+<?php
+    session_start();
+
+    if(!isset($_SESSION['growerId'])) // no session exists
+    {
+        header("Location:../grower-ui/index.php?growerLoginStatus=unauthorized");
+        exit();
+    }else
+    {
+        require_once "../phpClasses/HandleGrowerSession.class.php";
+        $obj = new HandleGrowerSession();
+        $res = $obj-> checkSession($_SESSION['sessionId'], $_SESSION['growerId']);
+        unset($obj);
+
+        if($res != SESSION_AVAILABLE){
+            header("Location:../grower-ui/index.php?growerLoginStatus=logout");
+            exit();
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
