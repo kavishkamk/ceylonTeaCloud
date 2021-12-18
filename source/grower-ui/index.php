@@ -26,6 +26,8 @@
                                 echo '<p class="login-response">Please provide valid inputs</p>';
                             }else if ($_GET['growerLoginStatus'] == "unauthorized") {
                                 echo '<p class="login-response">Unauthorized Access</p>';
+                            }else if ($_GET['growerLoginStatus'] == "logout") {
+                                echo '<p class="login-response">You are logged out</p>';
                             }
                         }
                     ?>

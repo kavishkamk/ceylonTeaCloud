@@ -7,18 +7,21 @@ class HandleGrowerPasswordChange extends DbConnection
 
     public function updatePassword($growerEmail, $currentPassword, $newPassword)
     {
+        //make the new_member_status into 0
+        //because the grower already updated the password
 
-
-        $sql = "update grower set pwd = ? where email = ?;";
+        $sql = "UPDATE grower SET pwd = ?, new_member_status = ? where email = ?;";
         $conn = $this->connect();
         $stmt = mysqli_stmt_init($conn);
+
+        $status = 0;
 
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             $this->closeConnection($stmt, $conn);
             return CONNECTION_FAILED;
         } else {
             $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-            mysqli_stmt_bind_param($stmt, "ss", $hashedPassword, $growerEmail);
+            mysqli_stmt_bind_param($stmt, "sis", $hashedPassword, $status, $growerEmail);
             if (mysqli_stmt_execute($stmt)) {
                 $this->closeConnection($stmt, $conn);
                 return PASSWORD_UPDATE_SUCCESS;

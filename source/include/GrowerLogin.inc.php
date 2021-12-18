@@ -15,9 +15,13 @@ if (isset($_POST['grower-login-submit'])) {
         $growerLoginObject = new GrowerLogin();
         $loginResponse = $growerLoginObject->validateLoginDetails($email, $password);
 
-        if ($loginResponse == LOGIN_SUCCESSFUL) {
-            header("Location:../grower-ui/home.php");
-        } else {
+        if ($loginResponse == NEW_MEMBER) {
+            header("Location:../grower-ui/changePassword.php");
+        } 
+        else if($loginResponse == LOGIN_SUCCESSFUL){
+            header("Location:../main-ui/main-menu.php");
+        }
+        else {
             header("Location:../grower-ui/index.php?growerLoginStatus=unauthorized");
         }
         unset($growerLoginObject);

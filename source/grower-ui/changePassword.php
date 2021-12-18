@@ -1,3 +1,24 @@
+<?php
+    session_start();
+
+    if(!isset($_SESSION['growerId'])) // no session exists
+    {
+        header("Location:index.php?growerLoginStatus=unauthorized");
+        exit();
+    }else
+    {
+        require_once "../phpClasses/HandleGrowerSession.class.php";
+        $obj = new HandleGrowerSession();
+        $res = $obj-> checkSession($_SESSION['sessionId'], $_SESSION['growerId']);
+        unset($obj);
+
+        if($res != SESSION_AVAILABLE){
+            header("Location:index.php?growerLoginStatus=logout");
+            exit();
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,15 +42,15 @@
         <div class="form-container">
             <form action="../include/PasswordChange.inc.php" method="post">
                 <div>
-                    <?php if (isset($_GET['passwordChangeStatus'])) { ?>
-                        <?php if ($_GET['passwordChangeStatus'] == "invalid-inputs") { ?>
-                            <p class="password-change-response">Please provide valid inputs</p>
-                        <?php } else if ($_GET['passwordChangeStatus'] == "unauthorized") { ?>
-                            <p class="password-change-response">Unauthorized Access</p>
-                        <?php } ?>
-                    <?php } else { ?>
-                        <p class="password-change-response"></p>
-                    <?php } ?>
+                    <?php 
+                    if (isset($_GET['passwordChangeStatus'])) {
+                        if ($_GET['passwordChangeStatus'] == "invalid-inputs"){
+                            echo '<p class="password-change-response">Please provide valid inputs</p>';
+                        }else if ($_GET['passwordChangeStatus'] == "unauthorized"){
+                            echo '<p class="password-change-response">Unauthorized Access</p>';
+                        }
+                    }
+                    ?>
                 </div>
                 <div class="form-group text-field-container">
                     <label for="emailAddress" class="text-field-label">Email Address</label>
@@ -71,11 +92,13 @@
                         Change Password
                     </button>
                 </div>
+                <!--
                 <div class="login-button-container">
                     <a href="home.php">
                         Back to Home
                     </a>
-                </div>
+                </div>-->
+                
             </form>
         </div>
     </div>

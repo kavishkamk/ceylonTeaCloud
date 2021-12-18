@@ -500,7 +500,7 @@ ADD repott_year INT NOT NULL;
 ALTER TABLE monthly_report
 ADD repott_month INT NOT NULL;
 
--------------------------------------------------------------------
+-- -----------------------------------------------------------------
 
 -- Session table for Grower
 CREATE TABLE IF NOT EXISTS grower_session
@@ -510,3 +510,9 @@ CREATE TABLE IF NOT EXISTS grower_session
     session_expire DATETIME     NOT NULL,
     PRIMARY KEY (grower_id)
 );
+
+-- a column is added to identify the grower
+-- whether he is a new member or not
+
+ALTER TABLE grower 
+ADD new_member_status tinyint(1) NOT NULL DEFAULT 1;
