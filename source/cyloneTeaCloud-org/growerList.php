@@ -24,6 +24,12 @@
             <main class="grower-main">
                 <!-- set grower list -->
                 <div class="grower-table" style="grid-column:1 / 2; grid-row: 1 / 3;">
+                <div > 
+                    <form>
+                        <button class="log-out-btn" formaction="growerRegister.php">Add</button>
+                    </form>
+                </div>
+                <div class="grower-table-s">
                     <table>
                         <thead>
                             <caption>Grower List</caption>
@@ -50,6 +56,7 @@
                             ?>
                         </tbody>
                     </table>
+                </div>
                 </div>
             </main>
 
