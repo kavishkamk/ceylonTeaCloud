@@ -125,6 +125,64 @@
             }
         }
 
+        public function getFertilizerPrice($type){
+            $sqlQ = "SELECT type_id, price_of_1kg FROM fertilizer_type WHERE fertilizer_type=?;";
+            $conn = $this->connect();
+            $stmt = mysqli_stmt_init($conn);
+
+            if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+                $this->connclose($stmt, $conn);
+                return "sqlerror";
+                exit();
+            }
+            else{
+                mysqli_stmt_bind_param($stmt, "s", $type);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+
+                if($row = mysqli_fetch_assoc($result)){
+                    $arr[] = $row;
+                    $this->connclose($stmt, $conn);
+                    return  $arr;
+                    exit();
+                }
+                else{
+                    $this->connclose($stmt, $conn);
+                    return "noreport";
+                    exit();
+                }
+            }
+        }
+
+        public function getTeaPrice($type){
+            $sqlQ = "SELECT type_id, price_of_1kg FROM tea_type WHERE tea_type=?;";
+            $conn = $this->connect();
+            $stmt = mysqli_stmt_init($conn);
+
+            if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+                $this->connclose($stmt, $conn);
+                return "sqlerror";
+                exit();
+            }
+            else{
+                mysqli_stmt_bind_param($stmt, "s", $type);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+
+                if($row = mysqli_fetch_assoc($result)){
+                    $arr[] = $row;
+                    $this->connclose($stmt, $conn);
+                    return  $arr;
+                    exit();
+                }
+                else{
+                    $this->connclose($stmt, $conn);
+                    return "noreport";
+                    exit();
+                }
+            }
+        }
+
         private function connclose($stmt, $conn){
             mysqli_stmt_close($stmt);
             mysqli_close($conn);
