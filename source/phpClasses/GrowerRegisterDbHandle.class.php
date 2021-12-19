@@ -51,10 +51,32 @@ require_once "DbConnection.class.php";
                 $var1 = 1;
                 mysqli_stmt_bind_param($stmt, "ssssssisi", $fname, $createTime, $mail, $tele, $address, $propic, $var1 , $hashedPwd, $var1);
                 mysqli_stmt_execute($stmt);
+                $detailsInsertId = mysqli_stmt_insert_id($stmt);
                 $this->connclose($stmt, $conn);
+                $this->updateMemberTable($detailsInsertId);
                 return "Success";
                 exit();
 
+            }
+        }
+
+        private function updateMemberTable($groid){
+            $sqlQ = "INSERT INTO member(factory_id, grower_id) VALUES(?,?);";
+            $conn = $this->connect();
+            $stmt = mysqli_stmt_init($conn);
+
+            if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+                $this->connclose($stmt, $conn);
+                return "sqlerror";
+                exit();
+            }
+            else{
+                $comId = 1;
+                mysqli_stmt_bind_param($stmt, "ii", $comId, $groid);
+                mysqli_stmt_execute($stmt);
+                $this->connclose($stmt, $conn);
+                return "Success";
+                exit();
             }
         }
 
