@@ -40,13 +40,19 @@
             <div class="container">
                 <h1 class="home-title">Notifications</h1>
 
-                <div class="grower-home-options-container" id= "notif-list">
+                <div class="grower-home-options-container" id= "notif-list" style="max-height: 500px; overflow-y: scroll;">
                     <!--
                     <div class="notif-item">
                         <div class="date">2021-01-15</div>
                         <div class="msg">December Monthly report added</div>
                     </div>-->
 
+                </div>
+
+                <div class= "btn-out">
+                    <a href= "main-menu.php" style="text-decoration: none;">
+                        <div class="report-item" id= "back-btn">Back</div>
+                    </a>
                 </div>
             </div>
         </div>

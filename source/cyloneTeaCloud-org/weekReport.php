@@ -88,7 +88,7 @@
             <div style="grid-column:2 / 3;" class="rec-table">
                 <table>
                     <thead>
-                        <caption>Report Details Details</caption>
+                        <caption>Report Details</caption>
                     </thead>
                     <tbody>
                         <?php
@@ -119,7 +119,7 @@
                             </tr>
                             <tr>
                                 <td> 6 </td>
-                                <td>Waight Weight (kg)</td>
+                                <td>Water Weight (kg)</td>
                                 <td>'.$reqRes['water_weigth'].'</td>
                             </tr>
                             <tr>
