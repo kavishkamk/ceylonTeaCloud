@@ -40,12 +40,18 @@
             <div class="container">
                 <h1 class="home-title">Monthly Reports</h1>
 
-                <div class="grower-home-options-container">
+                <div class="grower-home-options-container" style="max-height: 400px; overflow-y: scroll;">
                     <!--
                     <div class="month-item">
                         <div class="date">2021 January</div>
                     </div>-->
                     
+                </div>
+
+                <div class= "btn-out">
+                    <a href= "main-menu.php" style="text-decoration: none;">
+                        <div class="report-item" id= "back-btn">Back</div>
+                    </a>
                 </div>
             </div>
         </div>

@@ -43,7 +43,7 @@ body {
     text-align: center;
     color: white;
     font-weight: bold;
-    margin-bottom: auto;
+    margin-bottom: 15px;
     height: 40px;
 }
 
@@ -51,7 +51,8 @@ body {
 .grower-home-options-container {
     justify-content: space-around;
     align-items: center;
-    height: 600px;
+    height: 500px;
+    margin-top: 20px;
 }
 
 
@@ -129,4 +130,32 @@ body {
 
 /********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
 @media (max-width: 479px) {
+}
+
+#back-btn{
+    justify-content: center;
+    background-color: rgb(167, 164, 164);
+    color: black;
+    margin-bottom: 10px;
+    
+}
+
+.btn-out{
+    margin: 50px 50px 50px 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.report-item{
+    display: flex;
+    width: 170px;
+    height: auto;
+    background-color: #91eea8dc;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 15px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
 }
