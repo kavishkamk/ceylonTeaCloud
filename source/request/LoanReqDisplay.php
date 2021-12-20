@@ -1,6 +1,23 @@
 <?php
     session_start();
 
+    if(!isset($_SESSION['growerId'])) // no session exists
+    {
+        header("Location:../grower-ui/index.php?growerLoginStatus=unauthorized");
+        exit();
+    }else
+    {
+        require_once "../phpClasses/HandleGrowerSession.class.php";
+        $obj = new HandleGrowerSession();
+        $res = $obj-> checkSession($_SESSION['sessionId'], $_SESSION['growerId']);
+        unset($obj);
+
+        if($res != SESSION_AVAILABLE){
+            header("Location:../grower-ui/index.php?growerLoginStatus=logout");
+            exit();
+        }
+    }
+
     if(isset($_POST['sub-fer'])){
         $hreason = $_POST['hreason'];
         $reason = $_POST['reason'];
@@ -8,12 +25,12 @@
         $amount = $_POST['num-amount'];
 
         if(empty($hreason) || empty($reason) || empty($nMonth) || empty($amount)){
-            header("Location:loanRequset.php?res=empty"); // empty field
+            header("Location:loanRequest.php?res=empty"); // empty field
             exit();
         }
     }
     else{
-        header("Location:loanRequset.php"); // no session
+        header("Location:loanRequest.php"); // no session
         exit();
     }
 ?>
@@ -32,7 +49,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="../css/weekly-reports-list.css"/>
         <link rel="stylesheet" href="../css/main-menu.css"/>
-        <title>Sendeing Requsets</title>
+        <title>Sending Requests</title>
     </head>
 
     <body>
