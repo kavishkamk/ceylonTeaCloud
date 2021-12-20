@@ -8,8 +8,26 @@
     text-align: center;
     color: white;
     background-color: rgb(106, 212, 79);
+    padding: 3px 0;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 #back-btn{
     background-color: rgb(167, 167, 167);
+}
+
+.login-response{
+    text-align: center;
+    color: white;
+    background-color: rgb(207, 104, 104);
+    padding: 3px 0;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+textarea{
+    resize: none;
+    width: 270px;
+
 }

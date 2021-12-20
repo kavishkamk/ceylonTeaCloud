@@ -43,9 +43,9 @@
                 <?php 
                     if (isset($_GET['res'])){
                         if ($_GET['res'] == "sendss"){
-                            echo '<p class="ss-response">Requset Send Success</p>';
+                            echo '<p class="ss-response">Request is sent to the factory admin</p>';
                         }else if ($_GET['res'] == "sendf") {
-                            echo '<p class="login-response">Requset Fail</p>';
+                            echo '<p class="login-response">Request is failed to send</p>';
                         }
                     }
                 ?>  

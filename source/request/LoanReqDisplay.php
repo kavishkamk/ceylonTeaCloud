@@ -49,6 +49,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="../css/weekly-reports-list.css"/>
         <link rel="stylesheet" href="../css/main-menu.css"/>
+        <link rel="stylesheet" href="../css/gorReq.css"/>
         <title>Sending Requests</title>
     </head>
 
@@ -62,13 +63,13 @@
                         echo '<div><label for="gid">ID No : '.sprintf("%04d", $_SESSION["growerId"]).'</label>';
                         echo '<input type="hidden" name="gid" value="'.$_SESSION["growerId"].'"></div>';
 
-                        echo '<div><label for="nmonth">Number of Month : '.$nMonth.'</label>';
+                        echo '<div><label for="nmonth">No. of months to pay : '.$nMonth.'</label>';
                         echo '<input type="hidden" name="nmonth" value="'.$nMonth.'"></div>';
 
                         echo '<div><label for="amount">Amount (Rs.) : '.$amount.'</label>';
                         echo '<input type="hidden" name="amount" value="'.$amount.'"></div>';
 
-                        echo '<div><label>Loan Header : </label><br><textarea rows="2" cols="40" readonly>'.$hreason.'</textarea>';
+                        echo '<div><label></label><br><textarea rows="2" cols="40" readonly>'.$hreason.'</textarea>';
                         echo '<input type="hidden" name="hreason" value="'.$hreason.'"></div>';
 
                         echo '<div><label>Reason : </label><br><textarea rows="4" cols="40" readonly>'.$reason.'</textarea>';
