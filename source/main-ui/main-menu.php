@@ -49,7 +49,7 @@
                     <a style="text-decoration: none" href='monthly-reports.php'>
                         <div class="grower-home-option">Monthly Reports</div>
                     </a>
-                    <a style="text-decoration: none" href='#'>
+                    <a style="text-decoration: none" href='../request/sendRequest.php'>
                         <div class="grower-home-option">Sending a Request</div>
                     </a>
                     <a style="text-decoration: none" href='#'>
