@@ -1,5 +1,22 @@
 <?php
     session_start();
+
+    if(!isset($_SESSION['growerId'])) // no session exists
+    {
+        header("Location:../grower-ui/index.php?growerLoginStatus=unauthorized");
+        exit();
+    }else
+    {
+        require_once "../phpClasses/HandleGrowerSession.class.php";
+        $obj = new HandleGrowerSession();
+        $res = $obj-> checkSession($_SESSION['sessionId'], $_SESSION['growerId']);
+        unset($obj);
+
+        if($res != SESSION_AVAILABLE){
+            header("Location:../grower-ui/index.php?growerLoginStatus=logout");
+            exit();
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +34,7 @@
         <link rel="stylesheet" href="../css/weekly-reports-list.css"/>
         <link rel="stylesheet" href="../css/main-menu.css"/>
         <link rel="stylesheet" href="../css/gorReq.css"/>
-        <title>Loan Requsets</title>
+        <title>Loan Request</title>
     </head>
 
     <body>
@@ -34,22 +51,22 @@
                         }
                     ?>
                 </div>
-                <h1 class="home-title">Loan Requset</h1>
+                <h1 class="home-title">Loan Request</h1>
                 <form action="LoanReqDisplay.php" method="post">
                     <div class="grower-home-options-container">
                         <div class="form-div">
                             <label for="num-amount">Amount (Rs.) &nbsp&nbsp: &nbsp&nbsp </label>
                             <?php
                                 if(isset($_GET['resed'])){
-                                    echo '<input type="number" name="num-amount" value="'.$_GET["amount"].'">';
+                                    echo '<input type="number" name="num-amount" id="amount" value="'.$_GET["amount"].'">';
                                 }
                                 else{
-                                    echo '<input type="number" name="num-amount">';
+                                    echo '<input type="number" name="num-amount" id="amount">';
                                 }
                             ?>
                         </div>
                         <div class="form-div">
-                            <label for="num-month">Number of month &nbsp&nbsp: &nbsp&nbsp </label>
+                            <label for="num-month">No. of months to pay: </label>
                             <?php
                                 if(isset($_GET['resed'])){
                                     echo '<input type="number" name="num-month" value="'.$_GET["nmonth"].'">';
@@ -60,18 +77,17 @@
                             ?>
                         </div>
                         <div class="form-div">
-                            <label for="hreason">Loan Head &nbsp&nbsp: &nbsp&nbsp </label>
                             <?php
                                 if(isset($_GET['resed'])){
-                                    echo '<input type="text" name="hreason" value="'.$_GET["hreason"].'">';
+                                    echo '<input type="hidden" name="hreason" value="'.$_GET["hreason"].'">';
                                 }
                                 else{
-                                    echo '<input type="text" name="hreason">';
+                                    echo '<input type="hidden" name="hreason" id="head" value ="">';
                                 }
                             ?>
                         </div>
                         <div class="form-div">
-                            <label for="reason">Loan Head &nbsp&nbsp: &nbsp&nbsp </label>
+                            <label for="reason">Reason &nbsp&nbsp: &nbsp&nbsp </label>
                             <?php
                                 if(isset($_GET['resed'])){
                                     echo '<textarea id="ta" name="reason" rows="4" cols="50"></textarea>';
@@ -84,11 +100,11 @@
                         </div>
                         
                         <div>
-                            <button type="submit" name="sub-fer" class="grower-home-option">Request</button>
+                            <button type="submit" onclick="setHeader()" name="sub-fer" class="grower-home-option">Request</button>
                         </div>
                         
                         <a style="text-decoration: none" href='sendRequest.php'>
-                            <div class="grower-home-option">Back</div>
+                            <div class="grower-home-option" id= "back-btn">Back</div>
                         </a>
                     </div>
                 </form>
@@ -96,3 +112,11 @@
         </div>
     </body>
 </html>
+
+<script type="text/javascript">
+    function setHeader() {
+        var amount = document.getElementById("amount").value;
+        var str = "Request for a loan of Rs." + amount + ".00/-";
+        document.getElementById('head').value = str;
+    }
+</script>

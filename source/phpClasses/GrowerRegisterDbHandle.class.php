@@ -45,7 +45,7 @@ require_once "DbConnection.class.php";
             else{
                 $hashedPwd = password_hash($uPwd, PASSWORD_DEFAULT); // hashing password
                 //rename user profile emage with username if user upload image
-                $propic = "unknownPerson.png";
+                $propic = "unknownPerson.jpg";
                 $createTime = date("Y-n-d H:i:s"); // acout cration date and time
                 $userotp = rand(100000 , 999999); // genatate OTP code
                 $var1 = 1;

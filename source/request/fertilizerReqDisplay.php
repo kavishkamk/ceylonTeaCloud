@@ -1,5 +1,23 @@
 <?php
+
     session_start();
+
+    if(!isset($_SESSION['growerId'])) // no session exists
+    {
+        header("Location:../grower-ui/index.php?growerLoginStatus=unauthorized");
+        exit();
+    }else
+    {
+        require_once "../phpClasses/HandleGrowerSession.class.php";
+        $obj = new HandleGrowerSession();
+        $res = $obj-> checkSession($_SESSION['sessionId'], $_SESSION['growerId']);
+        unset($obj);
+
+        if($res != SESSION_AVAILABLE){
+            header("Location:../grower-ui/index.php?growerLoginStatus=logout");
+            exit();
+        }
+    }
 
     if(isset($_POST['sub-fer'])){
         $type = $_POST['fertilizer-name'];
@@ -16,6 +34,14 @@
         header("Location:fertilizerRequset.php"); // no session
         exit();
     }
+    
+
+    /*
+    $type = "Uria";
+    $date = "2021-02-29";
+    $nMonth = 3;
+    $amount = 5;
+    */
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +58,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="../css/weekly-reports-list.css"/>
         <link rel="stylesheet" href="../css/main-menu.css"/>
-        <title>Sendeing Requsets</title>
+        <title>Sending Requests</title>
     </head>
 
     <body>
@@ -40,21 +66,24 @@
             <div class="container">
                 <h1 class="home-title">Fertilizer Request</h1>
                 <form action="../include/fertilizeReq.inc.php" method="post">
-                <div class="grower-home-options-container">
+                <div class="req-options-container">
                     <?php
-                        echo '<div><label for="gid">ID No : '.sprintf("%04d", $_SESSION["growerId"]).'</label>';
+                        echo '<div class= "words"><label for="gid">ID No : '.sprintf("%04d", $_SESSION["growerId"]).'</label>';
                         echo '<input type="hidden" name="gid" value="'.$_SESSION["growerId"].'"></div>';
 
-                        echo '<div><label for="ftype">Fertilizer type : '.$type.'</label>';
+                        //echo '<div class= "words"><label for="gid">ID No : 0001</label>';
+
+
+                        echo '<div class= "words"><label for="ftype">Fertilizer type : '.$type.'</label>';
                         echo '<input type="hidden" name="ftype" value="'.$type.'"></div>';
 
-                        echo '<div><label for="dayw">Wanted Date : '.$date.'</label>';
+                        echo '<div class= "words"><label for="dayw">Required Date : '.$date.'</label>';
                         echo '<input type="hidden" name="dayw" value="'.$date.'"></div>';
 
-                        echo '<div><label for="nmonth">Number of Month : '.$nMonth.'</label>';
+                        echo '<div class= "words"><label for="nmonth">No. of Months to pay : '.$nMonth.'</label>';
                         echo '<input type="hidden" name="nmonth" value="'.$nMonth.'"></div>';
 
-                        echo '<div><label for="amount">Amount (kg) : '.$amount.'</label>';
+                        echo '<div class= "words"><label for="amount">Amount (kg) : '.$amount.'</label>';
                         echo '<input type="hidden" name="amount" value="'.$amount.'"></div>';
 
                         require_once "../phpClasses/Items.class.php";
@@ -62,7 +91,7 @@
                         $price = $priObj -> getFertilizerPrice($type);
                         unset($priObj);
 
-                        echo '<div><label for="pri">Price : Rs.'.($price[0]["price_of_1kg"] * $amount).'</label>';
+                        echo '<div class= "words"><label for="pri">Price : Rs.'.($price[0]["price_of_1kg"] * $amount).'</label>';
                         echo '<input type="hidden" name="pri" value="'.($price[0]["price_of_1kg"] * $amount).'"></div>';
 
                         echo '<input type="hidden" name="fid" value="'.($price[0]["type_id"]).'"></div>';

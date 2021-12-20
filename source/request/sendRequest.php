@@ -1,5 +1,22 @@
 <?php
     session_start();
+
+    if(!isset($_SESSION['growerId'])) // no session exists
+    {
+        header("Location:../grower-ui/index.php?growerLoginStatus=unauthorized");
+        exit();
+    }else
+    {
+        require_once "../phpClasses/HandleGrowerSession.class.php";
+        $obj = new HandleGrowerSession();
+        $res = $obj-> checkSession($_SESSION['sessionId'], $_SESSION['growerId']);
+        unset($obj);
+
+        if($res != SESSION_AVAILABLE){
+            header("Location:../grower-ui/index.php?growerLoginStatus=logout");
+            exit();
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +34,7 @@
         <link rel="stylesheet" href="../css/weekly-reports-list.css"/>
         <link rel="stylesheet" href="../css/main-menu.css"/>
         <link rel="stylesheet" href="../css/gorReq.css"/>
-        <title>Sendeing Requsets</title>
+        <title>Sending Requests</title>
     </head>
 
     <body>
@@ -26,26 +43,26 @@
                 <?php 
                     if (isset($_GET['res'])){
                         if ($_GET['res'] == "sendss"){
-                            echo '<p class="ss-response">Requset Send Success</p>';
+                            echo '<p class="ss-response">Request is sent to the factory admin</p>';
                         }else if ($_GET['res'] == "sendf") {
-                            echo '<p class="login-response">Requset Fail</p>';
+                            echo '<p class="login-response">Request is failed to send</p>';
                         }
                     }
                 ?>  
-                <h1 class="home-title">Send Requset</h1>
+                <h1 class="home-title">Sending Requests</h1>
 
                 <div class="grower-home-options-container">
                     <a style="text-decoration: none" href='fertilizerRequset.php'>
                         <div class="grower-home-option">Fertilizer</div>
                     </a>
                     <a style="text-decoration: none" href='TeaRequset.php'>
-                        <div class="grower-home-option">Tea</div>
+                        <div class="grower-home-option">Tea Packets</div>
                     </a>
                     <a style="text-decoration: none" href='loanRequest.php'>
                         <div class="grower-home-option">Loan</div>
                     </a>
                     <a style="text-decoration: none" href='../main-ui/main-menu.php'>
-                        <div class="grower-home-option">Back</div>
+                        <div class="grower-home-option" id= "back-btn">Back</div>
                     </a>
                 </div>
             </div>

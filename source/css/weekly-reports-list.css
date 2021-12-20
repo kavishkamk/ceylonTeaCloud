@@ -56,6 +56,11 @@ body {
     height: 600px;
 }
 
+.req-options-container{
+    justify-content: space-around;
+    align-items: center;
+    height: 306px;
+}
 
 .report-item{
     display: flex;
@@ -84,6 +89,13 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.words{
+    padding-top: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /********** Large devices only **********/
 @media (min-width: 1200px) {

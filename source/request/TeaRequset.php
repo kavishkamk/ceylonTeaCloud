@@ -1,5 +1,22 @@
 <?php
     session_start();
+
+    if(!isset($_SESSION['growerId'])) // no session exists
+    {
+        header("Location:../grower-ui/index.php?growerLoginStatus=unauthorized");
+        exit();
+    }else
+    {
+        require_once "../phpClasses/HandleGrowerSession.class.php";
+        $obj = new HandleGrowerSession();
+        $res = $obj-> checkSession($_SESSION['sessionId'], $_SESSION['growerId']);
+        unset($obj);
+
+        if($res != SESSION_AVAILABLE){
+            header("Location:../grower-ui/index.php?growerLoginStatus=logout");
+            exit();
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +34,7 @@
         <link rel="stylesheet" href="../css/weekly-reports-list.css"/>
         <link rel="stylesheet" href="../css/main-menu.css"/>
         <link rel="stylesheet" href="../css/gorReq.css"/>
-        <title>Fertilizer Requsets</title>
+        <title>Tea Request</title>
     </head>
 
     <body>
@@ -27,14 +44,14 @@
                     <?php 
                         if (isset($_GET['res'])){
                             if ($_GET['res'] == "empty"){
-                                echo '<p class="login-response">Please Fill All Details</p>';
+                                echo '<p class="login-response">Please fill all the details</p>';
                             }else if ($_GET['res'] == "unauthorized") {
                                 echo '<p class="login-response">Unauthorized Access</p>';
                             }
                         }
                     ?>
                 </div>
-                <h1 class="home-title">Tea Requset</h1>
+                <h1 class="home-title">Tea Request</h1>
                 <form action="teaReqDisplay.php" method="post">
                     <div class="grower-home-options-container">
                         <?php
@@ -60,7 +77,7 @@
                             echo "<script>document.getElementById('tea-list-s').innerHTML = '".$setval."';</script>";
                         ?>
                         <div class="form-div">
-                            <label for="w-date">Wanted date &nbsp&nbsp: &nbsp&nbsp </label>
+                            <label for="w-date">Required Date &nbsp&nbsp: &nbsp&nbsp </label>
                             <?php
                                 if(isset($_GET['resed'])){
                                     echo '<input type="date" name="w-date" value="'.$_GET["date"].'">';
@@ -71,7 +88,7 @@
                             ?>
                         </div>
                         <div class="form-div">
-                            <label for="num-month">Number of month &nbsp&nbsp: &nbsp&nbsp </label>
+                            <label for="num-month">No. of months to pay &nbsp: &nbsp&nbsp </label>
                             <?php
                                 if(isset($_GET['resed'])){
                                     echo '<input type="number" name="num-month" value="'.$_GET["nmonth"].'">';
@@ -82,7 +99,7 @@
                             ?>
                         </div>
                         <div class="form-div">
-                            <label for="num-amount">Number of Amount(kg) &nbsp&nbsp: &nbsp&nbsp </label>
+                            <label for="num-amount">Amount (kg) &nbsp&nbsp: &nbsp&nbsp </label>
                             <?php
                                 if(isset($_GET['resed'])){
                                     echo '<input type="number" name="num-amount" value="'.$_GET["amount"].'">';
@@ -97,7 +114,7 @@
                         </div>
                         
                         <a style="text-decoration: none" href='sendRequest.php'>
-                            <div class="grower-home-option">Back</div>
+                            <div class="grower-home-option" id= "back-btn">Back</div>
                         </a>
                     </div>
                 </form>
