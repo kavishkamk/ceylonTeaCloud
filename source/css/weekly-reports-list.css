@@ -224,3 +224,50 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+table.monthly{
+    position: relative;
+    font-size: 13px;
+    border: 1.5px solid #000000;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+table, table td{
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background-color: #fff;
+    border-collapse: separate;
+    border: 1.2px solid #000000;
+    background-color: rgb(218, 218, 218);
+}
+
+table td{
+    padding: 2px 4px 2px 4px;
+}
+
+.row1{
+    width: 250px;
+    margin-left: 30px;
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.ss{
+    width: 80px;
+    margin-left: 3px;
+}
+
+.cap{
+    color:#4b4d4cdc; 
+    font-weight:bold; 
+    font-size: 15px; 
+    margin-left: 20px; 
+    margin-top: -15px;
+}
+
+.table-collection{
+    margin-top: -30px;
+}

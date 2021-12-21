@@ -16,7 +16,7 @@
         $other_deduction = $res['weightOfDeduction'];
 
         $net_weight = $obj-> get_net_weight($id);
-
+        unset($obj);
     }
 ?>
 
@@ -90,22 +90,3 @@
         </div>
     </body>
 </html>
-
-<script type="text/javascript">
-
-$(document).ready(function()
-{
-    /**set GET into hidden form
-    getelementbyId(rec_id)
-    */
-    //load_report_data(rec_id);  
-});
-
-function load_report_data(id)
-{
-    /**
-    ajax call to get report data from the DB
-    success function ==> view data
-    */
-}
-</script>
