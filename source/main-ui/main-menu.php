@@ -38,7 +38,16 @@
     <body>
         <div class="main-container">
             <div class="container">
-                <h1 class="home-title">Menu</h1>
+
+            <center>
+                <a href="../grower-ui/about.php">
+                    <div id= "logo">
+                        <img src="../images/ceylon tea cloud-small.png">
+                    </div>
+                </a>   
+            </center>
+
+                <h1 class="home-title" style="margin-top: 0px;">Menu</h1>
                 <div class="grower-home-options-container">
                     <a style="text-decoration: none" href='notifications.php'>
                         <div class="grower-home-option">Notifications</div>

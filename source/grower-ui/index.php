@@ -16,8 +16,19 @@
 <body>
 <div class="main-container">
     <div class="container">
+
+        <center>
+            <a href="../grower-ui/about.php">
+                <div id= "logo">
+                    <img src="../images/ceylon tea cloud-small.png">
+                </div>
+            </a>   
+        </center>
+
         <h1 class="login-title">Log In</h1>
+
         <div class="form-container">
+
             <form action="../include/GrowerLogin.inc.php" method="post">
                 <div>
                     <?php 

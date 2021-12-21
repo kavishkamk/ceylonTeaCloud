@@ -38,6 +38,15 @@
     <body>
         <div class="main-container">
             <div class="container">
+
+                <center>
+                    <a href="../grower-ui/about.php">
+                        <div id= "logo">
+                            <img src="../images/ceylon tea cloud-small.png">
+                        </div>
+                    </a>   
+                </center>
+
                 <h1 class="home-title">Notifications</h1>
 
                 <div class="grower-home-options-container" id= "notif-list" style="max-height: 500px; overflow-y: scroll;">
