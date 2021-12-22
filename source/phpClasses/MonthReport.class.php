@@ -408,13 +408,19 @@
                     $memId = $this->getMemberID($gro_id);
                     if($memId != "sqlerror"){
                         $this->set_member_report_map($detailsInsertId, $memId);
-                        $this->set_loneId($loneId, $detailsInsertId);
-                        $this->set_teaId($teaid, $detailsInsertId);
-                        $this->set_fertilizerId($fertilizeId, $detailsInsertId);
+                        if($loneId != 0){
+                            $this->set_loneId($loneId, $detailsInsertId);
+                            $this->updateLoneMonthCount($loneId);
+                        }
+                        if($teaid != 0){
+                            $this->set_teaId($teaid, $detailsInsertId);
+                            $this->updateTeaMonthCount($teaid);
+                        }
+                        if($fertilizeId != 0){
+                            $this->set_fertilizerId($fertilizeId, $detailsInsertId);
+                            $this->updateFertilizeMonthCount($fertilizeId);
+                        }
                         $this->set_weekReportId($report_id, $detailsInsertId);
-                        $this->updateLoneMonthCount($loneId);
-                        $this->updateTeaMonthCount($teaid);
-                        $this->updateFertilizeMonthCount($fertilizeId);
                     }
                     return 1;
                     exit();

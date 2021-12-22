@@ -15,6 +15,16 @@
         $year = $_POST['r-year'];
         $month = $_POST['r-month'];
 
+        if(empty($teaid)){
+            $teaid = 0;
+        }
+        if(empty($fertilizeId)){
+            $fertilizeId = 0;
+        }
+        if(empty($loneId)){
+            $loneId = 0;
+        }
+
         if(empty($finalWait) || empty($priceof1kg) || empty($gro_id)){
             header("Location:../cyloneTeaCloud-org/MonthdataEnter.php?result=empty"); // no session
             exit();

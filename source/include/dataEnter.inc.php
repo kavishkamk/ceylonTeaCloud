@@ -18,6 +18,13 @@
         $tempODW = $_POST['other-ded-weight'];
         $reason = $_POST['reason'];
 
+        if(empty($_POST['other-ded-weight'])){
+            $tempODW = 0;
+        }
+        if(empty($_POST['reason'])){
+            $reason = "-";
+        }
+
         if(empty($inputdate) || empty($groId) || empty($numSac) || empty($fullWeight)){
             header("Location:../cyloneTeaCloud-org/dataEnter.php?result=empty");
             exit();
@@ -54,15 +61,12 @@
                 else{
                     $dedRes = $obj->enterDeductionData($res, $totalWeightSack, $waterWeithg, $nonStdLeaves);
                     if($dedRes != "sqlerror"){
-                        if(!empty($_POST['other-ded-weight'])){
-                            $otherRes = $obj->addOtherDeduction($dedRes, $reason, $otherDeductionWeight);
-                        }
+                        
+                        $otherRes = $obj->addOtherDeduction($dedRes, $reason, $otherDeductionWeight);
 
                         $netRes = $obj -> setNetWeight($res, $finalWeight);
 
-                        if(!empty($_POST['other-ded-weight'])){
-                            $obj -> set_net_waight_other_ded_map($netRes, $otherRes);
-                        }
+                        $obj -> set_net_waight_other_ded_map($netRes, $otherRes);
 
                         unset($obj);
                         header("Location:../cyloneTeaCloud-org/dataEnter.php?result=ss");
