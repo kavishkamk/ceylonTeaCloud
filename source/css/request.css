@@ -1,0 +1,16 @@
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 2px;
+}
+
+a {
+    color: black
+}
+
+.tab {
+    padding-bottom: 8px;
+    overflow-y: scroll;
+}
