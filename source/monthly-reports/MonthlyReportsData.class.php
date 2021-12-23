@@ -3,7 +3,52 @@
 require_once "../phpClasses/DbConnection.class.php";
 
 class MonthlyReportsData extends DbConnection{
+    
+    public function net_weight_data($id)
+    {
+        $sqlQ = "SELECT data_input.data_id, net_weight.weight 
+                FROM (((weekreportid 
+                INNER JOIN monthly_report ON monthly_report.report_id = weekreportid.month_report_id) 
+                INNER JOIN data_input ON weekreportid.week_report_id = data_input.data_id) 
+                INNER JOIN net_weight ON weekreportid.week_report_id = net_weight.data_id) 
+                WHERE monthly_report.report_id = ?;";
+        
+        $conn = $this->connect();
+        $stmt = mysqli_stmt_init($conn);
 
+        if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+            $this->connclose($stmt, $conn);
+            return "sqlerror";
+            exit();
+        }
+        else{
+            $arr = array();
+            mysqli_stmt_bind_param($stmt, "i", $id);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+
+            $count =0;
+            while($row = mysqli_fetch_assoc($result)){
+                if(!mysqli_stmt_prepare($stmt, $sqlQ)){
+                    $this->connclose($stmt, $conn);
+                    return "sqlerror";
+                    exit();
+                }
+                else{
+                    $idArr = array();
+                    mysqli_stmt_bind_param($stmt, "i", $id);
+                    mysqli_stmt_execute($stmt);
+                    $result = mysqli_stmt_get_result($stmt);
+                    while($row = mysqli_fetch_assoc($result)){
+                        $idArr[$row['data_id']] = $row;
+                    }
+                    $this->connclose($stmt, $conn);
+                    return $idArr;
+                    exit();
+                }
+            }
+        }
+    }
     public function get_monthly_reports($grower)
     {
         $q1 = "SELECT report_id, date, repott_year, repott_month FROM monthly_report WHERE grower_id = ?;";
@@ -163,8 +208,10 @@ class MonthlyReportsData extends DbConnection{
         }
     }
 
-    public function deduction_data($id)
+    public function deduction_data($weekly_id)
     {
+        //$sqlQ = "";
+        
         $sqlQ = "SELECT data_input.data_id, 
                     DATE(data_input.date) AS dayrec, 
                     data_input.total_weight,
@@ -204,34 +251,7 @@ class MonthlyReportsData extends DbConnection{
         }
     }
 
-    public function net_weight_data($id)
-    {
-        $sqlQ = "SELECT data_input.data_id, net_weight.weight FROM
-                (((monthly_report INNER JOIN weekreportid ON monthly_report.report_id = weekreportid.month_report_id)
-                INNER JOIN data_input ON weekreportid.week_report_id = data_input.data_id)
-                INNER JOIN net_weight ON data_input.data_id = net_weight.data_id) WHERE monthly_report.report_id = ?;";
-        
-        $conn = $this->connect();
-        $stmt = mysqli_stmt_init($conn);
-
-        if(!mysqli_stmt_prepare($stmt, $sqlQ)){
-            $this->connclose($stmt, $conn);
-            return "sqlerror";
-            exit();
-        }
-        else{
-            $idArr = array();
-            mysqli_stmt_bind_param($stmt, "i", $id);
-            mysqli_stmt_execute($stmt);
-            $result = mysqli_stmt_get_result($stmt);
-            while($row = mysqli_fetch_assoc($result)){
-                $idArr[$row['data_id']] = $row;
-            }
-            $this->connclose($stmt, $conn);
-            return $idArr;
-            exit();
-        }
-    }
+    
 
     private function connclose($stmt, $conn)
     {

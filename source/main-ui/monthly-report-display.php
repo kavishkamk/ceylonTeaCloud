@@ -14,6 +14,22 @@
 
         unset($obj);
     }
+
+    function debug_to_console($data) {
+        $output = $data;
+        if (is_array($output))
+            $output = implode(',', $output);
+    
+        echo "<script>console.log('" . $output . "' );</script>";
+    }
+
+    debug_to_console($res);
+    debug_to_console($tea[0]);
+    debug_to_console($loan[0]);
+    debug_to_console($fer[0]);
+    debug_to_console($ded);
+    debug_to_console($net[2]);
+
 ?>
 
 <!DOCTYPE html>
@@ -61,94 +77,135 @@
                     <br><br>
                     
                     <div class= "table-collection">
-                    <table class= "monthly">
-                        <thead>
-                            <caption class="cap">Tea Packets Requests</caption>
-                                <tr>
-                                    <td>No.</td>
-                                    <td>Item Name</td>
-                                    <td>Total Amount</td>
-                                    <td>Deduction</td>
-                                </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $count = 1;
-                                foreach($tea as $row){
-                                    echo '<tr>
-                                            <td>'.$count.'</td>
-                                            <td>'.$row["tea_type"].'</td>
-                                            <td>'.number_format($row["item_price"],2).'</td>
-                                            <td>'.number_format($row["monthly_ded"],2).'</td>
-                                        </tr>';
-                                    $count++;
-                                }
-                                /*
-                                echo '<tr>
-                                        <td>'.$count.'</td>
-                                        <td>type</td>
-                                        <td>Rs. 1000</td>
-                                        <td>Rs. 1000</td>
-                                    </tr>';
-                                */
-                            
-                            ?>
-                            
-                        </tbody>
-                    </table>
 
-                    <table class= "monthly">
-                        <thead>
-                            <caption class="cap">Fertilizer Requests</caption>
-                                <tr>
-                                    <td>No.</td>
-                                    <td>Item Name</td>
-                                    <td>Total Amount</td>
-                                    <td>Deduction</td>
-                                </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $count = 1;
-                                foreach($fer as $row){
+                        <!-- Tea Packets requests display -->
+                        <table class= "monthly">
+                            <thead>
+                                <caption class="cap">Tea Packets Requests</caption>
+                                    <tr>
+                                        <td>No.</td>
+                                        <td>Item Name</td>
+                                        <td>Total Amount</td>
+                                        <td>Deduction</td>
+                                    </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $count = 1;
+                                    foreach($tea as $row){
+                                        echo '<tr>
+                                                <td>'.$count.'</td>
+                                                <td>'.$row["tea_type"].'</td>
+                                                <td>'.number_format($row["item_price"],2).'</td>
+                                                <td>'.number_format($row["monthly_ded"],2).'</td>
+                                            </tr>';
+                                        $count++;
+                                    }
+                                    /*
                                     echo '<tr>
                                             <td>'.$count.'</td>
-                                            <td>'.$row["fertilizer_type"].'</td>
-                                            <td>'.number_format($row["item_price"],2).'</td>
-                                            <td>'.number_format($row["monthly_deduction"],2).'</td>
+                                            <td>type</td>
+                                            <td>Rs. 1000</td>
+                                            <td>Rs. 1000</td>
                                         </tr>';
-                                    $count++;
-                                }
-                            ?>
-                        </tbody>
-                    </table>
-
-                    <table class= "monthly">
-                        <thead>
-                            <caption class="cap">Loan Requests</caption>
-                                <tr>
-                                    <td>No.</td>
-                                    <td>Total Amount</td>
-                                    <td>Deduction</td>
-                                    <td>Reason</td>
-                                </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $count = 1;
-                                foreach($loan as $row){
-                                    echo '<tr>
-                                            <td>'.$count.'</td>
-                                            <td>'.number_format($row["amount"],2).'</td>
-                                            <td>'.number_format($row["monthly_ded"],2).'</td>
-                                            <td>'.$row["discription"].'</td>
-                                        </tr>';
-                                    $count++;
-                                }
-                            ?>
-                        </tbody>
-                    </table>
+                                    */
+                                
+                                ?>
+                                
+                            </tbody>
+                        </table>
+                        
+                        <!-- Fertilizer requests display -->
+                        <table class= "monthly">
+                            <thead>
+                                <caption class="cap">Fertilizer Requests</caption>
+                                    <tr>
+                                        <td>No.</td>
+                                        <td>Item Name</td>
+                                        <td>Total Amount</td>
+                                        <td>Deduction</td>
+                                    </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $count = 1;
+                                    foreach($fer as $row){
+                                        echo '<tr>
+                                                <td>'.$count.'</td>
+                                                <td>'.$row["fertilizer_type"].'</td>
+                                                <td>'.number_format($row["item_price"],2).'</td>
+                                                <td>'.number_format($row["monthly_deduction"],2).'</td>
+                                            </tr>';
+                                        $count++;
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                                    
+                        <!-- Loan requests display -->
+                        <table class= "monthly">
+                            <thead>
+                                <caption class="cap">Loan Requests</caption>
+                                    <tr>
+                                        <td>No.</td>
+                                        <td>Total Amount</td>
+                                        <td>Deduction</td>
+                                        <td>Reason</td>
+                                    </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $count = 1;
+                                    foreach($loan as $row){
+                                        echo '<tr>
+                                                <td>'.$count.'</td>
+                                                <td>'.number_format($row["amount"],2).'</td>
+                                                <td>'.number_format($row["monthly_ded"],2).'</td>
+                                                <td>'.$row["discription"].'</td>
+                                            </tr>';
+                                        $count++;
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
+
+                    <!-- weekly reports -->
+                    <table class= "monthly" style="font-size: 10px;">
+                        <thead>
+                            <caption class="cap">Weekly Reports</caption>
+                                <tr>
+                                    <td>No.</td>
+                                    <td>Date</td>
+                                    <td>Total Weight(kg)</td>
+                                    <td>Sack weight(kg)</td>
+                                    <td>Non-standard Leaves(kg)</td>
+                                    <td>Water Weight(kg)</td>
+                                    <td>Others</td>
+                                    <td>Others Deduction Weight(kg)</td>
+                                    <td>Net Weight(kg)</td>
+                                </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $count = 1;
+                                foreach($ded as $row){
+                                    echo '<tr>
+                                            <td>'.$count.'</td>
+                                            <td>'.$row["dayrec"].'</td>
+                                            <td>'.$row["total_weight"].'</td>
+                                            <td>'.$row["sack_waight"].'</td>
+                                            <td>'.$row["non_standard_leaves"].'</td>
+                                            <td>'.$row["water_weigth"].'</td>
+                                            <td>'.$row["reason"].'</td>
+                                            <td>'.$row["weightOfDeduction"].'</td>
+                                            <td>'.$net[$row["data_id"]]['weight'].'</td>
+                                        </tr>';
+                                    $count++;
+                                }
+                            ?>
+                        </tbody>
+                    </table>
                     
                 </div>
                 <center>

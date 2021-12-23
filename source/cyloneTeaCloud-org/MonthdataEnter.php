@@ -184,12 +184,12 @@
                                 $count = 0;
                                 foreach($teaRequsetArray as $reqpric){
                                     $teaRequsetPrive = $teaRequsetPrive + $reqpric[$count]['monthly_ded'];
-                                    $count++;
+                                    //$count++;
                                 }
                                 $count = 0;
                                 foreach($fertiliZeRequsetArray as $ferprice){
                                     $fertilizerReqPrice = $fertilizerReqPrice + $ferprice[$count]['monthly_deduction'];
-                                $count++;
+                                    //$count++;
                                 }
                                 foreach($loanDetails as $lonePri){
                                     $lonelId .= $lonePri['req_id'];

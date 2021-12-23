@@ -642,7 +642,7 @@
 
         private function set_teaId($lids, $detailsInsertId){
             $arr = explode("-", $lids);
-            $sqlQ = "INSERT INTO teaId(month_report_id, request_id) VALUES(?,?);";
+            $sqlQ = "INSERT INTO teaid(month_report_id, request_id) VALUES(?,?);";
             $conn = $this->connect();
             foreach($arr as $idlist){
                 if($idlist != NULL && $idlist != ""){
