@@ -61,10 +61,10 @@
                     <a style="text-decoration: none" href='../request/sendRequest.php'>
                         <div class="grower-home-option">Sending a Request</div>
                     </a>
-                    <a style="text-decoration: none" href='#'>
+                    <a style="text-decoration: none" href='../request/pendingRequest.php?tt=0'>
                         <div class="grower-home-option">Pending Requests</div>
                     </a>
-                    <a style="text-decoration: none" href='#'>
+                    <a style="text-decoration: none" href='../request/pendingRequest.php?tt=1'>
                         <div class="grower-home-option">Confirmed Requests</div>
                     </a>
                 </div>
