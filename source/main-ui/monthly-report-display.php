@@ -15,6 +15,7 @@
         unset($obj);
     }
 
+    /*
     function debug_to_console($data) {
         $output = $data;
         if (is_array($output))
@@ -22,13 +23,8 @@
     
         echo "<script>console.log('" . $output . "' );</script>";
     }
+    */
 
-    debug_to_console($res);
-    debug_to_console($tea[0]);
-    debug_to_console($loan[0]);
-    debug_to_console($fer[0]);
-    debug_to_console($ded);
-    debug_to_console($net[2]);
 
 ?>
 
@@ -199,7 +195,7 @@
                                             <td>'.$row["water_weigth"].'</td>
                                             <td>'.$row["reason"].'</td>
                                             <td>'.$row["weightOfDeduction"].'</td>
-                                            <td>'.$net[$row["data_id"]]['weight'].'</td>
+                                            <td>'.$net[$row["data_id"]]["weight"].'</td>
                                         </tr>';
                                     $count++;
                                 }

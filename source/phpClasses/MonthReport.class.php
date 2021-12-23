@@ -39,9 +39,10 @@
             INNER JOIN data_input ON weekreportid.week_report_id = data_input.data_id)
             INNER JOIN data_input_dedication_map ON data_input.data_id = data_input_dedication_map.data_id)
             INNER JOIN deduction ON data_input_dedication_map.deduction_id = deduction.ded_id)
-            INNER JOIN deduction_other_map ON deduction.ded_id = deduction_other_map.ded_id)
-            INNER JOIN deduction_others ON deduction_other_map.ded_other_id = deduction_others.ded_other_id)
+            LEFT JOIN deduction_other_map ON deduction.ded_id = deduction_other_map.ded_id)
+            LEFT JOIN deduction_others ON deduction_other_map.ded_other_id = deduction_others.ded_other_id)
             WHERE monthly_report.report_id = ?;";
+            
             $conn = $this->connect();
             $stmt = mysqli_stmt_init($conn);
 

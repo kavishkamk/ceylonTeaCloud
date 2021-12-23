@@ -233,7 +233,7 @@
                                         <td>'.$row["water_weigth"].'</td>
                                         <td>'.$row["reason"].'</td>
                                         <td>'.$row["weightOfDeduction"].'</td>
-                                        <td>'.$newReportDetails[$row["data_id"]]['weight'].'</td>
+                                        <td>'.$newReportDetails[$row["data_id"]]["weight"].'</td>
                                     </tr>';
                                 $count++;
                             }
