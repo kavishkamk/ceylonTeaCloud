@@ -7,7 +7,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title> 
+        <title>Weekly Reports</title> 
         <link rel="stylesheet" type="text/css" href="../css/adminDashBord.css">
     </head>
     <body>
@@ -38,7 +38,7 @@
                 <div>
                     <table>
                         <thead>
-                            <caption>Genarated Reprot</caption>
+                            <caption>Generated Reports</caption>
                             <tr>
                                 <th>Report Id</th>
                                 <th>Grower Id</th>

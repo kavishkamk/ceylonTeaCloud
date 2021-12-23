@@ -7,7 +7,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title> 
+        <title>Data Enter</title> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/adminDashBord.css">
         <link rel="stylesheet" type="text/css" href="../css/dateEnter.css">
@@ -22,19 +22,19 @@
                         <?php
                             if(isset($_GET['result'])){
                                 if($_GET['result'] == "empty"){
-                                    echo '<span>Should have to enter basic Details</span>';
+                                    echo '<span>Please enter valid basic details</span>';
                                 }
                                 else if($_GET['result'] == "ss"){
-                                    echo '<span>success</span>';
+                                    echo '<span>Weekly report successfully created</span>';
                                 }
                                 else if($_GET['result'] == "nouser"){
-                                    echo '<span>grour not found</span>';
+                                    echo '<span>Invalid grower ID</span>';
                                 }
                                 else if($_GET['result'] == "sqlerror"){
-                                    echo '<span>Error</span>';
+                                    echo '<span>Something went wrong</span>';
                                 }
                                 else if($_GET['result'] == "wrong"){
-                                    echo '<span>Wrong input</span>';
+                                    echo '<span>Invalid input</span>';
                                 }
                             }
                         ?>
@@ -74,18 +74,18 @@
                                 <input type="number" name="sack-weight" step="0.01" id="tsw"><br>
                                 <label for="w-rate">Water rate (%) : </label>
                                 <input type="number" name="w-rate" step="0.01" id="twr"><br>
-                                <label for="nun-std-leave">non standard leaves rate (%) : </label>
+                                <label for="nun-std-leave">Non-standard leaves rate (%) : </label>
                                 <input type="number" name="nun-std-leave" step="0.01" id="nsl"><br>
                             </div>
                             <div>
                                 <h3>Final Result</h3>
-                                <span id="tw">Total Weight : </span><br>
-                                <span id="sw">Deduction for sacks : </span><br>
-                                <span id="dw">Deduction for Water : </span><br>
-                                <span id="dl">Deduction for non standard leaves : </span><br>
-                                <span id="od">Other Deduction: </span><br>
-                                <span id="td">Total Deduction : </span><br>
-                                <span id="fw">Final Weight : </span><br>
+                                <span id="tw">Total Weight (kg) : </span><br>
+                                <span id="sw">Deduction for sacks (kg) : </span><br>
+                                <span id="dw">Deduction for Water (kg) : </span><br>
+                                <span id="dl">Deduction for non standard leaves (kg) : </span><br>
+                                <span id="od">Other Deduction (kg) : </span><br>
+                                <span id="td">Total Deduction (kg) : </span><br>
+                                <span id="fw">Net Weight (kg) : </span><br>
                             </div>
                         </div>
                         <div class="btn-field" style="grid-column:1 / 3;">

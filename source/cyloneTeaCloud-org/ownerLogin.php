@@ -11,7 +11,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Logging</title>
+        <title>Login</title>
         <link rel="stylesheet" type="text/css" href="../css/adminLogin.css">
 
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
@@ -25,12 +25,21 @@
         <!-- set header -->
         <header>
             <div class="header-bar">
-                <div class="liitem" id="proName" style="float:left"><img src="../images/ceylon tea cloud-small.png" height="40px"></img></div>
-                <div class="liitem"><a href="">Cylone Tea Cloud</a></div>
-                <div class="liitem"><a href="" class="active">About</a></div>
+                <!--<div class="liitem" id="proName" style="float:left"><img src="../images/ceylon tea cloud-small.png" height="40px"></img></div>
+                -->
+                <div class="liitem" id="proName" style="float:left"></div>
+                <div class="liitem" id="teaname">Ceylon Tea Cloud</div>
+                <div class="liitem"><a href="../grower-ui/about.php" class="active">About</a></div>
             </div>
         </header>
         <main>
+
+            <center>
+                <div id= "logo">
+                    <img src="../images/ceylon tea cloud-small.png">
+                </div>  
+            </center>
+
             <div class="container">
             <!-- set error messages -->
             <div>

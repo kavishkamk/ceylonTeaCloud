@@ -40,7 +40,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title> 
+        <title>Weekly Report</title> 
         <link rel="stylesheet" type="text/css" href="../css/doucmunets.css">
         <link rel="stylesheet" type="text/css" href="../css/print.css" media="print">
     </head>
@@ -60,7 +60,7 @@
                     }
                     echo '<span style="font-size:15px">Email : '.$comRes["email"].'</span><br>';
                     echo '<span style="font-size:15px">Phone : 0'.$comRes["contactNo"].'</span><br><br>';
-                    echo '<span style="font-size:15px">Week Report</span><br>';
+                    echo '<span style="font-size:15px">Weekly Report</span><br>';
                     echo '<span style="font-size:15px">'.$stDay.' - '.$edDay.'</span><br>';
                     echo '<span style="font-size:15px">Report ID: '.$reporttId.'</span><br>';
                 ?>
@@ -114,7 +114,7 @@
                             </tr>
                             <tr>
                                 <td> 5 </td>
-                                <td>Non Standerd Leaves (kg)</td>
+                                <td>Non-standard Leaves (kg)</td>
                                 <td>'.$reqRes['non_standard_leaves'].'</td>
                             </tr>
                             <tr>
@@ -129,13 +129,13 @@
                             </tr>
                             <tr>
                                 <td> 8 </td>
-                                <td>Other Deduction (kg)</td>
+                                <td>Other Deduction weight (kg)</td>
                                 <td>'.$reqRes['weightOfDeduction'].'</td>
                             </tr>
                             <tr>
                                 <td> 9 </td>
                                 <td>Net Weight</td>
-                                <td>'.$netRes.'</td>
+                                <td>'.$netRes.' kg</td>
                             </tr>';
                         ?>
                     </tbody>
@@ -144,7 +144,7 @@
             <!-- genarated time and success message -->
             <div style="grid-column:2 / 3;" class="rec-det">
                 <br><br>
-                <?php echo '<div style="grid-column:1 / 2;"><span class="re-time">Genarated Date : '.date("Y-n-d H:i:s").'</span></div>';
+                <?php echo '<div style="grid-column:1 / 2;"><span class="re-time">Generated Date : '.date("Y-n-d H:i:s").'</span></div>';
                 ?>
             </div>
             <!-- button -->

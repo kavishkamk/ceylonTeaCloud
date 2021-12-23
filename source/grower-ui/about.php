@@ -53,7 +53,7 @@
             <div class="container">
                 <div class="navbar-header">
                     <div class="prjt-name">
-                        <a href="index.php" style="text-decoration:none; color: #5a7c44;">Ceylon Tea Cloud</a>
+                        <!--<a href="index.php" style="text-decoration:none; color: #5a7c44;">Ceylon Tea Cloud</a>-->
                     </div>
                 </div> 
             </div>

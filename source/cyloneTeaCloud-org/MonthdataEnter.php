@@ -7,7 +7,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title> 
+        <title>Data Enter</title> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/adminDashBord.css">
         <link rel="stylesheet" type="text/css" href="../css/dateEnter.css">
@@ -22,19 +22,19 @@
                         <?php
                             if(isset($_GET['result'])){
                                 if($_GET['result'] == "empty"){
-                                    echo '<span>Should have to enter basic Details</span>';
+                                    echo '<span>Please enter valid basic details</span>';
                                 }
                                 else if($_GET['result'] == "ss"){
-                                    echo '<span>success</span>';
+                                    echo '<span>Monthly report successfully created</span>';
                                 }
                                 else if($_GET['result'] == "nouser"){
-                                    echo '<span>grour not found</span>';
+                                    echo '<span>Invalid grower ID</span>';
                                 }
                                 else if($_GET['result'] == "sqlerror"){
-                                    echo '<span>Error</span>';
+                                    echo '<span>Something went wrong</span>';
                                 }
                                 else if($_GET['result'] == "wrong"){
-                                    echo '<span>Wrong input</span>';
+                                    echo '<span>Invalid input</span>';
                                 }
                             }
                         ?>
@@ -123,7 +123,7 @@
 
                             <table>
                                 <thead>
-                                    <caption>Genarated Reprot</caption>
+                                    <caption>Generated Reports</caption>
                                 </thead>
                                 <tbody>
                                     <?php
@@ -149,7 +149,7 @@
                                                 }
                                                 echo '</tr>';
                                                 echo '<tr>
-                                                        <td>non Standerd Leaves Weight</td>';
+                                                        <td>Non-standard Leaves Weight</td>';
                                                 foreach($res as $resId){
                                                    echo '<td>'.$resArr[$resId]['non_standard_leaves'].'</td>';
                                                 }
@@ -164,7 +164,7 @@
                                                 }
                                                 echo '</tr>';
                                                 echo '<tr>
-                                                        <td>Final Weight</td>';
+                                                        <td>Net Weight</td>';
                                                 foreach($res as $resId){
                                                     if($netArr[$resId] == "nouser") {
                                                         $netArr[$resId] = 0;
@@ -194,9 +194,9 @@
                                     $lonelId .= "-";
                                     $lonePrice = $lonePrice + $lonePri['monthly_ded'];
                                 }
-                                echo '<span>Final Weitht : '.$totalFinalMonth.'</span><br>';
+                                echo '<span>Total Net Weight : '.$totalFinalMonth.'</span><br>';
                                 echo '<span>Loan Deduction : '.$lonePrice.'</span><br>';
-                                echo '<span>Tea Deduction : '.$teaRequsetPrive.'</span><br>';
+                                echo '<span>Tea packets Deduction : '.$teaRequsetPrive.'</span><br>';
                                 echo '<span>Fertilizer Deduction : '.$fertilizerReqPrice.'</span><br>';
                             ?>
                             <form action="../include/setMonthReport.php" method="post">
@@ -217,7 +217,7 @@
                                 <label for="price-tea">Price of 1 kg : </label>
                                 <input type="number" name="price-tea" step="0.01" id="price-input"><br>
                                 <br>
-                                <span id="payment-s">payment : </span><br>
+                                <span id="payment-s">Payment : </span><br>
                                 <button type="button" name="price-submit" id="price-submit-btn">Calculate</button>
                                 <button type="submit" name="create-report">Create Report</button>
                             </form>

@@ -39,7 +39,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title> 
+        <title>Tea Packets Request</title> 
         <link rel="stylesheet" type="text/css" href="../css/doucmunets.css">
         <link rel="stylesheet" type="text/css" href="../css/print.css" media="print">
     </head>
@@ -59,9 +59,9 @@
                     }
                     echo '<span style="font-size:15px">Email : '.$comRes["email"].'</span><br>';
                     echo '<span style="font-size:15px">Phone : 0'.$comRes["contactNo"].'</span><br><br>';
-                    echo '<span style="font-size:15px">Tea Request</span><br>';
-                    echo '<span style="font-size:15px">Requset Date: '.$row1["req_date"].'</span><br>';
-                    echo '<span style="font-size:15px">Request ID: '.$requsetId.'</span><br>';
+                    echo '<span style="font-size:15px">Tea Packets Request</span><br>';
+                    echo '<span style="font-size:15px">Requested Date: '.$row1["req_date"].'</span><br>';
+                    echo '<span style="font-size:15px">Requested ID: '.$requsetId.'</span><br>';
                 ?>
             </div>
         </header>
@@ -91,8 +91,8 @@
                             <tr>
                                 <th></th>
                                 <th>Item Name</th>
-                                <td>Price</td>
-                                <td>Amount</td>
+                                <td>Price (Rs.)</td>
+                                <td>Amount (kg)</td>
                             </tr>
                     </thead>
                         <tbody>
@@ -117,29 +117,29 @@
             <div style="grid-column:2 / 3;" class="rec-table">
                 <table>
                     <thead>
-                        <caption>Requested Details</caption>
+                        <caption>Request Details</caption>
                     </thead>
                     <tbody>
                         <?php
                             echo '<tr>
                                 <td> 1 </td>
-                                <td>Date Wanted</td>
+                                <td>Required Date</td>
                                 <td>'.$row['date_wanted'].'</td>
                             </tr>
                             <tr>
                                 <td> 2 </td>
-                                <td>Number of Month to Pay</td>
+                                <td>No. of months to pay</td>
                                 <td>'.$row['number_of_months_to_pay'].'</td>
                             </tr>
                             <tr>
                                 <td> 3 </td>
                                 <td>Total Price</td>
-                                <td>'.number_format($total_price,2).'</td>
+                                <td>Rs. '.number_format($total_price,2).'</td>
                             </tr>
                             <tr>
                                 <td> 4 </td>
                                 <td>Monthly Deduction</td>
-                                <td>'.number_format($total_deduction,2).'</td>
+                                <td>Rs. '.number_format($total_deduction,2).'</td>
                             </tr>';
                         ?>
                     </tbody>
@@ -148,9 +148,9 @@
             <!-- genarated time and success message -->
             <div style="grid-column:2 / 3;" class="rec-det">
                 <br><br>
-                <?php echo '<div style="grid-column:1 / 2;"><span class="re-time">Genarated Date : '.date("Y-n-d H:i:s").'</span></div>';
+                <?php echo '<div style="grid-column:1 / 2;"><span class="re-time">Generated Date : '.date("Y-n-d H:i:s").'</span></div>';
                     if(isset($_GET['result'])){
-                        echo '<div><span id="comfirm-success">Comfirm Success</span></div>';
+                        echo '<div><span id="comfirm-success">This request is confirmed successfully</span></div>';
                     }
                 ?>
             </div>
@@ -176,7 +176,7 @@
                                 echo '<input type="hidden" name="gro-id" value="'.$growerId.'">';
                                 echo '<input type="hidden" name="report-type" value="tea">';
                                 if(!isset($_GET['conftyp'])){
-                                    echo '<button type = "submit" name="request-comfirm" class="btn">Comfirm</button>';
+                                    echo '<button type = "submit" name="request-comfirm" class="btn">Confirm</button>';
                                 }
                         ?>
                     </form>

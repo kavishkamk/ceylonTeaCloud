@@ -397,12 +397,13 @@ h3.menu-item-title {
   font-weight: bold;
   color: #5a7c44 !important;
   font-size: 24px;
+  align-items: center;
 }
 
 .team-name{
   margin-top: 10px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 22px;
 }
 
 .by{

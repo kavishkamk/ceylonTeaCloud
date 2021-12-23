@@ -8,7 +8,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title> 
+        <title>Grower List</title> 
         <link rel="stylesheet" type="text/css" href="../css/adminDashBord.css">
     </head>
     <body>
@@ -34,9 +34,9 @@
                         <thead>
                             <caption>Grower List</caption>
                             <tr>
-                                <th>Grower Id</th>
-                                <th>name</th>
-                                <th>Registerd Date</th>
+                                <th>Grower id</th>
+                                <th>Name</th>
+                                <th>Registered Date</th>
                             </tr>
                         </thead>
                         <tbody>

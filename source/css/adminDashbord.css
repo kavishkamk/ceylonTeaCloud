@@ -1,12 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+*{
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+}
+
+html {
+    background:linear-gradient(to right, #3f9b69 0%, #5cdb95 50%, #3f9b69 99%);
+}
+
 :root {
     --main-radius: 1px;
     --main-padding: 5px;
 }
-  
+
 .dash-nav {
     list-style: none;
+    text-decoration: none;
+    color: #fff;
+    background-color: #286343;
+    width: 200px;
+    padding: 7px 10px 7px 10px;
+    border-radius: 5px;
+    margin-left: 20px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 15px;
 }
-  
+
+.dash-nav a{
+    text-decoration: none;
+    color: #fff;
+}
+
+#company{
+    background-color: #75887d;
+    margin-bottom: 20px;
+}
+
 .container {
     display: grid;
     height: 95vh;
@@ -25,19 +55,25 @@
 }
 
 nav {
-    background-color: rgb(14, 89, 112);
+    /*background-color: rgb(14, 89, 112);*/
+
+    background-color: #286343;
     grid-area: nav;
-    border-radius: var(--main-radius);
+    /*border-radius: var(--main-radius);*/
+    border-radius: 10px 10px 10px  0;
 }
 
 main {
-    background-color: rgb(37, 183, 219);
+    /*background-color: rgb(37, 183, 219);*/
+
+    background-color: #3f9b69;
     grid-area: main;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
     text-align: center;
     color: black;
     padding: 5px;
+    
 }
 
 .dashmain {
@@ -51,18 +87,22 @@ main {
 }
 
 #sidebar {
-    background-color: rgb(25, 129, 155);
+    /*background-color: rgb(25, 129, 155);*/
+
+    background-color: #4fc283;
     grid-area: sidebar;
     border-radius: var(--main-radius);
     padding-top: var(--main-padding);
     text-align: center;
+    border-radius: 0 0 0 10px;
 }
 
 .log-out-btn {
-    background-color: white;
+    background-color: #a3e4bd;
     float: right;
     padding: 10px 30px;
     font-weight: bold;
+    border-radius: 10px;
 }
   
 .com-abo {
@@ -70,6 +110,13 @@ main {
     text-align: left;
     color: black;
     font-weight: 100;
+    width: 350px;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.89);
+    padding: 10px;
+    padding-left: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .gro-abo {
@@ -161,7 +208,9 @@ caption {
 
 /*form-header*/
 .form-header  {
-    background-color: #03203C;
+    /*background-color: #03203C;*/
+
+    background-color: rgb(20, 59, 3);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -169,7 +218,7 @@ caption {
 .form-header h1 {
     font-size: 30px;
     text-align:center;
-    color:#46B2E0;
+    color: white;
     padding:20px 0;
     border-bottom:1px solid #cccccc;
     text-shadow: 2px 2px 10px #207398;
@@ -185,7 +234,7 @@ caption {
 }
 
 .admin-form-body .label-title {
-    color:#03203C;
+    color:#08270c;
     font-size: 17px;
     font-weight: bold;
 }
@@ -197,7 +246,7 @@ caption {
     height: 33px;
     padding-left: 10px;
     padding-right: 10px;
-    color: #333333;
+    color: #666464;
     text-align: left;
     border: 1px solid #d6d6d6;
     border-radius: 4px;
@@ -229,18 +278,17 @@ input[type="file"] {
 .back-button {
     padding:10px 20px;
     width: 100px;
-    background-color: #207398;
+    background-color: #a3e4bd;
     font-size:17px;
-    border:none;
-    border-radius:5px;
-    color:#caeef5;
+    border-radius: 10px;
+    color:black;
     cursor:pointer;
     justify-self: left;
 }
 
 .back-button:hover {
-    background-color: #12B0E8;
-    color:white;
+    background-color: #62dd96;
+    color:black;
 }
 
 .error-bar {
@@ -263,20 +311,47 @@ input[type="file"] {
 .btn {
     padding:10px 20px;
     width: 100px;
-    background-color: #207398;
+    background-color: #a3e4bd;
     font-size:17px;
-    border:none;
-    border-radius:5px;
-    color:#caeef5;
+    color:black;
     cursor:pointer;
     justify-self: right;
+    border-radius: 10px;
 }
 
 .btn:hover {
-    background-color: #12B0E8;
-    color:white;
+    background-color: #62dd96;
+    color:black;
 }
 
 #box {
     position: relative;
+}
+
+#logo{
+    margin: 0 auto 10px auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: white;
+    border-radius: 5px;
+    /*margin-top: 30px;*/
+    width:120px;
+}
+
+#total-growers{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 170px;
+    background-color: #a3e4bd;
+    line-height: 20px;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+#value{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 170px;
+    background-color: rgba(255, 255, 255, 0.541);
+    line-height: 20px;
+    padding: 10px;
+    margin-top: -20px;
+    border-radius: 0 0 10px 10px;
 }

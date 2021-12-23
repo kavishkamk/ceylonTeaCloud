@@ -38,7 +38,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title> 
+        <title>Monthly Report</title> 
         <link rel="stylesheet" type="text/css" href="../css/doucmunets.css">
         <link rel="stylesheet" type="text/css" href="../css/print.css" media="print">
     </head>
@@ -59,8 +59,8 @@
                     echo '<span style="font-size:15px">Email : '.$comRes["email"].'</span><br>';
                     echo '<span style="font-size:15px">Phone : 0'.$comRes["contactNo"].'</span><br><br>';
                     echo '<span style="font-size:15px">Monthly Report</span><br>';
-                    echo '<span style="font-size:15px">Report Month : '.$reqRes['repott_year'].' - '.$reqRes['repott_month'].'</span><br>';
-                    echo '<span style="font-size:15px">Report ID: '.$reportId.'</span><br>';
+                    echo '<span style="font-size:15px">Reported Month : '.$reqRes['repott_year'].' - '.$reqRes['repott_month'].'</span><br>';
+                    echo '<span style="font-size:15px">Reported ID: '.$reportId.'</span><br>';
                 ?>
             </div>
         </header>
@@ -92,28 +92,28 @@
                         <?php
                             echo '<tr>
                                     <td> 1 </td>
-                                    <td>Toatl Weight</td>
-                                    <td>'.$reqRes['total_weight'].'</td>
+                                    <td>Total Net Weight</td>
+                                    <td>'.$reqRes['total_weight'].' kg</td>
                                 </tr>
                                 <tr>
                                     <td> 2 </td>
-                                    <td>Toatl Deduction of month</td>
-                                    <td>'.$reqRes['total_deducation_per_month'].'</td>
+                                    <td>Total Deduction for month</td>
+                                    <td>Rs. '.$reqRes['total_deducation_per_month'].'</td>
                                 </tr>
                                 <tr>
                                     <td> 3 </td>
                                     <td>Price of 1 kg</td>
-                                    <td>'.$reqRes['price_of_1kg'].'</td>
+                                    <td>Rs. '.$reqRes['price_of_1kg'].'</td>
                                 </tr>
                                 <tr>
                                     <td> 4 </td>
-                                    <td>Tea Price</td>
-                                    <td>'.$reqRes['total_price'].'</td>
+                                    <td>Tea Leaves Price</td>
+                                    <td>Rs. '.$reqRes['total_price'].'</td>
                                 </tr>
                                 <tr>
                                     <td> 5 </td>
-                                    <td>payment</td>
-                                    <td>'.$reqRes['payment'].'</td>
+                                    <td>Payment</td>
+                                    <td>Rs. '.$reqRes['payment'].'</td>
                                 </tr>';
                         ?>
                     </tbody>
@@ -123,12 +123,12 @@
             <div style="grid-column:2 / 3;" class="rec-table">
                 <table>
                     <thead>
-                        <caption>Request Tea details</caption>
+                        <caption>Tea Packets Request details</caption>
                             <tr>
                                 <th></th>
                                 <th>Item Name</th>
                                 <td>Total Price</td>
-                                <td>Monthly Price</td>
+                                <td>Monthly Deduction</td>
                             </tr>
                     </thead>
                     <tbody>
@@ -138,8 +138,8 @@
                                 echo '<tr>
                                         <td>'.$count.'</td>
                                         <td>'.$row["tea_type"].'</td>
-                                        <td>'.number_format($row["item_price"],2).'</td>
-                                        <td>'.number_format($row["monthly_ded"],2).'</td>
+                                        <td>Rs. '.number_format($row["item_price"],2).'</td>
+                                        <td>Rs. '.number_format($row["monthly_ded"],2).'</td>
                                     </tr>';
                                 $count++;
                             }
@@ -151,12 +151,12 @@
             <div style="grid-column:2 / 3;" class="rec-table">
                 <table>
                     <thead>
-                        <caption>Request fertilize details</caption>
+                        <caption>Fertilizer Request details</caption>
                             <tr>
                                 <th></th>
                                 <th>Item Name</th>
                                 <td>Total Price</td>
-                                <td>Monthly Price</td>
+                                <td>Monthly Deduction</td>
                             </tr>
                     </thead>
                     <tbody>
@@ -166,8 +166,8 @@
                                 echo '<tr>
                                         <td>'.$count.'</td>
                                         <td>'.$row["fertilizer_type"].'</td>
-                                        <td>'.number_format($row["item_price"],2).'</td>
-                                        <td>'.number_format($row["monthly_deduction"],2).'</td>
+                                        <td>Rs. '.number_format($row["item_price"],2).'</td>
+                                        <td>Rs. '.number_format($row["monthly_deduction"],2).'</td>
                                     </tr>';
                                 $count++;
                             }
@@ -179,11 +179,11 @@
             <div style="grid-column:2 / 3;" class="rec-table">
                 <table>
                     <thead>
-                        <caption>Request Lone details</caption>
+                        <caption>Loan Request details</caption>
                             <tr>
                                 <th></th>
-                                <td>Total Price</td>
-                                <td>Monthly Price</td>
+                                <td>Total Amount</td>
+                                <td>Monthly Deduction</td>
                                 <td>Reason</td>
                             </tr>
                     </thead>
@@ -193,8 +193,8 @@
                             foreach($loneReqDetails as $row){
                                 echo '<tr>
                                         <td>'.$count.'</td>
-                                        <td>'.number_format($row["amount"],2).'</td>
-                                        <td>'.number_format($row["monthly_ded"],2).'</td>
+                                        <td>Rs. '.number_format($row["amount"],2).'</td>
+                                        <td>Rs. '.number_format($row["monthly_ded"],2).'</td>
                                         <td>'.$row["loanHeader"].'</td>
                                     </tr>';
                                 $count++;
@@ -207,17 +207,17 @@
             <div style="grid-column:2 / 3;" class="rec-table">
                 <table>
                     <thead>
-                        <caption>Deduction for tea</caption>
+                        <caption>Weekly Reports</caption>
                             <tr>
                                 <th></th>
                                 <td>Date</td>
                                 <td>Total weight(kg)</td>
                                 <td>Sack weight(kg)</td>
-                                <td>Non Standerd Leaves(kg)</td>
-                                <td>Water Waight(kg)</td>
+                                <td>Non-standard Leaves(kg)</td>
+                                <td>Water weight(kg)</td>
                                 <td>Other Deduction</td>
                                 <td>Other Deduction Weight(kg)</td>
-                                <td>net Weight(kg)</td>
+                                <td>Net Weight(kg)</td>
                             </tr>
                     </thead>
                     <tbody>

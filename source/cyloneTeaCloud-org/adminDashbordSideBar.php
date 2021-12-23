@@ -1,12 +1,12 @@
 <!-- this is dash bord side bar -->
 <div id="sidebar">
     <!-- set factory logo -->
-    <div>
+    <div id= "logo">
         <img src="../images/ceylon tea cloud-small.png"></img>
     </div>
     <!-- set company name -->
     <div>
-        <div class="dash-nav">
+        <div class="dash-nav" id= "company">
             <?php
                 require_once "../phpClasses/CompanyDeatils.class.php";
                 $comObj = new CompanyDetails();
@@ -15,62 +15,62 @@
                 echo '<span>'.$comRes['name'].'</span>';
             ?>
         </div>
-        <br>
+
         <!-- navigation list -->
         <div class="dash-nav">
             <a href="adminDashBord.php">
                 <span>Dashboard</span>
             </a>
         </div>
-        <br>
+        
         <div class="dash-nav">
             <a href="growerlist.php">
                 <span>Grower List</span>
             </a>
         </div>
-        <br>
+        
         <div class="dash-nav">
             <a href="items.php">
-                <span>Items</span>
+                <span>Add/Update Items</span>
             </a>
         </div>
-        <br>
+        
         <div class="dash-nav">
             <a href="pendingRequset.php">
-                <span>Pending Request</span>
+                <span>Pending Requests</span>
             </a>
         </div>
-        <br>
+       
         <div class="dash-nav">
             <a href="confirmRequset.php">
-                <span>Comfirmed Request</span>
+                <span>Confirmed Requests</span>
             </a>
         </div>
-        <br>
+       
         <div class="dash-nav">
             <a href="weeklyReport.php">
-                <span>Weekly Report</span>
+                <span>Weekly Reports</span>
             </a>
         </div>
-        <br>
+       
         <div class="dash-nav">
             <a href="monthlyReport.php">
-                <span>Monthely Report</span>
+                <span>Monthly Reports</span>
             </a>
         </div>
-        <br>
+        
         <div class="dash-nav">
             <a href="adminProfileSetting.php">
-                <span>Profile Setting</span>
+                <span>Profile Settings</span>
             </a>
         </div>
-        <br>
+       
         <div class="dash-nav">
-            <a href="">
+            <a href="../grower-ui/about.php">
                 <span>About</span>
             </a>
         </div>
-        <br>
+        
     </div>
     <br>
     <br>

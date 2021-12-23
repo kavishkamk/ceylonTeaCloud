@@ -8,7 +8,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title> 
+        <title>Pending Requests</title> 
         <link rel="stylesheet" type="text/css" href="../css/adminDashBord.css">
     </head>
     <body>
@@ -35,7 +35,7 @@
                 <div class="request-table" style="grid-column:1 / 2;">
                     <table>
                         <thead>
-                            <caption>Fertilizer request</caption>
+                            <caption>Fertilizer Requests</caption>
                         </thead>
                         <tbody>
                             <?php
@@ -53,7 +53,7 @@
                 <div class="request-table" style="grid-column:2 / 3;">
                     <table>
                         <thead>
-                            <caption>Tea Request</caption>
+                            <caption>Tea Packets Requests</caption>
                         </thead>
                         <tbody>
                             <?php
@@ -71,7 +71,7 @@
                 <div class="request-table" style="grid-column:3 / 4;">
                     <table>
                         <thead>
-                            <caption>Lone Requset</caption>
+                            <caption>Loan Requests</caption>
                         </thead>
                         <tbody>
                             <?php

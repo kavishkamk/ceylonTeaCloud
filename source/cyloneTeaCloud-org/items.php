@@ -8,7 +8,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title> 
+        <title>Add/Update Items</title> 
         <link rel="stylesheet" type="text/css" href="../css/adminDashBord.css">
         <link rel="stylesheet" type="text/css" href="../css/items.css">
     </head>
@@ -48,7 +48,7 @@
                                         $teaTypeList[] = $row['tea_type'];
                                         echo '<tr>
                                             <td>'.$row["tea_type"].'</td>
-                                            <td>'.number_format($row["price_of_1kg"],2).'</td>
+                                            <td>Rs. '.number_format($row["price_of_1kg"],2).'</td>
                                         </tr>';
                                     }
                                 ?>
@@ -65,7 +65,7 @@
                             <div  class="f-item">
                                 <label for="tea-price">Price : </label>
                                 <input type="number" step="0.01" min="0.00" name="tea-price">
-                                <button type="submit" name="tea-insert-submit" class="btn">ADD</button>
+                                <button type="submit" name="tea-insert-submit" class="btn">Add</button>
                             </div>
                         </form>
                     </div>
@@ -87,7 +87,7 @@
                             <div  class="f-item">
                                 <label for="tea-price">Price : </label>
                                 <input type="number" step="0.01" min="0.00" name="tea-price">
-                                <button type="submit" name="tea-update-submit" class="btn">UPDATE</button>
+                                <button type="submit" name="tea-update-submit" class="btn">Update</button>
                             </div>
                         </form>
                     </div>
@@ -110,7 +110,7 @@
                                         $fertilizerTypeList[] = $row['fertilizer_type'];
                                         echo '<tr>
                                             <td>'.$row["fertilizer_type"].'</td>
-                                            <td>'.number_format($row["price_of_1kg"],2).'</td>
+                                            <td>Rs. '.number_format($row["price_of_1kg"],2).'</td>
                                         </tr>';
                                     }
                                 ?>
@@ -126,7 +126,7 @@
                             <div  class="f-item">
                                 <label for="fertilizer-price">Price : </label>
                                 <input type="number" step="0.01" min="0.00" name="fertilizer-price">
-                                <button type="submit" name="fertilizer-insert-submit" class="btn">ADD</button>
+                                <button type="submit" name="fertilizer-insert-submit" class="btn">Add</button>
                             </div>
                         </form>
                     </div>
@@ -148,7 +148,7 @@
                             <div  class="f-item">
                                 <label for="fertilizer-price">Price : </label>
                                 <input type="number" step="0.01" min="0.00" name="fertilizer-price">
-                                <button type="submit" name="fertilizer-update-submit" class="btn">UPDATE</button>
+                                <button type="submit" name="fertilizer-update-submit" class="btn">Update</button>
                             </div>
                         </form>
                     </div>

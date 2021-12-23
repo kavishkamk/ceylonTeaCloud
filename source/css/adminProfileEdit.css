@@ -60,17 +60,16 @@
 .btn {
     padding:10px 20px;
     width: 100px;
-    background-color: #207398;
+    background-color:#a3e4bd;;
     font-size:17px;
-    border:none;
     border-radius:5px;
-    color:#caeef5;
+    color:#333333;
     cursor:pointer;
     justify-self: right;
 }
 
 .btn:hover {
-    background-color: #12B0E8;
+    background-color: #62dd96;
     color:white;
 }
 
@@ -78,9 +77,8 @@
     position : relative;
     text-align: center;
     place-items: center;
-    color: red;
+    color: rgba(255, 0, 0, 0.76);
     font-weight: bold;
-    
 }
 
 .success-bar{

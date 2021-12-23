@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
 *{
     margin:0;
     padding:0;
+    font-family: "Roboto", sans-serif;
   }
   
 html, body {
@@ -9,15 +12,15 @@ html, body {
 }
     
 html {
-    background:linear-gradient(to right, #03203C 0%, #207398 50%, #03203C 99%);
+    background:linear-gradient(to right, #3f9b69 0%, #5cdb95 50%, #3f9b69 99%);
 }
 
 .header-bar {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    background-color: #333;
+    /*overflow: hidden;*/
+    background-color: #3f9b69;
     
     position: relative;
     top: 0;
@@ -28,6 +31,12 @@ html {
 
 .liitem {
     top: 0;
+    display: block; /*allow to specify padding*/
+    color: white;
+    text-align: center;
+    /*padding: 14px 16px;*/
+    text-decoration: none;
+    line-height: 20px;
 }
 
 .liitem a {
@@ -38,14 +47,22 @@ html {
     text-decoration: none;
 }
 
+#teaname{
+    margin-top: 13px;
+    font-size: 22px;
+}
 /* Change the link color to #111 (black) on hover */
+/*
 .liitem a:hover:not(.active) {
     background-color: #111;
-}
+}*/
 
 /*active class will change color of the current link*/
 .active {
-    background-color: #207398;
+    border-radius: 5px;
+    background-color: rgb(20, 59, 3);
+    width: 100px;
+    margin-left: 100px;
 }
 
 .container {
@@ -55,6 +72,8 @@ html {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    margin-top: 10px;
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
 }
 
 #logcont {
@@ -68,8 +87,10 @@ html {
 
 #logcont > p {
     font-size: 1.5em;
-    background:#04072f;
-    color: #57c1eb;
+
+    background: rgb(20, 59, 3);
+    /*background:#05386b;*/
+    color: #edf5e1;
     border-radius: 10px 10px 0 0;
     padding: 10px;
   }
@@ -77,15 +98,16 @@ html {
 .logbutn {
     position: relative;
     color: #FFF;
-    background-color: #04072f;
-    width: 85%;
+    background-color: #297062;
+    width: 65%;
     padding: 5px 15px;
     margin: 20px 0px 10px;
     transition: background 1.5s ease;
+    font-weight: bold;
 }
   
 .logbutn:hover {
-    background-color: #222dc3;
+    background-color: #62dd96;
 }
 
 .logok {
@@ -111,12 +133,22 @@ html {
     padding: 15px;
     text-align: center;
     margin-bottom: 5px;
+    margin-top: 50px;
   }
 
 .logsuss {
     color:#FFF;
-    background-color: green;
+    background-color: #3f9b69;
     padding: 15px;
     text-align: center;
     margin-bottom: 5px;
+    margin-top: 50px;
+}
+
+#logo{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 30px;
+    width:120px;
 }

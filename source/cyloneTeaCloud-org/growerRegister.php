@@ -8,7 +8,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title> 
+        <title>Grower Registration</title> 
         <link rel="stylesheet" type="text/css" href="../css/adminDashBord.css">
     </head>
     <body>
@@ -82,7 +82,7 @@
                                 <input type="password" name="upassword" placeholder="enter password" class="form-input">
                             </div>
                             <div style="grid-column:2 / 3; grid-row: 3 / 4">
-                                <label for="confirm-password" class="label-title">Comfirm Password</label><br>
+                                <label for="confirm-password" class="label-title">Confirm Password</label><br>
                                 <input type="password" name="confirm-password" placeholder="enter your password again" class="form-input">
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                         <div class="form-footer">
                             <form>
                                 <button  formaction="growerlist.php" class="back-button">
-                                        Back..
+                                        Back
                                 </button>  
                             </form>
 

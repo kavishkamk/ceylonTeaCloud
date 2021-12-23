@@ -7,7 +7,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title> 
+        <title>Profile Settings</title> 
         <link rel="stylesheet" type="text/css" href="../css/adminDashBord.css">
         <link rel="stylesheet" type="text/css" href="../css/adminProfileEdit.css">
     </head>
@@ -109,7 +109,7 @@
                         <div style="grid-column:3 / 4;">
                             <form action="../include/adminDeleteAdd.inc.php" method="post">
                                 <input type="hidden" name="delstat" value="okDelete" required>
-                                <button type="submit" name="del-submit" class="btn" onclick = "clicked();" style="background-color: red; float: right; width: 200px;">DELETE ACCOUNT</button>
+                                <button type="submit" name="del-submit" class="btn" onclick = "clicked();" style="background-color: rgba(255, 0, 0, 0.76); float: right; width: 200px;">DELETE ACCOUNT</button>
                             </form>
                         </div>
                     </div>
@@ -125,7 +125,7 @@
 
 <script type="text/javascript">
     function clicked() {
-       if (confirm('Do you realy want to Delete your accout?')) {
+       if (confirm('Do you really want to Delete your account?')) {
             delacc.submit();
        } else {
            return false;
