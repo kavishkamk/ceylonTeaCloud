@@ -107,7 +107,7 @@
                         </div>
                         <!-- this for delete account -->
                         <div style="grid-column:3 / 4;">
-                            <form action="../include/adminDeleteAdd.inc.php" method="post">
+                            <form action="../include/adminDeleteAdd.inc.php" method="post" name="delacc">
                                 <input type="hidden" name="delstat" value="okDelete" required>
                                 <button type="submit" name="del-submit" class="btn" onclick = "clicked();" style="background-color: rgba(255, 0, 0, 0.76); float: right; width: 200px;">DELETE ACCOUNT</button>
                             </form>
