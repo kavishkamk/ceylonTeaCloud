@@ -9,7 +9,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Add/Update Items</title> 
-        <link rel="stylesheet" type="text/css" href="../css/adminDashBord.css">
+        <link rel="stylesheet" type="text/css" href="../css/adminDashbord.css">
         <link rel="stylesheet" type="text/css" href="../css/items.css">
     </head>
     <body>
