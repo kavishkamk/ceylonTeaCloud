@@ -31,7 +31,7 @@
                 ?>
                 <div class="image">
                     <?php
-                        echo '<img src="../profile-pic/'.$grower["profileLink"].' ?>" alt="Avatar" style="width: 200px" />';
+                        echo '<img src="../profile-pic/'.$grower["profileLink"].'" ?> alt="Avatar" style="width: 200px" />';
                     ?>
                 <div>
                 <div>
