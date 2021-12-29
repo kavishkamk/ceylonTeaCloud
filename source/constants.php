@@ -34,3 +34,11 @@ const INVALID_CURRENT_PASSWORD = "Current Password does not match with the Passw
 //Updating User Data Responses
 const USERDATA_UPDATE_SUCCESS = "The user details were updated successfully";
 const USERDATA_UPDATE_FAILURE = "Could not update user details";
+
+//Uploading Profile Picture Responses
+const UPLOADING_PROFILE_PIC_SUCCESS = "Profile Picture Uploaded Successfully";
+const NO_PROFILE_PICTURE_TO_FETCH = "No Profile Picture Available";
+
+//Fetching Profile Picture File Name
+const UNABLE_TO_FETCH_PROFILE_PIC_NAME = "Unable to fetch profile picture name";
+const FETCHING_PROFILE_PIC_NAME_SUCCESS = "Profile Picture Name Fetched Uploaded Successfully";

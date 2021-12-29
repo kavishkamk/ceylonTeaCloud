@@ -15,6 +15,7 @@ class GrowerLogin extends DbConnection
     private $telephoneNo;
     private $address;
     private $new_member_status;
+    private $profilePic;
 
     //Validating the password
     public function validateLoginDetails($loginEmail, $loginPassword)
@@ -54,6 +55,7 @@ class GrowerLogin extends DbConnection
                         $_SESSION['email'] = $loginEmail;
                         $_SESSION['telephoneNo'] = $this->telephoneNo;
                         $_SESSION['address'] = $this->address;
+                        $_SESSION['profilePic'] = $this->profilePic;
 
                         if($this-> new_member_status == 1) {
                             return NEW_MEMBER;
@@ -72,7 +74,7 @@ class GrowerLogin extends DbConnection
     private function getUserDetailsForEmail($email)
     {
         // Prepare a select statement
-        $sql = "SELECT id, name, tele, address, pwd, active_status, new_member_status FROM grower WHERE email= ?;";
+        $sql = "SELECT id, name, tele, address, pwd, active_status, new_member_status, profilePic FROM grower WHERE email= ?;";
         $conn = $this->connect();
 
         //Checking connection
@@ -99,6 +101,7 @@ class GrowerLogin extends DbConnection
                     $this->telephoneNo = $row["tele"];
                     $this->address = $row["address"];
                     $this->new_member_status = $row["new_member_status"];
+                    $this->profilePic = $row["profilePic"];
 
                     return SUCCESS;
                 } else if(mysqli_num_rows($result) > 1){

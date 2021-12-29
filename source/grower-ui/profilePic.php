@@ -1,3 +1,29 @@
+<?php
+
+require_once "../utils.php";
+require_once "../phpClasses/GrowerProfile.class.php";
+
+if (!isset($_SESSION['growerId'])) // no session exists
+{
+    header("Location:index.php?growerLoginStatus=unauthorized");
+    exit();
+} else {
+    require_once "../phpClasses/HandleGrowerSession.class.php";
+    $obj = new HandleGrowerSession();
+    $res = $obj->checkSession($_SESSION['sessionId'], $_SESSION['growerId']);
+    unset($obj);
+
+    if ($res != SESSION_AVAILABLE) {
+        header("Location:index.php?growerLoginStatus=logout");
+        exit();
+    }
+
+    //Getting profile picture name
+    $growerProfile = new GrowerProfile();
+    $fetchProfilePicStatus = $growerProfile->getProfilePictureName();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,20 +46,33 @@
     <div class="container">
         <h2 class="login-title">Change Profile Picture</h2>
         <div class="form-container">
-            <form action="profilePic.php" method="post">
+            <form action="../include/UpdateGrowerProfile.php" method="post" enctype="multipart/form-data">
                 <div class="form-group text-field-container">
-                    <form action="profilePic.php" method="post">
-                        <div class="image">
-                            <img src="../images/vishvi.jpeg" alt="Avatar" style="width: 200px"/>
-<!--                            <input type="file" placeholder="image" value=""/>-->
-                        </div>
-                    </form>
+                    <?php if ($fetchProfilePicStatus == FETCHING_PROFILE_PIC_NAME_SUCCESS): ?>
+                        <img src="../images/users/<?php echo $_SESSION['profilePic'] ?>"
+                             alt="Avatar" style="height: 200px; width: 200px; border-radius: 50%;"
+                             id="uploadedImage">
+                    <?php else: ?>
+                        <img src="../images/default-avatar.jpg" alt="Avatar"
+                             style="height: 200px; width: 200px; border-radius: 50%;"
+                             id="uploadedImage">
+                    <?php endif; ?>
+                    <div class="select-image-to-upload">
+                        <input type="file" name="fileToUpload" accept="image/jpeg" id="fileToUpload">
+                    </div>
                 </div>
-                <button href="#" class="btn btn-primary btn-lg btn-block login-button">Upload Profile Picture</button>
+                <button
+                        class="btn btn-primary btn-lg btn-block login-button"
+                        type="submit"
+                        value="Upload Image"
+                        name="update-grower-profile"
+                >
+                    Upload Profile Picture
+                </button>
             </form>
         </div>
         <div class="login-button-container">
-            <a href="home.php">
+            <a href="index.php">
                 Back to Home
             </a>
         </div>

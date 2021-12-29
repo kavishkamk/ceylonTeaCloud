@@ -516,3 +516,6 @@ CREATE TABLE IF NOT EXISTS grower_session
 
 ALTER TABLE grower 
 ADD new_member_status tinyint(1) NOT NULL DEFAULT 1;
+
+ALTER TABLE grower
+ADD profilePic VARCHAR(255);
