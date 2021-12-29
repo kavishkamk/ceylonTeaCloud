@@ -109,7 +109,7 @@
                         <div style="grid-column:3 / 4;">
                             <form action="../include/adminDeleteAdd.inc.php" method="post" onSubmit="return confirm('Do you really want to Delete your account?');">
                                 <input type="hidden" name="delstat" value="okDelete" required>
-                                <button type="button" name="del-submit" class="btn" style="background-color: rgba(255, 0, 0, 0.76); float: right; width: 200px;">DELETE ACCOUNT</button>
+                                <button type="submit" name="del-submit" class="btn" style="background-color: rgba(255, 0, 0, 0.76); float: right; width: 200px;">DELETE ACCOUNT</button>
                             </form>
                         </div>
                     </div>
