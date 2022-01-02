@@ -3,7 +3,7 @@
     session_start();
 
     if(!isset($_SESSION['ownerid'])){
-         header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
+         header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logout"); // no session
          exit();
     }
     else{
