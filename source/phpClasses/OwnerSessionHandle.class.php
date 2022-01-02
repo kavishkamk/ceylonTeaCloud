@@ -23,6 +23,9 @@
                 }
                 else{
                     $sessionExp = date("Y-n-d H:i:s", strtotime('+6 hours')); // session expire time
+                    echo '<span>------</span>';
+                    echo $sessionExp;
+                    echo '<br>';
                     mysqli_stmt_bind_param($stmt, "iss", $ownerid, $sessionVal, $sessionExp);
                     mysqli_stmt_execute($stmt);
                     $this->connclose($stmt, $conn);
@@ -74,6 +77,9 @@
                 if($row = mysqli_fetch_assoc($result)){
                     if($sessionval == $row['session_id']){
                         if($row['session_expire'] < date("Y-n-d H:i:s")){
+                            echo $row['session_expire'];
+                            echo '<br>';
+                            echo date("Y-n-d H:i:s");
                             $delres = $this->deleteSesseion($uid);
                             $this->connclose($stmt, $conn);
                             return "sessionexp"; // session expired
