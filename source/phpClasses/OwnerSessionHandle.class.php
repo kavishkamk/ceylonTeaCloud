@@ -76,9 +76,6 @@
                         $d1 = new DateTime($row['session_expire']);
                         $d2 = new DateTime(date("Y-n-d H:i:s"));
                         if($d1 < $d2){
-                            echo $row['session_expire'];
-                            echo '<br>';
-                            echo date("Y-n-d H:i:s");
                             $delres = $this->deleteSesseion($uid);
                             $this->connclose($stmt, $conn);
                             return "sessionexp"; // session expired
