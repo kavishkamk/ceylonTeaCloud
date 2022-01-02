@@ -9,3 +9,11 @@ This is a cloud-based service platform which will be implemented to make the con
   - sending notifications about pending and confirmed requesting letters etc.
 
 ☑️ Programming languages like HTML, CSS, Javascript, PHP, Bootstrap, MySQL and the IBM cloud platform will be used to implement this Platform as a Service (PaaS).
+
+☑️ Test Links
+- User Login : https://ceylon-tea-cloud.herokuapp.com
+- Email : user@gmail.com
+- Password : 123
+- Admin login : https://ceylon-tea-cloud.herokuapp.com/admin.php
+- Email : abc@gmail.com
+- Password : 123
