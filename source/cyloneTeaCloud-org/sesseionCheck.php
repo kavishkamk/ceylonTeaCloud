@@ -3,7 +3,7 @@
     session_start();
 
     if(!isset($_SESSION['ownerid'])){
-         header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logout"); // no session
+         header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
          exit();
     }
     else{
@@ -12,7 +12,7 @@
         $sessRes = $sessObj->checkSession($_SESSION['sessionId'], $_SESSION['ownerid']); // invalid session
         unset($sessObj);
         if($sessRes != "1"){
-            header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logoutok"); // no session
+            header("Location:../cyloneTeaCloud-org/ownerLogin.php?ownerlogstat=logout"); // no session
             exit();
         }
     }
