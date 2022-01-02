@@ -1,6 +1,6 @@
 <!-- this is main admin dashbord -->
 <?php
-    // require "sesseionCheck.php";
+    require "sesseionCheck.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
