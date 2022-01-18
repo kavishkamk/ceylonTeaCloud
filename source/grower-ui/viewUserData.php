@@ -101,7 +101,7 @@ if (isset($_GET['edit-user-data'])) {
                 </a>
             </div>
             <div class="login-button-container">
-                <a href="../main-ui/main-menu.php">
+                <a href="../grower-ui/profilePic.php">
                     <div class="confirm">Confirm</div>
                 </a>
             </div>

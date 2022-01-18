@@ -72,8 +72,8 @@ if (!isset($_SESSION['growerId'])) // no session exists
             </form>
         </div>
         <div class="login-button-container">
-            <a href="index.php">
-                Back to Home
+            <a href="../main-ui/main-menu.php">
+                Confirm
             </a>
         </div>
     </div>
