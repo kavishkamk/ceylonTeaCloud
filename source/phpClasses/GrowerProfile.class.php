@@ -51,7 +51,6 @@ class GrowerProfile extends DbConnection
                     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
                     $_SESSION['profilePic'] = $row["profilePic"];
-                    var_dump($_SESSION['profilePic']);
                     return FETCHING_PROFILE_PIC_NAME_SUCCESS;
                 } else {
                     return UNABLE_TO_FETCH_PROFILE_PIC_NAME;
