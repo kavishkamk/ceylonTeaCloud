@@ -8,7 +8,7 @@ This is a cloud-based service platform which will be implemented to make the con
   - generating requesting letters (loans, fertilizer, tea packets etc.) and sending to the factory admins
   - sending notifications about pending and confirmed requesting letters etc.
 
-☑️ Programming languages like HTML, CSS, Javascript, PHP, Bootstrap, MySQL and the IBM cloud platform will be used to implement this Platform as a Service (PaaS).
+☑️ Programming languages like HTML, CSS, Javascript, PHP, Bootstrap, MySQL and the Heroku and Remote MySQL cloud platforms will be used to implement this Platform as a Service (PaaS).
 
 ☑️ Test Links
 - User Login : https://ceylon-tea-cloud.herokuapp.com
