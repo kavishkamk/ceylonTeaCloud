@@ -600,7 +600,7 @@
             $arr = explode("-", $lids);
             foreach($arr as $idlist){
                 if($idlist != NULL && $idlist != ""){
-                 $this->set_weekReportId_table($detailsInsertId, $idlist);
+                 $this->set_weekReportId_table($detailsInsertId, intval($idlist));
                 }
             }
             return 1;
