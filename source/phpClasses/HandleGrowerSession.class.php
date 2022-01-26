@@ -66,7 +66,9 @@ class HandleGrowerSession extends DbConnection {
             $result = mysqli_stmt_get_result($stmt);
             if($row = mysqli_fetch_assoc($result)){
                 if($sessionVal == $row['session_id']){
-                    if($row['session_expire'] < date("Y-n-d H:i:s")){
+                    $d1 = new DateTime($row['session_expire']);
+                    $d2 = new DateTime(date("Y-n-d H:i:s"));
+                    if($d1 < $d2){
                         $deleteSessionResponse = $this->deleteSession($growerId);
                         $this->closeConnection($stmt, $conn);
                         return SESSION_EXPIRED;
