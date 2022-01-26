@@ -1,5 +1,5 @@
 <?php
-    require "sessionCheck.php";
+    //require "sessionCheck.php";
 
     if(isset($_POST['create-report'])){
         $finalWait = $_POST['final-wait'];
