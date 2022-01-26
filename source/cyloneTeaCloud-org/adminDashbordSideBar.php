@@ -24,7 +24,7 @@
         </div>
         
         <div class="dash-nav">
-            <a href="growerlist.php">
+            <a href="growerList.php">
                 <span>Grower List</span>
             </a>
         </div>

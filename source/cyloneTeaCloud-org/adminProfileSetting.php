@@ -8,7 +8,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Profile Settings</title> 
-        <link rel="stylesheet" type="text/css" href="../css/adminDashBord.css">
+        <link rel="stylesheet" type="text/css" href="../css/adminDashbord.css">
         <link rel="stylesheet" type="text/css" href="../css/adminProfileEdit.css">
     </head>
     <body>
@@ -107,9 +107,9 @@
                         </div>
                         <!-- this for delete account -->
                         <div style="grid-column:3 / 4;">
-                            <form action="../include/adminDeleteAdd.inc.php" method="post">
+                        <form action="../include/adminDeleteAdd.inc.php" method="post" onSubmit="return confirm('Do you really want to Delete your account?');">
                                 <input type="hidden" name="delstat" value="okDelete" required>
-                                <button type="submit" name="del-submit" class="btn" onclick = "clicked();" style="background-color: rgba(255, 0, 0, 0.76); float: right; width: 200px;">DELETE ACCOUNT</button>
+                                <button type="submit" name="del-submit" class="btn" style="background-color: rgba(255, 0, 0, 0.76); float: right; width: 200px;">DELETE ACCOUNT</button>
                             </form>
                         </div>
                     </div>
