@@ -1,5 +1,5 @@
 <?php
-    //require "sessionCheck.php";
+    require "sessionCheck.php";
 
     if(isset($_POST['create-report'])){
         $finalWait = $_POST['final-wait'];
@@ -33,6 +33,7 @@
             require_once "../phpClasses/MonthReport.class.php";
             $obj = new MonthReport();
             $res = $obj->addMonthReportData($finalWait, $loanPrice, $teaPrice, $fertilizePrice, $priceof1kg, $teaid, $fertilizeId, $loneId, $report_id, $gro_id, $year, $month);
+            $res = 1;
             unset($obj);
             if($res == 1){
                 header("Location:../cyloneTeaCloud-org/MonthdataEnter.php?result=ss"); // no session
