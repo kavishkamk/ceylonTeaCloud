@@ -84,11 +84,7 @@
                                         echo '<span>Grower ID : '.$grower_id.'</span><br>';
                                         $year = substr($yeMonth, 0, 4);
                                         $month = substr($yeMonth, 5);
-                                        echo $year;
-                                        echo '<br>';
                                         $d=cal_days_in_month(CAL_GREGORIAN,$month,$year);
-                                        echo $d;
-                                        echo '<br>';
                                         $d = $d - 1;
                                         $date=date_create("$year-$month-1"); 
                                         $sDate = date_format($date,"Y-n-d");
